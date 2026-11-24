@@ -1,0 +1,15 @@
+name|color|description
+type:feature|0E8A16|New functionality
+type:chore|C5DEF5|Setup, tooling, or deployment work
+type:test|FBCA04|Tests
+type:docs|0075CA|Documentation
+type:perf|D93F0B|Performance
+area:shared|BFD4F2|packages/shared
+area:backend|1D76DB|apps/api
+area:frontend|5319E7|apps/web
+area:theme|F9D0C4|Themes and design tokens
+area:public|C2E0C6|Public site pages
+area:admin|FEF2C0|Owner admin panel
+area:blog|BFDADC|Blog
+owner-check|B60205|Needs owner review or approval
+phase-2|EDEDED|After launch

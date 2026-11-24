@@ -1,0 +1,86 @@
+day	labels	title	body
+1	type:chore,area:shared	Scaffold pnpm monorepo and tooling	pnpm dev runs both apps; lint, typecheck, build pass (Day 1)
+1	area:theme	Define dark and light design tokens and Tailwind mapping	Both themes defined from design-tokens.json, no hex in components
+1	area:theme	ThemeProvider, ThemeToggle and pre-paint theme script	Toggle persists after reload with no flash
+1	area:frontend	Base UI primitives	Button, Card, Badge, Input, Textarea, Select, Modal, Toast, Skeleton, Tabs, Pagination, EmptyState, Container, SectionHeading render in both themes
+1	area:backend	Express skeleton with security middleware, env validation, DB connection and health route	GET /api/health returns 200
+1	area:shared	Zod schemas for every collection	Schemas exported from packages/shared
+1	area:backend	Mongoose models for every collection	Models validate and save test records
+1	area:backend	create-owner script and seed skeleton	Owner account created by script
+1	owner-check	Day 1 exit check	Owner compares colours, fonts and buttons in both themes with live site
+2	area:frontend	Router, PageShell, Navbar with anchor links	Navigation works at 360px and 1440px
+2	area:frontend	MobileMenu, Footer and BackToTop	Menu includes theme toggle; footer links work
+2	area:public	Hero section	Asymmetric layout with portrait and caption, per design-system skill
+2	area:public	About section	Intro, how-I-work points and link to /about
+2	area:backend	Public read endpoints for all collections	Public endpoints return published items only
+2	area:public	Home section scaffolds with skeleton and empty states	All home sections render with seed data
+2	area:frontend	SEO helper: title, description, Open Graph, Person JSON-LD	Metadata present on home
+2	owner-check	Day 2 exit check	Owner reviews home in both themes on phone and desktop
+3	type:feature,area:backend,area:admin	Experience module (API, reorder, tests)	Follows portfolio-crud-module; API tests pass
+3	type:feature,area:backend,area:admin	Education module (API, reorder, tests)	Follows portfolio-crud-module; API tests pass
+3	area:admin	Experience admin list and editor	Create, edit, reorder, hide, delete
+3	area:admin	Education admin list and editor	Create, edit, reorder, hide, delete
+3	area:public	/experience page and home section	Published items in order
+3	area:public	/education page and home section	Published items in order
+3	area:frontend	Timeline component	Single vertical line, date labels, responsive, both themes
+3	owner-check	Day 3 exit check	Owner adds one experience and one education entry and sees them publicly
+4	area:backend	Upload service	MIME and magic-byte checks, 10 MB limit, Cloudinary upload, delete on record removal
+4	type:feature,area:backend	Certifications module	API tests pass including file handling
+4	type:feature,area:backend	Achievements module	API tests pass
+4	area:admin	Certifications admin list and editor with file field	Owner uploads a PDF and an image
+4	area:admin	Achievements admin list and editor	Category field, image optional
+4	area:public	/certifications page with viewer	Images and PDFs open in viewer; verify link works
+4	area:public	/achievements page with category filter and home sections	Filter chips work; latest three on home
+4	owner-check	Day 4 exit check	Owner uploads a certificate, sees it publicly, then deletes it
+5	type:feature,area:backend	Auth module: login, bcrypt, JWT cookie, lockout, logout, me	Lockout after 5 failures for 15 minutes; auth tests pass
+5	area:admin	Admin layout, RequireOwner guard and login page	Logged-out visits redirect to login
+5	area:admin	Dashboard with counts and unread messages	Counts match database
+5	area:admin	Profile editor	Changes appear on home after reload
+5	area:admin	Shared form fields: ImageField, FileField, MarkdownField, TagsField	Image resized to 2000px and converted to WebP; Markdown preview works
+5	area:backend	Rate limits and security headers	Login, contact and upload limits enforced; Helmet configured
+5	owner-check	Day 5 exit check	Owner logs in, edits profile, sees change; lockout confirmed
+6	type:feature,area:backend	Projects module with gallery and reorder	Drafts hidden publicly; tests pass
+6	area:admin	Projects admin list and editor	Gallery uploads, case study Markdown, featured flag
+6	area:public	/projects page with category filter and search	Filter and search work in both themes
+6	area:public	/projects/:slug detail page	Gallery, stack, links, related projects, browser frame for screenshots
+6	type:feature,area:backend	Skills module with level and reorder	Levels 1 to 5 validated
+6	area:admin	Skills admin list and editor	Owner edits skills grouped by category
+6	area:public	Skills and Projects home sections	Level indicators, not percentages
+6	owner-check	Day 6 exit check	Owner publishes a project with three screenshots; checks detail page on phone
+7	type:feature,area:backend,area:admin	Services module and admin	Owner edits services; services section on home
+7	type:feature,area:backend,area:admin	Testimonials module and admin	Rating, avatar, verified flag
+7	area:public	Testimonial carousel	Keyboard arrows; pause on hover and focus; reduced-motion respected
+7	type:feature,area:backend	Contact endpoint	Validation, honeypot, 5 per hour per IP, email notification
+7	area:public	Contact page and home section	Form shows field errors and success state
+7	area:admin	Messages inbox	List, read, mark read; unread count on dashboard
+7	owner-check	Day 7 exit check	Owner submits form from second device, receives email, marks read
+8	type:feature,area:backend,area:blog	Blog module	Slug, excerpt, reading time, tags, publish, unpublish, search, pagination; drafts hidden
+8	area:admin,area:blog	Blog admin editor with Markdown preview and image upload	Required alt text; cover image; SEO panel
+8	area:blog,area:public	/blog listing with tag filter, search and pagination	9 posts per page
+8	area:blog,area:public	/blog/:slug post page	Sanitized body, code highlighting, previous and next
+8	area:blog,area:public	/blog/tag/:tag page	Posts with one tag
+8	area:public	Blog preview on home	Latest three published posts
+8	area:blog	BlogPosting JSON-LD, sitemap entries and RSS feed	Feed validates
+8	type:test,area:blog	Markdown script tag does not execute	Test passes
+8	owner-check	Day 8 exit check	Owner writes post with image, previews, publishes, sees it on /blog
+9	type:chore,area:frontend	Responsive pass at 360px, 768px and 1440px in both themes	No layout breaks
+9	type:chore,area:frontend	Accessibility pass: axe, keyboard, focus, contrast	No critical or serious violations on public pages
+9	area:frontend	SEO: per-page metadata, sitemap, robots.txt, 404 page	Metadata on every public page
+9	type:test,area:backend	Complete API test suite	All collections, auth, uploads, contact, blog covered
+9	type:test,area:frontend	Playwright smoke suite in both themes	e2e/public.spec.ts and e2e/admin.spec.ts pass; screenshots saved
+9	type:perf	Performance pass	Code splitting for admin, image sizes, font preload; Lighthouse performance 85+ locally
+9	owner-check	Day 9 exit check	Owner reviews test screenshots in both themes
+10	type:chore,area:admin	Load real content through admin	No placeholder text anywhere
+10	type:chore	Production owner account, password change, Atlas backups	Login works on production
+10	type:chore	Deploy API and frontend, DNS and HTTPS	Both domains load over HTTPS
+10	type:chore	301 redirects for WordPress project URLs	curl shows 301 to new URLs
+10	type:test	Production smoke test	Home, sections, project, post, contact, admin login all pass
+10	type:docs	Admin guide and handover	One-page guide; credentials in password manager
+10	type:chore,area:frontend	Submit sitemap to Search Console	Accepted; WordPress kept 30 days
+10	owner-check	Owner acceptance sign-off	Checklist in DEVELOPMENT_PLAN.md section 8 signed
+phase-2	phase-2,type:feature,area:blog	Scheduled blog publishing	Server job publishes at scheduledAt
+phase-2	phase-2,type:feature,area:blog	Blog autosave, table of contents, related posts, share buttons	Each works in editor and post page
+phase-2	phase-2,type:test	Full Playwright suite for every admin flow	All admin flows covered
+phase-2	phase-2,type:perf	Lighthouse 90+ and full screen reader pass	Targets met
+phase-2	phase-2,type:feature	WordPress blog URL redirects	Only if old blog posts exist
+phase-2	phase-2,type:feature	Optional analytics, newsletter, comments	Scoped separately

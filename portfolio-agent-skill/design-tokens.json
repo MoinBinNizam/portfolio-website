@@ -1,0 +1,40 @@
+{
+  "$comment": "Source of truth for colors, fonts, radii and buttons. status: estimated until owner confirms with a color picker or original CSS. Copy to repository root as design-tokens.json.",
+  "defaultTheme": "dark",
+  "themes": {
+    "dark": {
+      "background": { "value": "#0E0E0E", "status": "estimated" },
+      "surface": { "value": "#161616", "status": "estimated" },
+      "surfaceAlt": { "value": "#1F1F1F", "status": "estimated" },
+      "border": { "value": "#2A2A28", "status": "estimated" },
+      "textPrimary": { "value": "#F4F4F2", "status": "estimated" },
+      "textMuted": { "value": "#9A9A96", "status": "estimated" },
+      "accent": { "value": "#22E37A", "status": "estimated" },
+      "accentText": { "value": "#0E0E0E", "status": "estimated" },
+      "accentHover": { "value": "#1BC868", "status": "estimated" },
+      "highlight": { "value": "#E8501A", "status": "estimated" }
+    },
+    "light": {
+      "background": { "value": "#F7F6F2", "status": "estimated" },
+      "surface": { "value": "#FFFFFF", "status": "estimated" },
+      "surfaceAlt": { "value": "#EFEDE6", "status": "estimated" },
+      "border": { "value": "#DAD7CE", "status": "estimated" },
+      "textPrimary": { "value": "#141414", "status": "estimated" },
+      "textMuted": { "value": "#5B5B57", "status": "estimated" },
+      "accent": {
+        "value": "#0B7A43",
+        "status": "estimated",
+        "note": "Darker green so text and buttons meet 4.5:1 contrast on white."
+      },
+      "accentText": { "value": "#FFFFFF", "status": "estimated" },
+      "accentHover": { "value": "#08643A", "status": "estimated" },
+      "highlight": { "value": "#D9480F", "status": "estimated" }
+    }
+  },
+  "fonts": {
+    "display": { "family": "TBD - wide geometric, uppercase headings", "status": "estimated" },
+    "body": { "family": "TBD - humanist sans-serif, 16px minimum", "status": "estimated" }
+  },
+  "radius": { "button": "9999px", "card": "14px", "media": "10px", "input": "8px" },
+  "motion": { "durationFast": "150ms", "durationBase": "250ms", "respectReducedMotion": true }
+}
