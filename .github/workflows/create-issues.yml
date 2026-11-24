@@ -1,0 +1,58 @@
+name: Create Project Issues
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_from:
+        description: 'Issue row to start from (e.g. 7 if #1-#6 are already created)'
+        required: true
+        default: '7'
+        type: number
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  create-issues:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create labels
+        run: |
+          tail -n +2 scripts/issues/labels.txt | while IFS='|' read -r name color desc; do
+            [ -z "$name" ] && continue
+            gh label create "$name" --repo "$REPO" --color "$color" --description "$desc" --force >/dev/null
+          done
+
+      - name: Create milestones
+        run: |
+          for d in 1 2 3 4 5 6 7 8 9 10; do
+            gh api "repos/$REPO/milestones" -f title="Day $d" >/dev/null 2>&1 || true
+          done
+          gh api "repos/$REPO/milestones" -f title="Phase 2" >/dev/null 2>&1 || true
+
+      - name: Create issues from start_from
+        run: |
+          START="${{ inputs.start_from }}"
+          ROW=0
+          tail -n +2 scripts/issues/issues.tsv | while IFS=$'\t' read -r day labels title body; do
+            [ -z "$title" ] && continue
+            ROW=$((ROW + 1))
+            if [ "$ROW" -lt "$START" ]; then
+              continue
+            fi
+            if [ "$day" = "phase-2" ]; then
+              ms="Phase 2"
+            else
+              ms="Day $day"
+            fi
+            url=$(gh issue create --repo "$REPO" --title "$title" --body "$body" --label "$labels" --milestone "$ms")
+            echo "Created $url ($ms: $title)"
+            sleep 1
+          done

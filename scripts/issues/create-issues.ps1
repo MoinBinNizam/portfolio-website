@@ -1,5 +1,6 @@
 param(
-  [string]$Repo = ''
+  [string]$Repo = '',
+  [int]$StartFrom = 1
 )
 
 $ErrorActionPreference = 'Stop'
@@ -58,8 +59,11 @@ $indexFile = Join-Path $Here 'ISSUES_INDEX.md'
 ) | Set-Content -Path $indexFile -Encoding UTF8
 
 $issueLines = Get-Content (Join-Path $Here 'issues.tsv') | Select-Object -Skip 1
+$row = 0
 foreach ($line in $issueLines) {
   if ([string]::IsNullOrWhiteSpace($line)) { continue }
+  $row++
+  if ($row -lt $StartFrom) { continue }
   $cols = $line -split "`t", 4
   $day = $cols[0]
   $labels = $cols[1]
