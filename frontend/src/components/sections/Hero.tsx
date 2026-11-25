@@ -70,7 +70,7 @@ export function Hero() {
                   </p>
                   <p className="mx-auto mt-5 max-w-[65ch] text-base text-textMuted lg:mx-0">
                     {profile?.intro ??
-                      'Full-stack developer building fast, accessible web applications with MongoDB, Express, React, Node.js, and TypeScript.'}
+                      'Full-Stack Web Developer building scalable MERN, React 18, Node.js, TypeScript, and WordPress applications, from custom business platforms to enterprise inventory, POS, and finance systems. Open to remote roles globally.'}
                   </p>
                 </>
               )}
