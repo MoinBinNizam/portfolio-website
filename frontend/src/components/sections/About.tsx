@@ -51,6 +51,15 @@ export function About() {
                 </div>
               ) : (
                 <div className="space-y-4">
+                  <div className="rounded-input border-l-2 border-accent bg-surfaceAlt/50 px-4 py-3">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent">
+                      Career Objective
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-textPrimary">
+                      {profile?.intro ??
+                        'Seeking a Full-Stack Software Engineer role where I can apply my experience in MERN, React 18, Node.js, TypeScript, and AI-assisted workflows to build scalable, secure, and user-focused web applications for global teams.'}
+                    </p>
+                  </div>
                   <MarkdownBody
                     content={
                       profile?.about ??

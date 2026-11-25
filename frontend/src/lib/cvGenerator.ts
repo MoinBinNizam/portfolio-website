@@ -175,7 +175,7 @@ export function buildStructuredCvHtml(data: CvData): string {
 
     <section>
       <h2>Career Objective</h2>
-      <p>${esc(cleanHumanText(profile?.intro ?? ''))} ${esc(cleanHumanText(profile?.about ?? ''))}</p>
+      <p>${esc(cleanHumanText(profile?.intro || 'Seeking a Full-Stack Software Engineer role where I can apply my experience in MERN, React 18, Node.js, TypeScript, and AI-assisted workflows to build scalable, secure, and user-focused web applications for global teams.'))}</p>
     </section>
 
     ${

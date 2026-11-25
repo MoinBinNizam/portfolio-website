@@ -135,7 +135,12 @@ export function ProfilePage() {
             </FormField>
           </div>
 
-          <FormField id="intro" label="Hero Introduction" required error={errors.intro?.message}>
+          <FormField
+            id="intro"
+            label="Career Objective (About Me &amp; CV)"
+            required
+            error={errors.intro?.message}
+          >
             <Textarea id="intro" rows={3} {...register('intro')} error={errors.intro?.message} />
           </FormField>
 
