@@ -48,7 +48,7 @@ export function Footer() {
           <div className="flex flex-wrap items-center gap-4">
             <p className="text-xs text-textMuted">
               &copy; {new Date().getFullYear()} {profile?.name ?? 'Moin Uddin'}. All rights
-              reserved.
+              reserved. Designed &amp; Developed by {profile?.name ?? 'Moin Uddin'}.
             </p>
             <SocialLinksBar socials={profile?.socials} />
           </div>

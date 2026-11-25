@@ -213,7 +213,7 @@ export function ProfilePage() {
             </div>
           </div>
 
-          <div className="space-y-4 rounded-card border border-border/70 bg-surface/75 p-5 backdrop-blur-md">
+          <div className="space-y-4 rounded-card border border-border bg-surface p-5">
             <div>
               <h2 className="text-base font-semibold text-textPrimary">
                 CV-Only Contact, Addresses &amp; References
@@ -251,7 +251,7 @@ export function ProfilePage() {
               </FormField>
             </div>
 
-            <div className="space-y-3 border-t border-border/70 pt-4">
+            <div className="space-y-3 border-t border-border pt-4">
               <div className="flex items-center justify-between gap-2">
                 <h3 className="text-sm font-semibold text-textPrimary">CV References</h3>
                 <Button
@@ -274,7 +274,7 @@ export function ProfilePage() {
               {referenceFields.map((field, index) => (
                 <div
                   key={field.id}
-                  className="space-y-3 rounded-input border border-border/70 bg-background/60 p-4"
+                  className="space-y-3 rounded-input border border-border bg-background p-4"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-semibold uppercase tracking-[0.12em] text-textMuted">

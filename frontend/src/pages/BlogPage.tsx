@@ -40,6 +40,7 @@ export function BlogPage({ initialTag }: { initialTag?: string }) {
         <Container>
           <SectionHeading
             eyebrow="Engineering Blog"
+            icon="book"
             title={tag ? `Articles tagged "${tag}"` : 'Technical Articles & Notes'}
             description="Practical lessons on full-stack TypeScript, API design, and web performance."
           />
@@ -109,22 +110,43 @@ export function BlogPage({ initialTag }: { initialTag?: string }) {
                 {posts.map((post) => (
                   <article
                     key={post._id}
-                    className="flex flex-col justify-between rounded-card border border-border bg-surface p-5 transition-colors duration-fast hover:border-accent"
+                    className="group flex flex-col overflow-hidden rounded-card border border-border bg-surface transition-colors duration-fast hover:border-accent"
                   >
-                    <div>
-                      <div className="flex items-center justify-between gap-2 text-xs text-textMuted">
-                        <span>{formatShortDate(post.publishedAt ?? post.createdAt)}</span>
-                        <span>{post.readingTime ?? 1} min read</span>
-                      </div>
-                      <h2 className="mt-3 text-lg font-semibold text-textPrimary">
-                        <Link to={`/blog/${post.slug}`} className="hover:underline">
+                    <Link to={`/blog/${post.slug}`} className="flex flex-1 flex-col">
+                      {post.coverImage?.url ? (
+                        <img
+                          src={post.coverImage.url}
+                          alt={post.coverImage.alt || post.title}
+                          width={post.coverImage.width ?? 640}
+                          height={post.coverImage.height ?? 360}
+                          className="aspect-[16/9] w-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex aspect-[16/9] w-full items-end bg-surfaceAlt p-4">
+                          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+                            {post.category || 'Engineering Article'}
+                          </span>
+                        </div>
+                      )}
+
+                      <div className="flex flex-1 flex-col p-5">
+                        <div className="flex items-center justify-between gap-2 text-xs text-textMuted">
+                          <Badge variant="accent">{post.category || 'Article'}</Badge>
+                          <span>{formatShortDate(post.publishedAt ?? post.createdAt)}</span>
+                        </div>
+                        <h2 className="mt-3 text-lg font-semibold text-textPrimary group-hover:text-accent">
                           {post.title}
-                        </Link>
-                      </h2>
-                      <p className="mt-2 text-sm text-textMuted">{post.excerpt}</p>
-                    </div>
+                        </h2>
+                        <p className="mt-2 flex-1 text-sm text-textMuted">{post.excerpt}</p>
+                        <div className="mt-4 flex items-center justify-between gap-2 text-xs text-textMuted">
+                          <span>{post.readingTime ?? 1} min read</span>
+                          <span className="font-semibold text-accent">Read article &rarr;</span>
+                        </div>
+                      </div>
+                    </Link>
+
                     {post.tags.length > 0 ? (
-                      <div className="mt-4 flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-1.5 border-t border-border px-5 py-3">
                         {post.tags.map((t) => (
                           <Link key={t} to={`/blog/tag/${encodeURIComponent(t)}`}>
                             <Badge>{t}</Badge>

@@ -52,7 +52,7 @@ export function DashboardPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((item) => (
             <Link key={item.label} to={item.to} className="block">
-              <Card className="border-border/70 bg-surface/75 backdrop-blur-md transition hover:border-accent">
+              <Card className="transition-colors duration-fast hover:border-accent">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-textMuted">
                   {item.label}
                 </p>

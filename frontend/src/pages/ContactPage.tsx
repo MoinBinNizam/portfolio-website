@@ -21,6 +21,7 @@ export function ContactPage() {
             <div className="lg:col-span-5">
               <SectionHeading
                 eyebrow="Contact"
+                icon="mail"
                 title="Get in touch"
                 description="Use the form to send a message directly, or reach out by email."
               />

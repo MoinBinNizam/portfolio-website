@@ -40,6 +40,7 @@ export function ProjectsPage() {
         <Container>
           <SectionHeading
             eyebrow="Portfolio"
+            icon="layers"
             title="Full-Stack Web Applications &amp; Case Studies"
             description="Filter by category or search by project title, summary, or stack."
           />

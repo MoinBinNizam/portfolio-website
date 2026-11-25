@@ -56,6 +56,7 @@ export function ExperiencePage() {
         <Container>
           <SectionHeading
             eyebrow="Experience"
+            icon="briefcase"
             title="Work history"
             description="Roles, measurable outcomes, and production technologies."
           />

@@ -22,6 +22,7 @@ export function ServicesPage() {
         <Container>
           <SectionHeading
             eyebrow="Services"
+            icon="zap"
             title="Software Development, E-Commerce, Inventory &amp; POS"
             description="End-to-end full-stack delivery and technical consulting."
           />

@@ -23,10 +23,11 @@ export function AboutPage() {
       />
       <section className="py-16">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-7">
+          <div className="grid items-center gap-10 lg:grid-cols-12">
+            <div className="order-2 lg:order-1 lg:col-span-7">
               <SectionHeading
                 eyebrow="About"
+                icon="user"
                 title={profile?.name ?? 'Moin Uddin'}
                 description={profile?.headline ?? 'Full-Stack MERN & TypeScript Developer'}
               />
@@ -64,18 +65,18 @@ export function AboutPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <figure className="rounded-card border border-border bg-surface p-3">
+            <div className="order-1 lg:order-2 lg:col-span-5">
+              <div className="mx-auto w-full max-w-[230px] sm:max-w-[270px] lg:max-w-[340px]">
                 {profile?.avatar?.url ? (
                   <img
                     src={profile.avatar.url}
                     alt={profile.avatar.alt || `${profile.name} portrait`}
                     width={profile.avatar.width ?? 600}
                     height={profile.avatar.height ?? 700}
-                    className="aspect-[4/5] w-full rounded-media object-cover"
+                    className="aspect-[4/5] w-full rounded-card object-cover"
                   />
                 ) : (
-                  <div className="flex aspect-[4/5] w-full items-end rounded-media border border-border bg-surfaceAlt p-6">
+                  <div className="flex aspect-[4/5] w-full items-end rounded-card bg-surfaceAlt p-6">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                         Portrait
@@ -86,7 +87,7 @@ export function AboutPage() {
                     </div>
                   </div>
                 )}
-              </figure>
+              </div>
             </div>
           </div>
         </Container>

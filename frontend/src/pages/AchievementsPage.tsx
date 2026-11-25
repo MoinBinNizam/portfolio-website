@@ -37,6 +37,7 @@ export function AchievementsPage() {
         <Container>
           <SectionHeading
             eyebrow="Achievements"
+            icon="award"
             title="Awards &amp; recognition"
             description="Trainings, mentoring, competitions, and recognition."
           />

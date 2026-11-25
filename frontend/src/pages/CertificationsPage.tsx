@@ -27,6 +27,7 @@ export function CertificationsPage() {
         <Container>
           <SectionHeading
             eyebrow="Certifications"
+            icon="award"
             title="Verified credentials"
             description="Professional certifications with verification links and certificate scans."
           />

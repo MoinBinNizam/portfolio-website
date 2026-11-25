@@ -62,11 +62,11 @@ function SidebarContent({
         </nav>
       </div>
 
-      <div className="border-t border-border/70 pt-4">
+      <div className="border-t border-border pt-4">
         <button
           type="button"
           onClick={onLogout}
-          className="w-full rounded-button border border-border/70 px-3.5 py-2 text-xs font-semibold text-textMuted transition-colors duration-fast hover:border-highlight hover:text-highlight"
+          className="w-full rounded-button border border-border px-3.5 py-2 text-xs font-semibold text-textMuted transition-colors duration-fast hover:border-highlight hover:text-highlight"
         >
           Sign out
         </button>
@@ -108,7 +108,7 @@ export function AdminShell({ title, children }: { title: string; children: React
   return (
     <div className="flex min-h-screen bg-background text-textPrimary">
       {/* Desktop Left Sidebar */}
-      <aside className="hidden w-64 shrink-0 border-r border-border/70 bg-surface/75 backdrop-blur-md lg:sticky lg:top-0 lg:block lg:h-screen lg:overflow-y-auto">
+      <aside className="hidden w-64 shrink-0 border-r border-border bg-surface lg:sticky lg:top-0 lg:block lg:h-screen lg:overflow-y-auto">
         <SidebarContent onLogout={handleLogout} />
       </aside>
 
@@ -123,7 +123,7 @@ export function AdminShell({ title, children }: { title: string; children: React
               onClick={() => setDrawerOpen(false)}
             >
               <aside
-                className="h-full w-64 border-r border-border/70 bg-surface/85 shadow-xl backdrop-blur-md"
+                className="h-full w-64 border-r border-border bg-surface shadow-xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 <SidebarContent onNavigate={() => setDrawerOpen(false)} onLogout={handleLogout} />
@@ -135,14 +135,14 @@ export function AdminShell({ title, children }: { title: string; children: React
 
       {/* Main Content */}
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 flex items-center justify-between gap-4 border-b border-border/70 bg-surface/75 px-4 py-3 backdrop-blur-md sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3">
+        <header className="sticky top-0 z-30 flex items-center justify-between gap-3 border-b border-border bg-surface px-4 py-2.5 sm:px-6 lg:px-8">
+          <div className="flex min-w-0 items-center gap-3">
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
               aria-label="Open admin menu"
               aria-expanded={drawerOpen}
-              className="inline-flex items-center justify-center rounded-button border border-border/70 bg-background/80 p-2 text-textPrimary hover:border-accent lg:hidden"
+              className="inline-flex shrink-0 items-center justify-center rounded-button border border-border bg-background p-2 text-textPrimary hover:border-accent lg:hidden"
             >
               <svg
                 aria-hidden="true"
@@ -151,33 +151,33 @@ export function AdminShell({ title, children }: { title: string; children: React
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
-                className="h-5 w-5"
+                className="h-4 w-4"
               >
                 <line x1="4" y1="6" x2="20" y2="6" />
                 <line x1="4" y1="12" x2="20" y2="12" />
                 <line x1="4" y1="18" x2="20" y2="18" />
               </svg>
             </button>
-            <div className="lg:hidden">
-              <BrandLogo />
-            </div>
-            <span className="hidden text-sm font-semibold tracking-tight text-textPrimary sm:inline">
-              Portfolio Admin Panel
-            </span>
+            <span className="truncate text-sm font-semibold text-textPrimary">{title}</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-3">
             <Link
               to="/"
-              className="rounded-button border border-border/70 bg-background/70 px-3 py-1.5 text-xs font-medium text-textMuted transition-colors duration-fast hover:border-accent hover:text-accent"
+              className="text-xs font-medium text-textMuted transition-colors duration-fast hover:text-accent"
             >
-              View public site
+              View site &#8599;
             </Link>
             <ThemeToggle />
           </div>
         </header>
 
         <main className="mx-auto w-full max-w-5xl flex-1 p-5 sm:p-8 lg:p-10">{children}</main>
+
+        <footer className="border-t border-border bg-surface px-4 py-3 text-center text-xs text-textMuted sm:px-6 lg:px-8">
+          &copy; {new Date().getFullYear()} Moin Uddin. All rights reserved. Designed &amp;
+          Developed by Moin Uddin.
+        </footer>
       </div>
     </div>
   );

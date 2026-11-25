@@ -33,6 +33,7 @@ export function EducationPage() {
         <Container>
           <SectionHeading
             eyebrow="Education"
+            icon="graduation"
             title="Academic background"
             description="Degrees, grades, and academic activities."
           />
