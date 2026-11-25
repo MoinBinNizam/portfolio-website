@@ -1,25 +1,13 @@
+import { lazy, Suspense, type ReactNode } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { DashboardPage } from '../admin/DashboardPage';
-import { LoginPage } from '../admin/LoginPage';
-import { MessagesPage } from '../admin/MessagesPage';
-import { ProfilePage } from '../admin/ProfilePage';
-import { AchievementEditorPage } from '../admin/collections/achievements/AchievementEditorPage';
-import { AchievementsListPage } from '../admin/collections/achievements/AchievementsListPage';
-import { CertificationEditorPage } from '../admin/collections/certifications/CertificationEditorPage';
-import { CertificationsListPage } from '../admin/collections/certifications/CertificationsListPage';
-import { EducationEditorPage } from '../admin/collections/education/EducationEditorPage';
-import { EducationListPage } from '../admin/collections/education/EducationListPage';
-import { ExperienceEditorPage } from '../admin/collections/experience/ExperienceEditorPage';
-import { ExperienceListPage } from '../admin/collections/experience/ExperienceListPage';
-import { ProjectEditorPage } from '../admin/collections/projects/ProjectEditorPage';
-import { ProjectsListPage } from '../admin/collections/projects/ProjectsListPage';
-import { ServiceEditorPage } from '../admin/collections/services/ServiceEditorPage';
-import { ServicesListPage } from '../admin/collections/services/ServicesListPage';
-import { SkillEditorPage } from '../admin/collections/skills/SkillEditorPage';
-import { SkillsListPage } from '../admin/collections/skills/SkillsListPage';
+import { Container } from '../components/ui/Container';
+import { Skeleton } from '../components/ui/Skeleton';
+import { AboutPage } from '../pages/AboutPage';
 import { AchievementsPage } from '../pages/AchievementsPage';
+import { BlogPage } from '../pages/BlogPage';
+import { BlogPostPage } from '../pages/BlogPostPage';
+import { BlogTagPage } from '../pages/BlogTagPage';
 import { CertificationsPage } from '../pages/CertificationsPage';
-import { CollectionStubPage } from '../pages/CollectionStubPage';
 import { ContactPage } from '../pages/ContactPage';
 import { EducationPage } from '../pages/EducationPage';
 import { ExperiencePage } from '../pages/ExperiencePage';
@@ -30,220 +18,162 @@ import { ProjectsPage } from '../pages/ProjectsPage';
 import { ServicesPage } from '../pages/ServicesPage';
 import { RequireOwner } from './RequireOwner';
 
+const LoginPage = lazy(() => import('../admin/LoginPage').then((m) => ({ default: m.LoginPage })));
+const DashboardPage = lazy(() =>
+  import('../admin/DashboardPage').then((m) => ({ default: m.DashboardPage })),
+);
+const ProfilePage = lazy(() =>
+  import('../admin/ProfilePage').then((m) => ({ default: m.ProfilePage })),
+);
+const MessagesPage = lazy(() =>
+  import('../admin/MessagesPage').then((m) => ({ default: m.MessagesPage })),
+);
+const ExperienceListPage = lazy(() =>
+  import('../admin/collections/experience/ExperienceListPage').then((m) => ({
+    default: m.ExperienceListPage,
+  })),
+);
+const ExperienceEditorPage = lazy(() =>
+  import('../admin/collections/experience/ExperienceEditorPage').then((m) => ({
+    default: m.ExperienceEditorPage,
+  })),
+);
+const EducationListPage = lazy(() =>
+  import('../admin/collections/education/EducationListPage').then((m) => ({
+    default: m.EducationListPage,
+  })),
+);
+const EducationEditorPage = lazy(() =>
+  import('../admin/collections/education/EducationEditorPage').then((m) => ({
+    default: m.EducationEditorPage,
+  })),
+);
+const CertificationsListPage = lazy(() =>
+  import('../admin/collections/certifications/CertificationsListPage').then((m) => ({
+    default: m.CertificationsListPage,
+  })),
+);
+const CertificationEditorPage = lazy(() =>
+  import('../admin/collections/certifications/CertificationEditorPage').then((m) => ({
+    default: m.CertificationEditorPage,
+  })),
+);
+const AchievementsListPage = lazy(() =>
+  import('../admin/collections/achievements/AchievementsListPage').then((m) => ({
+    default: m.AchievementsListPage,
+  })),
+);
+const AchievementEditorPage = lazy(() =>
+  import('../admin/collections/achievements/AchievementEditorPage').then((m) => ({
+    default: m.AchievementEditorPage,
+  })),
+);
+const ProjectsListPage = lazy(() =>
+  import('../admin/collections/projects/ProjectsListPage').then((m) => ({
+    default: m.ProjectsListPage,
+  })),
+);
+const ProjectEditorPage = lazy(() =>
+  import('../admin/collections/projects/ProjectEditorPage').then((m) => ({
+    default: m.ProjectEditorPage,
+  })),
+);
+const SkillsListPage = lazy(() =>
+  import('../admin/collections/skills/SkillsListPage').then((m) => ({
+    default: m.SkillsListPage,
+  })),
+);
+const SkillEditorPage = lazy(() =>
+  import('../admin/collections/skills/SkillEditorPage').then((m) => ({
+    default: m.SkillEditorPage,
+  })),
+);
+const ServicesListPage = lazy(() =>
+  import('../admin/collections/services/ServicesListPage').then((m) => ({
+    default: m.ServicesListPage,
+  })),
+);
+const ServiceEditorPage = lazy(() =>
+  import('../admin/collections/services/ServiceEditorPage').then((m) => ({
+    default: m.ServiceEditorPage,
+  })),
+);
+const PostsListPage = lazy(() =>
+  import('../admin/collections/blog/PostsListPage').then((m) => ({
+    default: m.PostsListPage,
+  })),
+);
+const PostEditorPage = lazy(() =>
+  import('../admin/collections/blog/PostEditorPage').then((m) => ({
+    default: m.PostEditorPage,
+  })),
+);
+
+function AdminSuspense({ children }: { children: ReactNode }) {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-background py-16">
+          <Container className="space-y-4">
+            <Skeleton className="h-10 w-48" />
+            <Skeleton className="h-64 w-full" />
+          </Container>
+        </div>
+      }
+    >
+      {children}
+    </Suspense>
+  );
+}
+
+function protect(element: ReactNode): ReactNode {
+  return (
+    <AdminSuspense>
+      <RequireOwner>{element}</RequireOwner>
+    </AdminSuspense>
+  );
+}
+
 export const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
+  { path: '/about', element: <AboutPage /> },
+  { path: '/experience', element: <ExperiencePage /> },
+  { path: '/education', element: <EducationPage /> },
+  { path: '/certifications', element: <CertificationsPage /> },
+  { path: '/achievements', element: <AchievementsPage /> },
+  { path: '/projects', element: <ProjectsPage /> },
+  { path: '/projects/:slug', element: <ProjectDetailPage /> },
+  { path: '/services', element: <ServicesPage /> },
+  { path: '/blog', element: <BlogPage /> },
+  { path: '/blog/:slug', element: <BlogPostPage /> },
+  { path: '/blog/tag/:tag', element: <BlogTagPage /> },
+  { path: '/contact', element: <ContactPage /> },
   {
-    path: '/about',
+    path: '/admin/login',
     element: (
-      <CollectionStubPage
-        eyebrow="About"
-        title="Biography & working principles"
-        description="Full background, engineering values, and working approach."
-        path="/about"
-      />
+      <AdminSuspense>
+        <LoginPage />
+      </AdminSuspense>
     ),
   },
-  {
-    path: '/experience',
-    element: <ExperiencePage />,
-  },
-  {
-    path: '/education',
-    element: <EducationPage />,
-  },
-  {
-    path: '/certifications',
-    element: <CertificationsPage />,
-  },
-  {
-    path: '/achievements',
-    element: <AchievementsPage />,
-  },
-  { path: '/admin/login', element: <LoginPage /> },
-  {
-    path: '/admin',
-    element: (
-      <RequireOwner>
-        <DashboardPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/profile',
-    element: (
-      <RequireOwner>
-        <ProfilePage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/messages',
-    element: (
-      <RequireOwner>
-        <MessagesPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/experience',
-    element: (
-      <RequireOwner>
-        <ExperienceListPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/experience/:id',
-    element: (
-      <RequireOwner>
-        <ExperienceEditorPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/education',
-    element: (
-      <RequireOwner>
-        <EducationListPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/education/:id',
-    element: (
-      <RequireOwner>
-        <EducationEditorPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/certifications',
-    element: (
-      <RequireOwner>
-        <CertificationsListPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/certifications/:id',
-    element: (
-      <RequireOwner>
-        <CertificationEditorPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/achievements',
-    element: (
-      <RequireOwner>
-        <AchievementsListPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/achievements/:id',
-    element: (
-      <RequireOwner>
-        <AchievementEditorPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/projects',
-    element: (
-      <RequireOwner>
-        <ProjectsListPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/projects/:id',
-    element: (
-      <RequireOwner>
-        <ProjectEditorPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/skills',
-    element: (
-      <RequireOwner>
-        <SkillsListPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/skills/:id',
-    element: (
-      <RequireOwner>
-        <SkillEditorPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/services',
-    element: (
-      <RequireOwner>
-        <ServicesListPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/admin/services/:id',
-    element: (
-      <RequireOwner>
-        <ServiceEditorPage />
-      </RequireOwner>
-    ),
-  },
-  {
-    path: '/projects',
-    element: <ProjectsPage />,
-  },
-  {
-    path: '/projects/:slug',
-    element: <ProjectDetailPage />,
-  },
-  {
-    path: '/services',
-    element: <ServicesPage />,
-  },
-  {
-    path: '/blog',
-    element: (
-      <CollectionStubPage
-        eyebrow="Blog"
-        title="Articles & notes"
-        description="Technical writing on MERN, TypeScript, and web performance."
-        path="/blog"
-      />
-    ),
-  },
-  {
-    path: '/blog/:slug',
-    element: (
-      <CollectionStubPage
-        eyebrow="Blog"
-        title="Article"
-        description="Technical article."
-        path="/blog"
-      />
-    ),
-  },
-  {
-    path: '/blog/tag/:tag',
-    element: (
-      <CollectionStubPage
-        eyebrow="Blog"
-        title="Articles by tag"
-        description="Filtered blog posts by tag."
-        path="/blog"
-      />
-    ),
-  },
-  {
-    path: '/contact',
-    element: <ContactPage />,
-  },
+  { path: '/admin', element: protect(<DashboardPage />) },
+  { path: '/admin/profile', element: protect(<ProfilePage />) },
+  { path: '/admin/messages', element: protect(<MessagesPage />) },
+  { path: '/admin/experience', element: protect(<ExperienceListPage />) },
+  { path: '/admin/experience/:id', element: protect(<ExperienceEditorPage />) },
+  { path: '/admin/education', element: protect(<EducationListPage />) },
+  { path: '/admin/education/:id', element: protect(<EducationEditorPage />) },
+  { path: '/admin/certifications', element: protect(<CertificationsListPage />) },
+  { path: '/admin/certifications/:id', element: protect(<CertificationEditorPage />) },
+  { path: '/admin/achievements', element: protect(<AchievementsListPage />) },
+  { path: '/admin/achievements/:id', element: protect(<AchievementEditorPage />) },
+  { path: '/admin/projects', element: protect(<ProjectsListPage />) },
+  { path: '/admin/projects/:id', element: protect(<ProjectEditorPage />) },
+  { path: '/admin/skills', element: protect(<SkillsListPage />) },
+  { path: '/admin/skills/:id', element: protect(<SkillEditorPage />) },
+  { path: '/admin/services', element: protect(<ServicesListPage />) },
+  { path: '/admin/services/:id', element: protect(<ServiceEditorPage />) },
+  { path: '/admin/blog', element: protect(<PostsListPage />) },
+  { path: '/admin/blog/:id', element: protect(<PostEditorPage />) },
   { path: '*', element: <NotFoundPage /> },
 ]);
