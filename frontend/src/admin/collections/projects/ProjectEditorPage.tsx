@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ProjectInputSchema, type ContentStatus, type ProjectInput } from '@portfolio/shared';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../../components/ui/Button';
@@ -19,6 +19,7 @@ import { GalleryField } from '../../../forms/GalleryField';
 import { ImageField } from '../../../forms/ImageField';
 import { StatusField } from '../../../forms/StatusField';
 import { TagsField } from '../../../forms/TagsField';
+import { MarkdownBody } from '../../../lib/markdown';
 import { AdminShell } from '../../AdminShell';
 
 function slugify(value: string): string {
@@ -34,6 +35,7 @@ export function ProjectEditorPage() {
   const isNew = !id || id === 'new';
   const navigate = useNavigate();
   const { notify } = useToast();
+  const [caseStudyTab, setCaseStudyTab] = useState<'write' | 'preview'>('write');
 
   const { data: existing, isLoading } = useProjectItem(isNew ? undefined : id);
   const createMutation = useCreateProject();
@@ -79,6 +81,24 @@ export function ProjectEditorPage() {
   }, [existing, reset]);
 
   const titleValue = watch('title');
+  const caseStudyValue = watch('caseStudy') ?? '';
+
+  const insertCaseStudyTemplate = () => {
+    const template = [
+      '## Problem',
+      'Describe the business problem and constraints.',
+      '',
+      '## Architecture & Solution',
+      '- Key technical decisions and stack highlights.',
+      '- Security, validation, and performance measures.',
+      '',
+      '## Impact & Results',
+      '- Measurable outcome or client benefit.',
+    ].join('\n');
+    const next = caseStudyValue.trim() ? `${caseStudyValue.trim()}\n\n${template}` : template;
+    setValue('caseStudy', next, { shouldDirty: true, shouldValidate: true });
+    setCaseStudyTab('write');
+  };
 
   const onSubmit = async (values: ProjectInput) => {
     try {
@@ -176,14 +196,74 @@ export function ProjectEditorPage() {
             />
           </FormField>
 
-          <FormField id="caseStudy" label="Case Study (Markdown)" error={errors.caseStudy?.message}>
-            <Textarea
-              id="caseStudy"
-              rows={6}
-              {...register('caseStudy')}
-              error={errors.caseStudy?.message}
-            />
-          </FormField>
+          <div className="space-y-2">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <label htmlFor="caseStudy" className="text-sm font-medium text-textPrimary">
+                Case Study (Markdown)
+              </label>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={insertCaseStudyTemplate}
+                  className="rounded-button border border-border bg-surface px-2.5 py-1 text-xs font-medium text-textMuted hover:border-accent hover:text-accent"
+                >
+                  + Insert template
+                </button>
+                <div className="inline-flex rounded-button border border-border bg-surface p-0.5">
+                  <button
+                    type="button"
+                    onClick={() => setCaseStudyTab('write')}
+                    className={`rounded-button px-3 py-1 text-xs font-medium ${
+                      caseStudyTab === 'write'
+                        ? 'bg-accent text-accentText'
+                        : 'text-textMuted hover:text-textPrimary'
+                    }`}
+                  >
+                    Write
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setCaseStudyTab('preview')}
+                    className={`rounded-button px-3 py-1 text-xs font-medium ${
+                      caseStudyTab === 'preview'
+                        ? 'bg-accent text-accentText'
+                        : 'text-textMuted hover:text-textPrimary'
+                    }`}
+                  >
+                    Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {caseStudyTab === 'write' ? (
+              <FormField
+                id="caseStudy"
+                label=""
+                hint="Supports ## headings, **bold**, `code`, bullet lists (- ), and [links](https://...)."
+                error={errors.caseStudy?.message}
+              >
+                <Textarea
+                  id="caseStudy"
+                  rows={10}
+                  placeholder="Write the full project case study in Markdown..."
+                  {...register('caseStudy')}
+                  error={errors.caseStudy?.message}
+                />
+              </FormField>
+            ) : (
+              <div className="min-h-[14rem] rounded-card border border-border bg-surface p-5">
+                {caseStudyValue.trim() ? (
+                  <MarkdownBody content={caseStudyValue} />
+                ) : (
+                  <p className="text-sm text-textMuted">
+                    Nothing to preview yet. Switch to Write or click &ldquo;+ Insert
+                    template&rdquo;.
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <FormField id="liveUrl" label="Live Demo URL" error={errors.liveUrl?.message}>
@@ -227,7 +307,7 @@ export function ProjectEditorPage() {
             render={({ field }) => (
               <ImageField
                 id="cover"
-                label="Cover Screenshot"
+                label="Featured Photo (Home &amp; Projects Card)"
                 value={field.value}
                 onChange={field.onChange}
                 error={errors.cover?.message}

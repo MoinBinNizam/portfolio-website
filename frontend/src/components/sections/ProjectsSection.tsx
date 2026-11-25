@@ -47,22 +47,30 @@ export function ProjectsSection() {
                   key={project._id}
                   className="rounded-card border border-border bg-surface p-5 transition-colors duration-fast hover:border-accent"
                 >
-                  {project.cover?.url ? (
-                    <div className="mb-4 overflow-hidden rounded-media border border-border bg-surfaceAlt">
-                      <div className="flex items-center gap-1.5 border-b border-border px-3 py-2">
-                        <span className="h-2 w-2 rounded-full bg-border" />
-                        <span className="h-2 w-2 rounded-full bg-border" />
-                        <span className="h-2 w-2 rounded-full bg-border" />
+                  <Link to={`/projects/${project.slug}`} className="block">
+                    {project.cover?.url ? (
+                      <div className="mb-4 overflow-hidden rounded-media border border-border bg-surfaceAlt">
+                        <div className="flex items-center gap-1.5 border-b border-border px-3 py-2">
+                          <span className="h-2 w-2 rounded-full bg-border" />
+                          <span className="h-2 w-2 rounded-full bg-border" />
+                          <span className="h-2 w-2 rounded-full bg-border" />
+                        </div>
+                        <img
+                          src={project.cover.url}
+                          alt={project.cover.alt || project.title}
+                          width={project.cover.width ?? 800}
+                          height={project.cover.height ?? 450}
+                          className="aspect-video w-full object-cover"
+                        />
                       </div>
-                      <img
-                        src={project.cover.url}
-                        alt={project.cover.alt || project.title}
-                        width={project.cover.width ?? 800}
-                        height={project.cover.height ?? 450}
-                        className="aspect-video w-full object-cover"
-                      />
-                    </div>
-                  ) : null}
+                    ) : (
+                      <div className="mb-4 flex aspect-video w-full items-end rounded-media border border-border bg-surfaceAlt p-4">
+                        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+                          {project.category} Case Study
+                        </span>
+                      </div>
+                    )}
+                  </Link>
 
                   <div className="flex items-center justify-between gap-2">
                     <Badge variant="accent">{project.category}</Badge>

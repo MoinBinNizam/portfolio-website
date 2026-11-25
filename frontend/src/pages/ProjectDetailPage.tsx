@@ -5,6 +5,7 @@ import { Container } from '../components/ui/Container';
 import { EmptyState } from '../components/ui/EmptyState';
 import { Skeleton } from '../components/ui/Skeleton';
 import { useProjectBySlug, useProjectsPublicList } from '../features/projects/queries';
+import { MarkdownBody } from '../lib/markdown';
 import { Seo } from '../lib/seo';
 
 export function ProjectDetailPage() {
@@ -107,16 +108,16 @@ export function ProjectDetailPage() {
                 <div className="space-y-6 lg:col-span-8">
                   <section>
                     <h2 className="text-xl font-semibold text-textPrimary">Overview</h2>
-                    <p className="mt-3 whitespace-pre-wrap text-base text-textMuted">
-                      {project.description}
-                    </p>
+                    <div className="mt-3">
+                      <MarkdownBody content={project.description} />
+                    </div>
                   </section>
 
                   {project.caseStudy ? (
                     <section>
                       <h2 className="text-xl font-semibold text-textPrimary">Case Study</h2>
-                      <div className="mt-3 whitespace-pre-wrap text-base text-textMuted">
-                        {project.caseStudy}
+                      <div className="mt-3">
+                        <MarkdownBody content={project.caseStudy} />
                       </div>
                     </section>
                   ) : null}
@@ -155,6 +156,11 @@ export function ProjectDetailPage() {
                           alt={shot.alt || `${project.title} screenshot ${idx + 1}`}
                           className="aspect-video w-full object-cover"
                         />
+                        {shot.alt ? (
+                          <figcaption className="border-t border-border px-3 py-2 text-xs text-textMuted">
+                            {shot.alt}
+                          </figcaption>
+                        ) : null}
                       </figure>
                     ))}
                   </div>
