@@ -5,9 +5,9 @@ const EducationSchema = new Schema(
   {
     institution: { type: String, required: true, maxlength: 160 },
     degree: { type: String, required: true, maxlength: 140 },
-    field: { type: String, required: true, maxlength: 140 },
+    field: { type: String, default: '', maxlength: 140 },
     grade: { type: String, default: '', maxlength: 60 },
-    startYear: { type: Number, required: true },
+    startYear: { type: Number, default: null },
     endYear: { type: Number, default: null },
     activities: { type: String, default: '', maxlength: 4000 },
     logo: { type: ImageSubSchema, default: null },

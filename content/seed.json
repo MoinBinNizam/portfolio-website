@@ -1,0 +1,528 @@
+{
+  "_source": "Moin_Uddin_Full-Stack_Web_Developer_CV.pdf, plus owner answers",
+  "_rules": "Keys starting with _ are ignored by the seed script. Items marked _sample or _dummy must be replaced before launch. Certifications are intentionally empty; the admin adds them later. Private CV data (date of birth, addresses, nationality, referee contacts) is intentionally excluded.",
+  "_levelScale": {
+    "5": "Expert: daily use, core of most projects",
+    "4": "Proficient: used in production projects",
+    "3": "Working knowledge: used in some projects",
+    "2": "Familiar: learning or limited use",
+    "1": "Basic"
+  },
+  "profile": {
+    "name": "Moin Uddin",
+    "headline": "Full-Stack Web Developer | MERN, React 18, Node.js, TypeScript | AI/LLM Integration",
+    "tagline": "Scalable REST APIs, enterprise-grade applications, and AI-integrated development workflows.",
+    "intro": "Full-Stack Web Developer with 3.5+ years of professional experience in web application development, including PHP/WordPress production systems and 14 months of MERN stack development with TypeScript. Open to remote positions globally.",
+    "about": "Most recent work: NS Foundation, a cooperative finance management system built with React 18, Node.js, Express, MongoDB, JWT authentication with session version revocation, Vitest backend testing, and role-based access control across four account types.",
+    "email": "moinuddinpkt@gmail.com",
+    "phone": "TODO: owner to decide whether to publish",
+    "location": "Dhaka, Bangladesh",
+    "website": "https://moinuddinbd.com",
+    "resumeUrl": "TODO: upload the CV PDF through the admin",
+    "avatar": null,
+    "socials": {
+      "linkedin": "https://www.linkedin.com/in/m-moinuddin",
+      "github": "https://github.com/MoinBinNizam",
+      "facebook": "",
+      "x": "",
+      "instagram": "",
+      "youtube": "",
+      "behance": ""
+    }
+  },
+  "experience": [
+    {
+      "company": "TechVelly",
+      "role": "Full-Stack Developer",
+      "employmentType": "full-time",
+      "location": "Remote",
+      "companyUrl": "",
+      "startDate": "2025-07-01",
+      "endDate": null,
+      "isCurrent": true,
+      "description": "Build enterprise MERN applications using React.js, Node.js, Express.js, TypeScript, and MongoDB. Solo-engineered a Jewellery Inventory and POS system with mortgage and production modules, full OpenAPI/Swagger documentation, and Docker containerisation. Led React.js frontend architecture for an LPG distribution web app. Participate in Agile/Scrum: daily stand-ups, sprint planning, and code reviews.",
+      "achievements": [
+        "Solo-engineered a Jewellery Inventory and POS system with mortgage and production modules, OpenAPI/Swagger documentation, and Docker containerisation",
+        "Led React.js frontend architecture for an LPG distribution app, with React Query and optimised data fetching: 20% query performance improvement",
+        "Integrated Claude AI and Gemini CLI into development workflows: 40% reduction in delivery cycles",
+        "Implemented JWT authentication, RBAC middleware, XSS/CSRF protection, and input sanitisation in production"
+      ],
+      "techStack": [
+        "React.js",
+        "React Query",
+        "Node.js",
+        "Express.js",
+        "TypeScript",
+        "MongoDB",
+        "Docker",
+        "OpenAPI"
+      ],
+      "order": 1,
+      "status": "published"
+    },
+    {
+      "company": "Independent Consultant",
+      "role": "Full-Stack Web Developer (Freelance)",
+      "employmentType": "contract",
+      "location": "Remote",
+      "companyUrl": "",
+      "startDate": "2025-01-01",
+      "endDate": "2025-07-01",
+      "isCurrent": false,
+      "description": "Architected and delivered enterprise applications, NGO platforms, and work for international clients. Lead project: NS Foundation, a cooperative finance management system (see Projects).",
+      "achievements": [
+        "Delivered NS Foundation: 9 operational modules, RBAC across four roles, and an audit and security workspace",
+        "Integrated Stripe API and automated donation webhooks for an international NGO: 60% reduction in manual processing",
+        "Optimised Easyfishing USA platform: sub-2-second load times and 20% organic traffic increase",
+        "Delivered responsive full-stack solutions across Shopify, Webflow, and Wix"
+      ],
+      "techStack": [
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "JWT",
+        "Vitest",
+        "Stripe",
+        "Shopify",
+        "Webflow",
+        "Wix"
+      ],
+      "order": 2,
+      "status": "published"
+    },
+    {
+      "company": "Maxwell Group",
+      "role": "Web & Marketing Technology Specialist",
+      "employmentType": "full-time",
+      "location": "Dhaka, Bangladesh",
+      "companyUrl": "",
+      "startDate": "2024-07-01",
+      "endDate": "2024-12-01",
+      "isCurrent": false,
+      "description": "Built performance-optimised web platforms and landing pages. Implemented JavaScript-based conversion tracking and funnel analytics. Coordinated with stakeholders to turn business requirements into technical solutions for digital campaigns.",
+      "achievements": [
+        "Built web platforms and landing pages: 40% traffic growth",
+        "Implemented conversion tracking and funnel analytics: 35% increase in qualified leads"
+      ],
+      "techStack": ["JavaScript", "Landing pages", "Conversion tracking"],
+      "order": 3,
+      "status": "published"
+    },
+    {
+      "company": "Amar-E-BD",
+      "role": "Web Developer & Business Manager",
+      "employmentType": "full-time",
+      "location": "Dhaka, Bangladesh",
+      "companyUrl": "",
+      "startDate": "2023-03-01",
+      "endDate": "2024-06-01",
+      "isCurrent": false,
+      "description": "Developed an end-to-end Travel and Hajj service platform on WordPress, PHP, and MySQL. Managed cPanel hosting, domain DNS, the MySQL schema, and automated backups. Optimised UI, UX, and landing page structure.",
+      "achievements": [
+        "Generated 4.5 lakh BDT in initial revenue from launch",
+        "Optimised UI/UX and landing pages: 20% increase in lead acquisition"
+      ],
+      "techStack": ["WordPress", "PHP", "MySQL", "cPanel"],
+      "order": 4,
+      "status": "published"
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Greenwich, UK",
+      "degree": "BSc (Hons) in Computing",
+      "field": "Computing",
+      "grade": "Upper Second Class (2:1)",
+      "startYear": null,
+      "endYear": 2023,
+      "activities": "Taught through Daffodil International Academy (DIA), Dhaka.",
+      "logo": null,
+      "order": 1,
+      "status": "published"
+    },
+    {
+      "institution": "Govt. Syed Hatem Ali College, Barisal Board",
+      "degree": "Higher Secondary Certificate (HSC)",
+      "field": "",
+      "grade": "GPA 4.20 / 5.00",
+      "startYear": null,
+      "endYear": 2014,
+      "activities": "",
+      "logo": null,
+      "order": 2,
+      "status": "published"
+    },
+    {
+      "institution": "Jhalakathi NS Kamil Madrasah, Madrasah Board",
+      "degree": "Dakhil (SSC)",
+      "field": "",
+      "grade": "GPA 5.00 / 5.00",
+      "startYear": null,
+      "endYear": 2012,
+      "activities": "",
+      "logo": null,
+      "order": 3,
+      "status": "published"
+    }
+  ],
+  "certifications": [],
+  "achievements": [
+    {
+      "title": "Advanced Full-Stack & Scalable Architecture",
+      "category": "other",
+      "issuer": "TechVelly",
+      "date": "2025-01-01",
+      "description": "Node.js, TypeScript, high-performance system design, database optimisation, and enterprise-level full-stack architecture for production-scale traffic. Duration: 2 months.",
+      "link": "",
+      "image": null,
+      "order": 1,
+      "status": "published"
+    },
+    {
+      "title": "AI Automation Workflow, Git Mastery & API Documentation",
+      "category": "other",
+      "issuer": "TechVelly",
+      "date": "2025-01-01",
+      "description": "LLM API integration, AI-assisted development workflows, advanced Git and CI/CD pipelines, and OpenAPI/Swagger documentation. Duration: 1 week.",
+      "link": "",
+      "image": null,
+      "order": 2,
+      "status": "published"
+    },
+    {
+      "title": "Mentor and Coordinator, Hackathon and ICT Fest events",
+      "category": "other",
+      "issuer": "Daffodil International Academy, Dhaka",
+      "date": "2018-01-01",
+      "description": "Provided technical mentoring, prototype guidance, and full-stack development support to student teams at two events (2018 to 2020).",
+      "link": "",
+      "image": null,
+      "order": 3,
+      "status": "published"
+    }
+  ],
+  "projects": [
+    {
+      "slug": "ns-foundation",
+      "title": "NS Foundation: Cooperative Finance Management System",
+      "summary": "Full-stack cooperative finance platform for members, shares, contributions, custody accounts, investments, reporting, and controlled document exports.",
+      "category": "fullstack",
+      "description": "Architecture keeps auditable financial source records (payments, allocations, custody movements, audit events) separate from rebuildable reporting projections. Frontend: React 18, TypeScript, Vite, Tailwind CSS. Backend: Node.js, Express, TypeScript. Database: MongoDB with Mongoose. Authentication: JWT with server-side role checks and session version revocation. Testing: Vitest.",
+      "caseStudy": "",
+      "cover": null,
+      "gallery": [],
+      "techStack": [
+        "React 18",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "JWT",
+        "Vitest"
+      ],
+      "liveUrl": "",
+      "repoUrl": "",
+      "featured": true,
+      "order": 1,
+      "status": "published",
+      "_review": "Case study text can be added in the admin. Screenshots to be uploaded."
+    },
+    {
+      "slug": "jewellery-inventory-pos",
+      "title": "Jewellery Inventory & POS System",
+      "summary": "Enterprise inventory and point-of-sale system with mortgage and production modules.",
+      "category": "fullstack",
+      "description": "Full REST API with OpenAPI/Swagger documentation, containerised with Docker for consistent deployment environments. Stack: MERN, SQLite, OpenAPI, Docker.",
+      "caseStudy": "",
+      "cover": null,
+      "gallery": [],
+      "techStack": ["MongoDB", "Express", "React", "Node.js", "SQLite", "OpenAPI", "Docker"],
+      "liveUrl": "",
+      "repoUrl": "",
+      "featured": true,
+      "order": 2,
+      "status": "published"
+    },
+    {
+      "slug": "sentinel-compliance-portal",
+      "title": "Sentinel: Cybersecurity Compliance Portal",
+      "summary": "Internal enterprise compliance portal with AI-assisted audit logs, custom RBAC, and incident tracking.",
+      "category": "fullstack",
+      "description": "Custom RBAC middleware, XSS and CSRF protection, and incident tracking. AI-automated audit logs. 40% faster compliance reporting.",
+      "caseStudy": "",
+      "cover": null,
+      "gallery": [],
+      "techStack": ["MERN", "SQLite", "RBAC", "AI audit logs"],
+      "liveUrl": "",
+      "repoUrl": "",
+      "featured": false,
+      "order": 3,
+      "status": "published"
+    },
+    {
+      "slug": "krishoklagbe-marketplace",
+      "title": "KrishokLagbe: Agricultural Service Marketplace",
+      "summary": "Real-time agricultural service marketplace with live data sync.",
+      "category": "fullstack",
+      "description": "Team project. WebSocket-powered live data sync. Resolved UI flickering with optimised React Hooks and memoization, for smooth real-time performance.",
+      "caseStudy": "",
+      "cover": null,
+      "gallery": [],
+      "techStack": ["React.js", "Node.js", "WebSockets"],
+      "liveUrl": "",
+      "repoUrl": "",
+      "featured": false,
+      "order": 4,
+      "status": "published"
+    }
+  ],
+  "skills": [
+    { "name": "React 18", "category": "frontend", "level": 5, "order": 1, "status": "published" },
+    { "name": "TypeScript", "category": "frontend", "level": 5, "order": 2, "status": "published" },
+    {
+      "name": "JavaScript (ES6+)",
+      "category": "frontend",
+      "level": 5,
+      "order": 3,
+      "status": "published"
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "frontend",
+      "level": 5,
+      "order": 4,
+      "status": "published"
+    },
+    { "name": "Vite", "category": "frontend", "level": 4, "order": 5, "status": "published" },
+    {
+      "name": "React Query",
+      "category": "frontend",
+      "level": 4,
+      "order": 6,
+      "status": "published"
+    },
+    { "name": "Zustand", "category": "frontend", "level": 3, "order": 7, "status": "published" },
+    {
+      "name": "Redux Toolkit",
+      "category": "frontend",
+      "level": 3,
+      "order": 8,
+      "status": "published"
+    },
+    { "name": "WebSockets", "category": "frontend", "level": 3, "order": 9, "status": "published" },
+    { "name": "Bootstrap", "category": "frontend", "level": 3, "order": 10, "status": "published" },
+    { "name": "Next.js", "category": "frontend", "level": 2, "order": 11, "status": "published" },
+    { "name": "Figma", "category": "design", "level": 4, "order": 1, "status": "published" },
+    { "name": "Adobe XD", "category": "design", "level": 3, "order": 2, "status": "published" },
+    { "name": "Node.js", "category": "backend", "level": 5, "order": 1, "status": "published" },
+    { "name": "Express.js", "category": "backend", "level": 5, "order": 2, "status": "published" },
+    { "name": "PHP", "category": "backend", "level": 4, "order": 3, "status": "published" },
+    {
+      "name": "RESTful API design",
+      "category": "backend",
+      "level": 5,
+      "order": 4,
+      "status": "published"
+    },
+    {
+      "name": "OpenAPI / Swagger",
+      "category": "backend",
+      "level": 4,
+      "order": 5,
+      "status": "published"
+    },
+    {
+      "name": "JWT authentication",
+      "category": "backend",
+      "level": 5,
+      "order": 6,
+      "status": "published"
+    },
+    { "name": "RBAC", "category": "backend", "level": 5, "order": 7, "status": "published" },
+    { "name": "OAuth2", "category": "backend", "level": 3, "order": 8, "status": "published" },
+    {
+      "name": "MongoDB (Mongoose)",
+      "category": "database",
+      "level": 5,
+      "order": 1,
+      "status": "published"
+    },
+    { "name": "MySQL", "category": "database", "level": 4, "order": 2, "status": "published" },
+    { "name": "SQLite", "category": "database", "level": 3, "order": 3, "status": "published" },
+    { "name": "PostgreSQL", "category": "database", "level": 2, "order": 4, "status": "published" },
+    { "name": "Vitest", "category": "tools", "level": 4, "order": 1, "status": "published" },
+    { "name": "Jest", "category": "tools", "level": 3, "order": 2, "status": "published" },
+    {
+      "name": "React Testing Library",
+      "category": "tools",
+      "level": 3,
+      "order": 3,
+      "status": "published"
+    },
+    { "name": "Docker", "category": "tools", "level": 4, "order": 4, "status": "published" },
+    {
+      "name": "Git and GitHub",
+      "category": "tools",
+      "level": 5,
+      "order": 5,
+      "status": "published"
+    },
+    {
+      "name": "CI/CD pipelines",
+      "category": "tools",
+      "level": 3,
+      "order": 6,
+      "status": "published"
+    },
+    { "name": "Postman", "category": "tools", "level": 4, "order": 7, "status": "published" },
+    { "name": "Vercel", "category": "tools", "level": 3, "order": 8, "status": "published" },
+    { "name": "Claude AI", "category": "tools", "level": 4, "order": 9, "status": "published" },
+    { "name": "Gemini CLI", "category": "tools", "level": 4, "order": 10, "status": "published" },
+    {
+      "name": "GitHub Copilot",
+      "category": "tools",
+      "level": 3,
+      "order": 11,
+      "status": "published"
+    },
+    { "name": "n8n", "category": "tools", "level": 3, "order": 12, "status": "published" },
+    {
+      "name": "Jira and Trello",
+      "category": "tools",
+      "level": 3,
+      "order": 13,
+      "status": "published"
+    },
+    { "name": "WordPress", "category": "cms", "level": 5, "order": 1, "status": "published" },
+    { "name": "Elementor", "category": "cms", "level": 4, "order": 2, "status": "published" },
+    { "name": "Shopify", "category": "cms", "level": 4, "order": 3, "status": "published" },
+    { "name": "Webflow", "category": "cms", "level": 3, "order": 4, "status": "published" },
+    { "name": "Wix", "category": "cms", "level": 3, "order": 5, "status": "published" },
+    { "name": "SharePoint", "category": "cms", "level": 2, "order": 6, "status": "published" }
+  ],
+  "services": [
+    {
+      "title": "Software Development",
+      "description": "Custom web applications built with React, TypeScript, Node.js, and MongoDB, from API design to deployment.",
+      "icon": "code-2",
+      "order": 1,
+      "status": "published"
+    },
+    {
+      "title": "E-commerce Development",
+      "description": "Online stores and storefronts with responsive design, secure payments, and clear product management.",
+      "icon": "shopping-cart",
+      "order": 2,
+      "status": "published"
+    },
+    {
+      "title": "Inventory App Development",
+      "description": "Stock tracking, product records, and reporting tools that match how your business works.",
+      "icon": "boxes",
+      "order": 3,
+      "status": "published"
+    },
+    {
+      "title": "POS System Development",
+      "description": "Point-of-sale systems for sales, receipts, and daily reporting, built to run reliably at the counter.",
+      "icon": "receipt",
+      "order": 4,
+      "status": "published"
+    },
+    {
+      "title": "Digital Marketing",
+      "description": "Landing pages, conversion tracking, and campaign analytics that turn visitors into qualified leads.",
+      "icon": "megaphone",
+      "order": 5,
+      "status": "published"
+    },
+    {
+      "title": "Social Media Marketing",
+      "description": "Content planning and campaign management to grow reach and engagement on the platforms your audience uses.",
+      "icon": "share-2",
+      "order": 6,
+      "status": "published"
+    },
+    {
+      "title": "ICT Teaching (Theory and Practical)",
+      "description": "Hands-on ICT lessons for students, covering theory and practical skills, with exam preparation and project work.",
+      "icon": "graduation-cap",
+      "order": 7,
+      "status": "published"
+    }
+  ],
+  "testimonials": [
+    {
+      "_static": true,
+      "_sample": true,
+      "name": "Sample Client Name",
+      "role": "Founder",
+      "company": "Sample Company",
+      "quote": "SAMPLE TEXT: Replace with a real quote from a client who has given permission.",
+      "rating": 5,
+      "avatar": null,
+      "order": 1,
+      "status": "published"
+    },
+    {
+      "_static": true,
+      "_sample": true,
+      "name": "Sample Client Name",
+      "role": "Operations Manager",
+      "company": "Sample Company",
+      "quote": "SAMPLE TEXT: Replace with a real quote from a client who has given permission.",
+      "rating": 5,
+      "avatar": null,
+      "order": 2,
+      "status": "published"
+    },
+    {
+      "_static": true,
+      "_sample": true,
+      "name": "Sample Client Name",
+      "role": "Director",
+      "company": "Sample Company",
+      "quote": "SAMPLE TEXT: Replace with a real quote from a client who has given permission.",
+      "rating": 5,
+      "avatar": null,
+      "order": 3,
+      "status": "published"
+    }
+  ],
+  "posts": [
+    {
+      "_dummy": true,
+      "title": "Designing Audit-Friendly Financial Data",
+      "slug": "designing-audit-friendly-financial-data",
+      "excerpt": "Why separating source records from reporting projections makes financial software easier to trust.",
+      "body": "Sample post for layout testing. Replace or delete before launch.\n\n## Source records and projections\n\nKeep payments and audit events as immutable source records. Build reports from them as rebuildable projections.",
+      "coverImage": null,
+      "tags": ["architecture", "fintech"],
+      "category": "Engineering",
+      "status": "published",
+      "publishedAt": "2026-10-01T09:00:00Z",
+      "featured": true
+    },
+    {
+      "_dummy": true,
+      "title": "Two Years of Shipping MERN Apps: Lessons Learned",
+      "slug": "lessons-learned-shipping-mern-apps",
+      "excerpt": "Practical lessons on project structure, validation, and auth from building production MERN applications.",
+      "body": "Sample post for layout testing. Replace or delete before launch.\n\n## Share schemas between client and server\n\nA single Zod schema validates forms in the browser and requests on the server, so they never disagree.",
+      "coverImage": null,
+      "tags": ["mern", "typescript"],
+      "category": "Engineering",
+      "status": "published",
+      "publishedAt": "2026-10-08T09:00:00Z",
+      "featured": false
+    }
+  ]
+}

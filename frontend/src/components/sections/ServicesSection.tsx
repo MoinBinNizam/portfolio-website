@@ -41,7 +41,9 @@ export function ServicesSection() {
             {visible.map((service) => (
               <div key={service._id} className="rounded-card border border-border bg-surface p-6">
                 <h3 className="text-lg font-semibold text-textPrimary">{service.title}</h3>
-                <p className="mt-2 text-sm text-textMuted">{service.summary}</p>
+                <p className="mt-2 text-sm text-textMuted">
+                  {service.summary || service.description}
+                </p>
               </div>
             ))}
           </div>

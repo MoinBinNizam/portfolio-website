@@ -37,6 +37,8 @@ pnpm build
 
 For UI changes, run the browser checks from `portfolio-webapp-testing` in both themes at 360px and 1440px, and list the screenshot paths.
 
+After completing any task, always provide a brief Conventional Commits message referencing the GitHub issue `#id` (for example, `feat(public): implement home page sections (#15)`).
+
 ## Scope
 
 Work one task at a time. Keep changes small. Stop and ask if a task is unclear, conflicts with the plan, or needs an owner decision.

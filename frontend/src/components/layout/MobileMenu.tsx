@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { ThemeToggle } from '../../theme/ThemeToggle';
+import { BrandLogo } from './BrandLogo';
 
 export interface NavItem {
   label: string;
@@ -35,9 +35,7 @@ export function MobileMenu({ open, onClose, items }: MobileMenuProps) {
       aria-label="Mobile navigation"
     >
       <div className="flex items-center justify-between border-b border-border pb-4">
-        <Link to="/" onClick={onClose} className="text-base font-bold text-textPrimary">
-          Moin Uddin
-        </Link>
+        <BrandLogo onClick={onClose} />
         <button
           type="button"
           onClick={onClose}

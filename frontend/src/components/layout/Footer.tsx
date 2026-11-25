@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { usePublicProfile } from '../../features/public/queries';
 import { Container } from '../ui/Container';
 import { BackToTop } from './BackToTop';
+import { BrandLogo } from './BrandLogo';
 
 const PAGE_LINKS = [
   { label: 'About', to: '/about' },
@@ -32,8 +33,8 @@ export function Footer() {
       <Container className="space-y-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-start">
           <div className="max-w-sm">
-            <p className="text-base font-bold text-textPrimary">{profile?.name ?? 'Moin Uddin'}</p>
-            <p className="mt-1 text-sm text-textMuted">
+            <BrandLogo />
+            <p className="mt-2 text-sm text-textMuted">
               {profile?.headline ?? 'Full-Stack MERN & TypeScript Developer'}
             </p>
           </div>

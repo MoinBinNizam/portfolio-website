@@ -46,10 +46,14 @@ export function CredentialsSection() {
               {eduList.map((item) => (
                 <div key={item._id} className="rounded-card border border-border bg-surface p-5">
                   <p className="text-xs font-medium text-textMuted">
-                    {item.startYear} &ndash; {item.endYear ?? 'Present'}
+                    {item.startYear ? `${item.startYear} – ` : ''}
+                    {item.endYear ?? 'Present'}
                   </p>
                   <h3 className="mt-1 text-base font-semibold text-textPrimary">
-                    {item.degree} in {item.field}
+                    {item.degree}
+                    {item.field && !item.degree.toLowerCase().includes(item.field.toLowerCase())
+                      ? ` in ${item.field}`
+                      : ''}
                   </h3>
                   <p className="mt-1 text-sm text-textMuted">{item.institution}</p>
                 </div>

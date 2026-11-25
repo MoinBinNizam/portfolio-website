@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { ThemeToggle } from '../../theme/ThemeToggle';
 import { Container } from '../ui/Container';
+import { BrandLogo } from './BrandLogo';
 import { MobileMenu, type NavItem } from './MobileMenu';
 
 const NAV_ITEMS: NavItem[] = [
@@ -19,12 +19,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
       <Container className="flex items-center justify-between py-4">
-        <Link
-          to="/"
-          className="text-base font-bold tracking-tight text-textPrimary transition-colors duration-fast hover:text-accent"
-        >
-          Moin Uddin
-        </Link>
+        <BrandLogo className="h-8 w-auto sm:h-9" />
 
         <nav aria-label="Primary navigation" className="hidden items-center gap-7 lg:flex">
           {NAV_ITEMS.map((item) => (
