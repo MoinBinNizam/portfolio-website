@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { usePublicExperience } from '../../features/public/queries';
-import type { ExperienceItem } from '../../features/public/types';
 import { formatMonthYear } from '../../lib/dates';
+import { calculateTotalExperienceDuration } from '../../lib/experience';
 import { Badge } from '../ui/Badge';
 import { Container } from '../ui/Container';
 import { EmptyState } from '../ui/EmptyState';
@@ -9,48 +9,11 @@ import { Reveal } from '../ui/Reveal';
 import { SectionHeading } from '../ui/SectionHeading';
 import { Skeleton } from '../ui/Skeleton';
 
-function calculateTotalExperience(items: ExperienceItem[]): string {
-  if (items.length === 0) return '';
-  const ranges = items
-    .map((item) => {
-      const start = Date.parse(item.startDate);
-      const end = item.isCurrent || !item.endDate ? Date.now() : Date.parse(item.endDate);
-      return Number.isNaN(start) || Number.isNaN(end)
-        ? null
-        : ([start, Math.max(start, end)] as const);
-    })
-    .filter((r): r is readonly [number, number] => r !== null)
-    .sort((a, b) => a[0] - b[0]);
-
-  if (ranges.length === 0) return '';
-
-  const merged: Array<[number, number]> = [];
-  for (const [s, e] of ranges) {
-    const last = merged[merged.length - 1];
-    if (!last || s > last[1]) {
-      merged.push([s, e]);
-    } else {
-      last[1] = Math.max(last[1], e);
-    }
-  }
-
-  const totalMonths = merged.reduce((acc, [s, e]) => {
-    const months = (e - s) / (1000 * 60 * 60 * 24 * 30.4375);
-    return acc + Math.max(1, Math.round(months));
-  }, 0);
-
-  const years = Math.floor(totalMonths / 12);
-  const remMonths = totalMonths % 12;
-  if (years > 0 && remMonths > 0) return `${years} yrs ${remMonths} mos total experience`;
-  if (years > 0) return `${years}+ yrs total experience`;
-  return `${remMonths} mos total experience`;
-}
-
 export function ExperienceSection() {
   const { data: items, isLoading } = usePublicExperience();
-  const all = items ?? [];
-  const latest = all.slice(0, 3);
-  const totalLabel = calculateTotalExperience(all);
+  const visible = items ?? [];
+  const duration = calculateTotalExperienceDuration(visible);
+  const totalLabel = duration ? `${duration} total experience` : '';
 
   return (
     <section id="experience" className="border-t border-border py-12 lg:py-14">
@@ -83,14 +46,14 @@ export function ExperienceSection() {
               <Skeleton className="h-28 w-full" />
               <Skeleton className="h-28 w-full" />
             </div>
-          ) : latest.length === 0 ? (
+          ) : visible.length === 0 ? (
             <EmptyState
               title="No published experience yet"
               description="Published experience entries will appear here once added from the admin panel."
             />
           ) : (
             <ol className="relative space-y-8 border-l border-border pl-6">
-              {latest.map((item) => (
+              {visible.map((item) => (
                 <li key={item._id} className="relative">
                   <span
                     aria-hidden="true"
