@@ -26,7 +26,7 @@ export function AboutPage() {
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="order-2 lg:order-1 lg:col-span-7">
               <SectionHeading
-                eyebrow="About"
+                eyebrow="About Me"
                 icon="user"
                 title={profile?.name ?? 'Moin Uddin'}
                 description={profile?.headline ?? 'Full-Stack MERN & TypeScript Developer'}

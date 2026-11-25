@@ -22,8 +22,8 @@ export function CredentialsSection() {
   const achList = (achievements ?? []).slice(0, 3);
 
   return (
-    <section id="credentials" className="border-t border-border py-16">
-      <Container className="space-y-14">
+    <section id="credentials" className="border-t border-border py-12 lg:py-14">
+      <Container className="space-y-10">
         <Reveal>
           <div>
             <div className="flex flex-wrap items-end justify-between gap-4">

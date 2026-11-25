@@ -13,7 +13,7 @@ export function BlogPreview() {
   const posts = data?.data ?? [];
 
   return (
-    <section id="blog" className="border-t border-border py-16">
+    <section id="blog" className="border-t border-border py-12 lg:py-14">
       <Container>
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -21,7 +21,7 @@ export function BlogPreview() {
               eyebrow="Engineering Blog"
               icon="book"
               title="Technical Articles on MERN, TypeScript &amp; System Architecture"
-              description="Practical notes on full-stack architecture, validation, and web performance."
+              description="Notes on full-stack TypeScript, APIs, and performance."
             />
             <Link
               to="/blog"
@@ -74,7 +74,9 @@ export function BlogPreview() {
                       <h3 className="mt-3 text-base font-semibold text-textPrimary group-hover:text-accent">
                         {post.title}
                       </h3>
-                      <p className="mt-2 flex-1 text-sm text-textMuted">{post.excerpt}</p>
+                      <p className="mt-2 line-clamp-2 flex-1 text-sm text-textMuted">
+                        {post.excerpt}
+                      </p>
                       <div className="mt-4 flex items-center justify-between gap-2 text-xs text-textMuted">
                         <span>{post.readingTime ?? 1} min read</span>
                         <span className="font-semibold text-accent">Read article &rarr;</span>

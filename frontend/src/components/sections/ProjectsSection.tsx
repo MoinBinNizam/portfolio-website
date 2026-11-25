@@ -12,7 +12,7 @@ export function ProjectsSection() {
   const visible = (items ?? []).slice(0, 4);
 
   return (
-    <section id="projects" className="border-t border-border py-16">
+    <section id="projects" className="border-t border-border py-12 lg:py-14">
       <Container>
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -20,7 +20,7 @@ export function ProjectsSection() {
               eyebrow="Portfolio &amp; Case Studies"
               icon="layers"
               title="Featured Full-Stack Web Applications &amp; Client Builds"
-              description="Production MERN, React, TypeScript, inventory, POS, and compliance platforms."
+              description="Selected production web apps and client builds."
             />
             <Link
               to="/projects"
@@ -72,10 +72,10 @@ export function ProjectsSection() {
                       {project.title}
                     </Link>
                   </h3>
-                  <p className="mt-2 text-sm text-textMuted">{project.summary}</p>
+                  <p className="mt-2 line-clamp-2 text-sm text-textMuted">{project.summary}</p>
                   {project.techStack.length > 0 ? (
                     <div className="mt-4 flex flex-wrap gap-2">
-                      {project.techStack.slice(0, 5).map((tech) => (
+                      {project.techStack.slice(0, 4).map((tech) => (
                         <Badge key={tech}>{tech}</Badge>
                       ))}
                     </div>

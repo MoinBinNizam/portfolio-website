@@ -12,7 +12,7 @@ export function ServicesSection() {
   const visible = (items ?? []).slice(0, 4);
 
   return (
-    <section id="services" className="border-t border-border py-16">
+    <section id="services" className="border-t border-border py-12 lg:py-14">
       <Container>
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -20,7 +20,7 @@ export function ServicesSection() {
               eyebrow="Services"
               icon="zap"
               title="Custom Software, E-Commerce, Inventory &amp; POS Development"
-              description="Focused full-stack engineering engagements from architecture to deployment."
+              description="End-to-end delivery from architecture to launch."
             />
             <Link
               to="/services"
@@ -45,15 +45,15 @@ export function ServicesSection() {
               {visible.map((service) => (
                 <div
                   key={service._id}
-                  className="rounded-card border border-border bg-surface p-6 transition-colors duration-fast hover:border-accent"
+                  className="rounded-card border border-border bg-surface p-5 transition-colors duration-fast hover:border-accent"
                 >
                   <div className="flex items-center gap-3">
                     <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-input border border-border bg-surfaceAlt text-accent">
                       <SectionIcon name={service.icon || 'code'} className="h-4 w-4" />
                     </span>
-                    <h3 className="text-lg font-semibold text-textPrimary">{service.title}</h3>
+                    <h3 className="text-base font-semibold text-textPrimary">{service.title}</h3>
                   </div>
-                  <p className="mt-3 text-sm text-textMuted">
+                  <p className="mt-2.5 line-clamp-2 text-sm text-textMuted">
                     {service.summary || service.description}
                   </p>
                 </div>

@@ -53,7 +53,7 @@ export function ExperienceSection() {
   const totalLabel = calculateTotalExperience(all);
 
   return (
-    <section id="experience" className="border-t border-border py-16">
+    <section id="experience" className="border-t border-border py-12 lg:py-14">
       <Container>
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -62,7 +62,7 @@ export function ExperienceSection() {
                 eyebrow="Work Experience"
                 icon="briefcase"
                 title="Full-Stack MERN &amp; Web Engineering Experience"
-                description="Production software delivery across enterprise systems, e-commerce, and client platforms."
+                description="Recent roles and core production technologies."
               />
               {totalLabel ? (
                 <div className="-mt-4 mb-6">
@@ -106,11 +106,13 @@ export function ExperienceSection() {
                     </span>
                   </div>
                   {item.description ? (
-                    <p className="mt-2 max-w-[65ch] text-sm text-textMuted">{item.description}</p>
+                    <p className="mt-2 line-clamp-2 max-w-[65ch] text-sm text-textMuted">
+                      {item.description}
+                    </p>
                   ) : null}
                   {item.techStack.length > 0 ? (
                     <div className="mt-3 flex flex-wrap gap-2">
-                      {item.techStack.slice(0, 6).map((tech) => (
+                      {item.techStack.slice(0, 4).map((tech) => (
                         <Badge key={tech}>{tech}</Badge>
                       ))}
                     </div>
