@@ -21,6 +21,12 @@ export interface DashboardCounts {
   totalMessages: number;
 }
 
+export interface ContactMessageReply {
+  subject: string;
+  message: string;
+  sentAt: string;
+}
+
 export interface ContactMessageItem {
   _id: string;
   name: string;
@@ -28,6 +34,7 @@ export interface ContactMessageItem {
   message: string;
   read: boolean;
   createdAt: string;
+  replies?: ContactMessageReply[];
 }
 
 export function useAuthMe() {
@@ -111,6 +118,31 @@ export function useMarkMessageRead() {
         await apiRequest<ContactMessageItem>(`/admin/messages/${id}`, {
           method: 'PATCH',
           body: JSON.stringify({ read }),
+        })
+      ).data,
+    onSuccess: () => {
+      void qc.invalidateQueries({ queryKey: ['admin', 'messages'] });
+      void qc.invalidateQueries({ queryKey: ['admin', 'dashboard'] });
+    },
+  });
+}
+
+export function useReplyToMessage() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async ({
+      id,
+      subject,
+      message,
+    }: {
+      id: string;
+      subject: string;
+      message: string;
+    }) =>
+      (
+        await apiRequest<ContactMessageItem>(`/admin/messages/${id}/reply`, {
+          method: 'POST',
+          body: JSON.stringify({ subject, message }),
         })
       ).data,
     onSuccess: () => {

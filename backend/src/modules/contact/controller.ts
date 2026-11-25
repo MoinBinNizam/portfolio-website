@@ -16,3 +16,8 @@ export async function markReadAdmin(req: Request, res: Response): Promise<void> 
   const updated = await contactService.markMessageRead(String(req.params.id), req.body.read);
   res.json({ data: updated });
 }
+
+export async function replyAdmin(req: Request, res: Response): Promise<void> {
+  const updated = await contactService.replyToMessage(String(req.params.id), req.body);
+  res.json({ data: updated });
+}

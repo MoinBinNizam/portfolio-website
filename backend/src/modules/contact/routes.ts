@@ -4,7 +4,11 @@ import { requireAuth } from '../../middleware/requireAuth.js';
 import { validateBody } from '../../middleware/validate.js';
 import { asyncHandler } from '../../utils/asyncHandler.js';
 import * as controller from './controller.js';
-import { ContactInputSchema, ContactMessageUpdateSchema } from './schema.js';
+import {
+  ContactInputSchema,
+  ContactMessageUpdateSchema,
+  ContactReplyInputSchema,
+} from './schema.js';
 
 const contactLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
@@ -34,4 +38,9 @@ messagesAdminRouter.patch(
   '/:id',
   validateBody(ContactMessageUpdateSchema),
   asyncHandler(controller.markReadAdmin),
+);
+messagesAdminRouter.post(
+  '/:id/reply',
+  validateBody(ContactReplyInputSchema),
+  asyncHandler(controller.replyAdmin),
 );

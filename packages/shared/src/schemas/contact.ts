@@ -11,5 +11,11 @@ export const ContactMessageUpdateSchema = z.object({
   read: z.boolean(),
 });
 
+export const ContactReplyInputSchema = z.object({
+  subject: z.string().trim().min(2, 'Subject must be at least 2 characters').max(160),
+  message: z.string().trim().min(2, 'Reply message must be at least 2 characters').max(5000),
+});
+
 export type ContactInput = z.infer<typeof ContactInputSchema>;
 export type ContactMessageUpdate = z.infer<typeof ContactMessageUpdateSchema>;
+export type ContactReplyInput = z.infer<typeof ContactReplyInputSchema>;

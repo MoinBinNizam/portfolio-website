@@ -15,6 +15,13 @@ describe('Contact Endpoint', () => {
     expect(res.status).toBe(401);
   });
 
+  it('rejects anonymous reply requests to admin messages with 401', async () => {
+    const res = await request(app)
+      .post('/api/admin/messages/msg-123/reply')
+      .send({ subject: 'Re: Inquiry', message: 'Thank you for reaching out.' });
+    expect(res.status).toBe(401);
+  });
+
   it('returns 422 when contact payload is invalid', async () => {
     const res = await request(app).post('/api/contact').send({
       name: 'A',
