@@ -9,6 +9,7 @@ import { BlogPostPage } from '../pages/BlogPostPage';
 import { BlogTagPage } from '../pages/BlogTagPage';
 import { CertificationsPage } from '../pages/CertificationsPage';
 import { ContactPage } from '../pages/ContactPage';
+import { CvPage } from '../pages/CvPage';
 import { EducationPage } from '../pages/EducationPage';
 import { ExperiencePage } from '../pages/ExperiencePage';
 import { HomePage } from '../pages/HomePage';
@@ -158,6 +159,7 @@ export const router = createBrowserRouter([
   { path: '/blog/:slug', element: <BlogPostPage /> },
   { path: '/blog/tag/:tag', element: <BlogTagPage /> },
   { path: '/contact', element: <ContactPage /> },
+  { path: '/cv', element: <CvPage /> },
   {
     path: '/admin/login',
     element: (

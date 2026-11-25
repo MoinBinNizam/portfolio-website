@@ -107,15 +107,17 @@ export function EducationListPage() {
           renderRow={(item) => (
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="font-semibold text-textPrimary">
-                    {item.degree} &middot; {item.institution}
+                    {item.degree}
+                    {item.field ? ` in ${item.field}` : ''} &middot; {item.institution}
                   </span>
                   <Badge variant={item.status === 'published' ? 'accent' : 'neutral'}>
                     {item.status}
                   </Badge>
                 </div>
                 <p className="mt-1 text-xs text-textMuted">
+                  {item.field ? `${item.field} · ` : ''}
                   {item.startYear ? `${item.startYear} – ` : ''}
                   {item.endYear ?? 'Present'}
                   {item.grade ? ` · ${item.grade}` : ''}

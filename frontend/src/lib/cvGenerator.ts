@@ -9,7 +9,7 @@ import type {
 } from '../features/public/types';
 import { formatMonthYear } from './dates';
 
-interface CvData {
+export interface CvData {
   profile: ProfileItem | null | undefined;
   experience: ExperienceItem[];
   projects: ProjectItem[];
@@ -27,21 +27,38 @@ function esc(value: string): string {
     .replace(/"/g, '&quot;');
 }
 
+function cleanHumanText(value: string): string {
+  return value.replace(/\u2014|\u2013/g, ' - ').replace(/,\s+etc\b/gi, ' etc');
+}
+
 export function buildStructuredCvHtml(data: CvData): string {
   const { profile, experience, projects, skills, education, achievements, certifications } = data;
   const name = profile?.name ?? 'Moin Uddin';
   const headline =
     profile?.headline ??
-    'Software Engineer | MERN · React 18 · Node.js · TypeScript | AI/LLM Integration';
+    'Software Engineer | MERN, React 18, Node.js, TypeScript | AI/LLM Integration';
 
-  const contactParts = [
-    profile?.phone ? esc(profile.phone) : null,
+  const liveOrigin =
+    typeof window !== 'undefined' && window.location?.origin
+      ? window.location.origin.replace(/^https?:\/\//, '')
+      : 'moinuddinbd.com';
+
+  const phone = profile?.cvPhone || profile?.phone || '';
+  const contactLine1 = [
+    phone ? esc(phone) : null,
     profile?.email ? esc(profile.email) : 'moinuddinpkt@gmail.com',
-    'moinuddinbd.com',
+    esc(liveOrigin),
+  ]
+    .filter(Boolean)
+    .join(' | ');
+
+  const contactLine2 = [
     profile?.socials?.linkedin ? `LinkedIn: ${esc(profile.socials.linkedin)}` : null,
     profile?.socials?.github ? `GitHub: ${esc(profile.socials.github)}` : null,
     profile?.location ? esc(profile.location) : 'Dhaka, Bangladesh',
-  ].filter(Boolean);
+  ]
+    .filter(Boolean)
+    .join(' | ');
 
   const keyAchievements = experience.flatMap((e) => e.achievements ?? []).slice(0, 8);
 
@@ -52,51 +69,80 @@ export function buildStructuredCvHtml(data: CvData): string {
     return acc;
   }, {});
 
-  const html = `<!doctype html>
+  const references = profile?.references ?? [];
+
+  return `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>${esc(name)} — CV</title>
+  <title>${esc(name)} - CV</title>
   <style>
-    @page { size: A4; margin: 14mm 16mm; }
+    @page { size: A4; margin: 12mm 14mm; }
     * { box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       color: #141414;
       background: #ffffff;
       margin: 0;
-      padding: 24px;
-      font-size: 11px;
-      line-height: 1.48;
+      padding: 20px;
+      font-size: 10.5px;
+      line-height: 1.42;
     }
-    .doc { max-width: 800px; margin: 0 auto; }
-    header { border-bottom: 2px solid #0b7a43; padding-bottom: 10px; margin-bottom: 14px; }
-    h1 { font-size: 22px; letter-spacing: 0.04em; margin: 0; text-transform: uppercase; }
-    .headline { font-size: 12.5px; font-weight: 600; color: #0b7a43; margin: 4px 0 6px; }
-    .contact { font-size: 10px; color: #444444; }
-    section { margin-bottom: 14px; page-break-inside: avoid; }
-    h2 {
+    .doc { max-width: 790px; margin: 0 auto; }
+    header {
+      text-align: center;
+      border-bottom: 1.5px solid #141414;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 20px;
+      letter-spacing: 0.05em;
+      margin: 0;
+      text-transform: uppercase;
+    }
+    .headline {
       font-size: 11.5px;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      color: #0b7a43;
+      margin: 3px 0 4px;
+    }
+    .contact {
+      font-size: 9.8px;
+      color: #333333;
+      margin: 2px 0 0;
+    }
+    section { margin-bottom: 10px; }
+    h2 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: #0b7a43;
-      border-bottom: 1px solid #dad7ce;
-      padding-bottom: 3px;
-      margin: 0 0 8px;
+      border-bottom: 1px solid #cccccc;
+      padding-bottom: 2px;
+      margin: 0 0 6px;
+      break-after: avoid;
     }
-    .item { margin-bottom: 9px; }
-    .item-head { display: flex; justify-content: space-between; gap: 12px; font-weight: 700; font-size: 11.5px; }
-    .item-sub { font-size: 10.5px; color: #555555; margin-bottom: 3px; }
-    ul { margin: 4px 0 0; padding-left: 16px; }
+    .item { margin-bottom: 7px; break-inside: avoid; }
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 10.8px;
+    }
+    .item-sub { font-size: 10px; color: #444444; margin-bottom: 2px; }
+    p { margin: 0 0 4px; }
+    ul { margin: 3px 0 0; padding-left: 16px; }
     li { margin-bottom: 2px; }
-    .skill-row { margin-bottom: 3px; }
+    .skill-row { margin-bottom: 2px; }
     .skill-cat { font-weight: 700; text-transform: capitalize; }
     .no-print {
       display: flex;
       justify-content: flex-end;
       gap: 8px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .btn {
       background: #0b7a43;
@@ -117,18 +163,19 @@ export function buildStructuredCvHtml(data: CvData): string {
 <body>
   <div class="doc">
     <div class="no-print">
-      <button class="btn" onclick="window.print()">Save / Print as PDF</button>
+      <button class="btn" onclick="window.print()">Download / Save as PDF</button>
     </div>
 
     <header>
       <h1>${esc(name)}</h1>
-      <p class="headline">${esc(headline)}</p>
-      <p class="contact">${contactParts.join(' &bull; ')}</p>
+      <p class="headline">${esc(cleanHumanText(headline))}</p>
+      <p class="contact">${contactLine1}</p>
+      <p class="contact">${contactLine2}</p>
     </header>
 
     <section>
       <h2>Career Objective</h2>
-      <p>${esc(profile?.intro ?? '')} ${esc(profile?.about ?? '')}</p>
+      <p>${esc(cleanHumanText(profile?.intro ?? ''))} ${esc(cleanHumanText(profile?.about ?? ''))}</p>
     </section>
 
     ${
@@ -136,7 +183,7 @@ export function buildStructuredCvHtml(data: CvData): string {
         ? `<section>
       <h2>Key Achievements</h2>
       <ul>
-        ${keyAchievements.map((a) => `<li>${esc(a)}</li>`).join('')}
+        ${keyAchievements.map((a) => `<li>${esc(cleanHumanText(a))}</li>`).join('')}
       </ul>
     </section>`
         : ''
@@ -150,16 +197,16 @@ export function buildStructuredCvHtml(data: CvData): string {
         .map(
           (e) => `<div class="item">
         <div class="item-head">
-          <span>${esc(e.role)} &middot; ${esc(e.company)}</span>
-          <span>${esc(formatMonthYear(e.startDate))} &ndash; ${
+          <span>${esc(cleanHumanText(e.role))} | ${esc(cleanHumanText(e.company))}</span>
+          <span>${esc(formatMonthYear(e.startDate))} - ${
             e.isCurrent ? 'Present' : esc(formatMonthYear(e.endDate))
           }</span>
         </div>
         <div class="item-sub">${esc(e.location || e.employmentType)}</div>
-        ${e.description ? `<p>${esc(e.description)}</p>` : ''}
+        ${e.description ? `<p>${esc(cleanHumanText(e.description))}</p>` : ''}
         ${
           e.achievements && e.achievements.length > 0
-            ? `<ul>${e.achievements.map((a) => `<li>${esc(a)}</li>`).join('')}</ul>`
+            ? `<ul>${e.achievements.map((a) => `<li>${esc(cleanHumanText(a))}</li>`).join('')}</ul>`
             : ''
         }
       </div>`,
@@ -177,10 +224,10 @@ export function buildStructuredCvHtml(data: CvData): string {
         .map(
           (p) => `<div class="item">
         <div class="item-head">
-          <span>${esc(p.title)}</span>
-          <span>${esc(p.techStack.join(' · '))}</span>
+          <span>${esc(cleanHumanText(p.title))}</span>
+          <span>${esc(p.techStack.join(', '))}</span>
         </div>
-        <p>${esc(p.summary)} ${esc(p.description)}</p>
+        <p>${esc(cleanHumanText(p.summary))} ${esc(cleanHumanText(p.description))}</p>
       </div>`,
         )
         .join('')}
@@ -212,10 +259,10 @@ export function buildStructuredCvHtml(data: CvData): string {
         .map(
           (a) => `<div class="item">
         <div class="item-head">
-          <span>${esc(a.title)}</span>
-          <span>${esc(a.issuer)} &middot; ${esc(formatMonthYear(a.date))}</span>
+          <span>${esc(cleanHumanText(a.title))}</span>
+          <span>${esc(a.issuer)} | ${esc(formatMonthYear(a.date))}</span>
         </div>
-        ${a.description ? `<p>${esc(a.description)}</p>` : ''}
+        ${a.description ? `<p>${esc(cleanHumanText(a.description))}</p>` : ''}
       </div>`,
         )
         .join('')}
@@ -231,8 +278,8 @@ export function buildStructuredCvHtml(data: CvData): string {
         .map(
           (c) => `<div class="item">
         <div class="item-head">
-          <span>${esc(c.title)}</span>
-          <span>${esc(c.issuer)} &middot; ${esc(formatMonthYear(c.issueDate))}</span>
+          <span>${esc(cleanHumanText(c.title))}</span>
+          <span>${esc(c.issuer)} | ${esc(formatMonthYear(c.issueDate))}</span>
         </div>
       </div>`,
         )
@@ -249,13 +296,13 @@ export function buildStructuredCvHtml(data: CvData): string {
         .map(
           (ed) => `<div class="item">
         <div class="item-head">
-          <span>${esc(ed.degree)}${ed.field ? ` (${esc(ed.field)})` : ''}${
-            ed.grade ? ` — ${esc(ed.grade)}` : ''
+          <span>${esc(ed.degree)}${ed.field ? ` - ${esc(ed.field)}` : ''}${
+            ed.grade ? ` (${esc(ed.grade)})` : ''
           }</span>
-          <span>${ed.startYear ? `${ed.startYear} &ndash; ` : ''}${ed.endYear ?? 'Present'}</span>
+          <span>${ed.startYear ? `${ed.startYear} - ` : ''}${ed.endYear ?? 'Present'}</span>
         </div>
         <div class="item-sub">${esc(ed.institution)}${
-          ed.activities ? ` &middot; ${esc(ed.activities)}` : ''
+          ed.activities ? ` | ${esc(cleanHumanText(ed.activities))}` : ''
         }</div>
       </div>`,
         )
@@ -266,13 +313,51 @@ export function buildStructuredCvHtml(data: CvData): string {
 
     <section>
       <h2>Languages</h2>
-      <p><strong>English:</strong> Full professional proficiency (reading, writing, speaking) &bull; <strong>Bangla:</strong> Native fluency</p>
+      <p><strong>English:</strong> Full professional proficiency (reading, writing, speaking) | <strong>Bangla:</strong> Native fluency</p>
     </section>
+
+    ${
+      profile?.currentAddress || profile?.permanentAddress
+        ? `<section>
+      <h2>Personal Information</h2>
+      ${
+        profile.currentAddress
+          ? `<p><strong>Current Address:</strong> ${esc(profile.currentAddress)}</p>`
+          : ''
+      }
+      ${
+        profile.permanentAddress
+          ? `<p><strong>Permanent Address:</strong> ${esc(profile.permanentAddress)}</p>`
+          : ''
+      }
+    </section>`
+        : ''
+    }
+
+    ${
+      references.length > 0
+        ? `<section>
+      <h2>References</h2>
+      ${references
+        .map(
+          (r) => `<div class="item">
+        <div class="item-head">
+          <span>${esc(r.name)} - ${esc(r.title)}${
+            r.organization ? `, ${esc(r.organization)}` : ''
+          }</span>
+        </div>
+        <div class="item-sub">${[r.email ? esc(r.email) : null, r.phone ? esc(r.phone) : null]
+          .filter(Boolean)
+          .join(' | ')}</div>
+      </div>`,
+        )
+        .join('')}
+    </section>`
+        : ''
+    }
   </div>
 </body>
 </html>`;
-
-  return html;
 }
 
 export function downloadStructuredCv(data: CvData): void {

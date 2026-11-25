@@ -14,6 +14,17 @@ const SocialsSchema = new Schema(
   { _id: false },
 );
 
+const CvReferenceSubSchema = new Schema(
+  {
+    name: { type: String, required: true, maxlength: 120 },
+    title: { type: String, required: true, maxlength: 160 },
+    organization: { type: String, default: '', maxlength: 160 },
+    email: { type: String, default: '', maxlength: 160 },
+    phone: { type: String, default: '', maxlength: 40 },
+  },
+  { _id: false },
+);
+
 const ProfileSchema = new Schema(
   {
     name: { type: String, required: true, maxlength: 100 },
@@ -25,6 +36,10 @@ const ProfileSchema = new Schema(
     phone: { type: String, default: null, maxlength: 40 },
     officeAddress: { type: String, default: null, maxlength: 240 },
     location: { type: String, default: null, maxlength: 120 },
+    cvPhone: { type: String, default: null, maxlength: 40 },
+    currentAddress: { type: String, default: null, maxlength: 240 },
+    permanentAddress: { type: String, default: null, maxlength: 240 },
+    references: { type: [CvReferenceSubSchema], default: [] },
     resumeUrl: { type: String, default: null },
     avatar: { type: ImageSubSchema, default: null },
     socials: { type: SocialsSchema, default: () => ({}) },

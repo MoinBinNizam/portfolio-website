@@ -17,6 +17,25 @@
     "email": "moinuddinpkt@gmail.com",
     "phone": "TODO: owner to decide whether to publish",
     "location": "Dhaka, Bangladesh",
+    "cvPhone": "+8801747-969042",
+    "currentAddress": "Mohammadpur, Dhaka, Bangladesh",
+    "permanentAddress": "Patuakhali Sadar, Patuakhali, Bangladesh",
+    "references": [
+      {
+        "name": "Md. Mahmudul Hasan Faisal",
+        "title": "CEO",
+        "organization": "TechVelly",
+        "email": "info@techvelly.com",
+        "phone": "+8801558-910741"
+      },
+      {
+        "name": "Md. Sarwar Hossain Mullah",
+        "title": "Academic Director",
+        "organization": "Daffodil International Academy (DIA)",
+        "email": "dad@daffodil.ac",
+        "phone": "+8801713-493253"
+      }
+    ],
     "website": "https://moinuddinbd.com",
     "resumeUrl": "TODO: upload the CV PDF through the admin",
     "avatar": null,

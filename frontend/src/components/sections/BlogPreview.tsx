@@ -45,28 +45,43 @@ export function BlogPreview() {
           ) : (
             <div className="grid gap-6 md:grid-cols-3">
               {posts.map((post) => (
-                <article
+                <Link
                   key={post._id}
-                  className="rounded-card border border-border bg-surface p-5 transition-colors duration-fast hover:border-accent"
+                  to={`/blog/${post.slug}`}
+                  className="group block h-full rounded-card focus:outline-none focus:ring-2 focus:ring-accent"
                 >
-                  <div className="flex items-center justify-between gap-2 text-xs text-textMuted">
-                    <span>{formatShortDate(post.publishedAt ?? post.createdAt)}</span>
-                    <span>{post.readingTime ?? 1} min read</span>
-                  </div>
-                  <h3 className="mt-3 text-base font-semibold text-textPrimary">
-                    <Link to={`/blog/${post.slug}`} className="hover:underline">
-                      {post.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-2 text-sm text-textMuted">{post.excerpt}</p>
-                  {post.tags.length > 0 ? (
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {post.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag}>{tag}</Badge>
-                      ))}
+                  <article className="flex h-full flex-col overflow-hidden rounded-card border border-border bg-surface transition-colors duration-fast group-hover:border-accent">
+                    {post.coverImage?.url ? (
+                      <img
+                        src={post.coverImage.url}
+                        alt={post.coverImage.alt || post.title}
+                        width={post.coverImage.width ?? 640}
+                        height={post.coverImage.height ?? 360}
+                        className="aspect-[16/9] w-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex aspect-[16/9] w-full items-end bg-surfaceAlt p-4">
+                        <span className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+                          {post.category || 'Engineering Article'}
+                        </span>
+                      </div>
+                    )}
+                    <div className="flex flex-1 flex-col p-5">
+                      <div className="flex items-center justify-between gap-2 text-xs text-textMuted">
+                        <Badge variant="accent">{post.category || 'Article'}</Badge>
+                        <span>{formatShortDate(post.publishedAt ?? post.createdAt)}</span>
+                      </div>
+                      <h3 className="mt-3 text-base font-semibold text-textPrimary group-hover:text-accent">
+                        {post.title}
+                      </h3>
+                      <p className="mt-2 flex-1 text-sm text-textMuted">{post.excerpt}</p>
+                      <div className="mt-4 flex items-center justify-between gap-2 text-xs text-textMuted">
+                        <span>{post.readingTime ?? 1} min read</span>
+                        <span className="font-semibold text-accent">Read article &rarr;</span>
+                      </div>
                     </div>
-                  ) : null}
-                </article>
+                  </article>
+                </Link>
               ))}
             </div>
           )}

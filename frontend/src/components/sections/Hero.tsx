@@ -45,17 +45,17 @@ export function Hero() {
     <section className="pt-0 pb-14 lg:pt-0 lg:pb-20">
       <Container>
         <Reveal>
-          <div className="grid items-center gap-10 pt-6 lg:grid-cols-12">
-            <div className="lg:col-span-7">
+          <div className="grid items-center gap-8 pt-6 lg:grid-cols-12 lg:gap-10">
+            <div className="order-2 text-center lg:order-1 lg:col-span-7 lg:text-left">
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
                 {profile?.location ?? 'Dhaka, Bangladesh'}
               </p>
 
               {isLoading ? (
-                <div className="space-y-4">
-                  <Skeleton className="h-12 w-3/4" />
-                  <Skeleton className="h-6 w-2/3" />
-                  <Skeleton className="h-20 w-full max-w-xl" />
+                <div className="mx-auto space-y-4 lg:mx-0">
+                  <Skeleton className="mx-auto h-12 w-3/4 lg:mx-0" />
+                  <Skeleton className="mx-auto h-6 w-2/3 lg:mx-0" />
+                  <Skeleton className="mx-auto h-20 w-full max-w-xl lg:mx-0" />
                 </div>
               ) : (
                 <>
@@ -65,14 +65,14 @@ export function Hero() {
                   <p className="mt-3 text-xl font-medium text-textMuted sm:text-2xl">
                     {profile?.headline ?? 'Full-Stack MERN & TypeScript Developer'}
                   </p>
-                  <p className="mt-5 max-w-[65ch] text-base text-textMuted">
+                  <p className="mx-auto mt-5 max-w-[65ch] text-base text-textMuted lg:mx-0">
                     {profile?.intro ??
                       'Full-stack developer building fast, accessible web applications with MongoDB, Express, React, Node.js, and TypeScript.'}
                   </p>
                 </>
               )}
 
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 lg:justify-start">
                 <a
                   href="#contact"
                   className="inline-flex items-center justify-center rounded-button bg-accent px-6 py-3 text-sm font-semibold text-accentText transition-colors duration-fast hover:bg-accentHover"
@@ -95,23 +95,23 @@ export function Hero() {
                 </button>
               </div>
 
-              <div className="mt-6">
+              <div className="mt-6 flex justify-center lg:justify-start">
                 <SocialLinksBar socials={profile?.socials} />
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <figure className="rounded-card border border-border bg-surface p-3">
+            <div className="order-1 lg:order-2 lg:col-span-5">
+              <div className="mx-auto w-full max-w-[230px] sm:max-w-[270px] lg:max-w-[320px]">
                 {profile?.avatar?.url ? (
                   <img
                     src={profile.avatar.url}
                     alt={profile.avatar.alt || `${profile.name} portrait`}
                     width={profile.avatar.width ?? 600}
                     height={profile.avatar.height ?? 700}
-                    className="aspect-[4/5] w-full rounded-media object-cover"
+                    className="aspect-[4/5] w-full rounded-card object-cover"
                   />
                 ) : (
-                  <div className="flex aspect-[4/5] w-full items-end rounded-media border border-border bg-surfaceAlt p-6">
+                  <div className="flex aspect-[4/5] w-full items-end rounded-card bg-surfaceAlt p-6">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                         Portrait
@@ -125,10 +125,7 @@ export function Hero() {
                     </div>
                   </div>
                 )}
-                <figcaption className="mt-3 px-1 text-xs text-textMuted">
-                  {profile?.headline ?? 'Full-Stack MERN & TypeScript Developer'}
-                </figcaption>
-              </figure>
+              </div>
             </div>
           </div>
         </Reveal>

@@ -11,6 +11,14 @@ export const SocialLinksSchema = z.object({
   github: OptionalUrlSchema,
 });
 
+export const CvReferenceSchema = z.object({
+  name: z.string().trim().min(2).max(120),
+  title: z.string().trim().min(2).max(160),
+  organization: z.string().trim().max(160).optional().default(''),
+  email: z.string().trim().email().max(160).or(z.literal('')).optional().default(''),
+  phone: z.string().trim().max(40).optional().default(''),
+});
+
 export const ProfileInputSchema = z.object({
   name: z.string().trim().min(2).max(100),
   headline: z.string().trim().min(2).max(160),
@@ -21,6 +29,10 @@ export const ProfileInputSchema = z.object({
   phone: z.string().trim().max(40).optional().nullable(),
   officeAddress: z.string().trim().max(240).optional().nullable(),
   location: z.string().trim().max(120).optional().nullable(),
+  cvPhone: z.string().trim().max(40).optional().nullable(),
+  currentAddress: z.string().trim().max(240).optional().nullable(),
+  permanentAddress: z.string().trim().max(240).optional().nullable(),
+  references: z.array(CvReferenceSchema).max(5).optional().default([]),
   resumeUrl: OptionalUrlSchema,
   avatar: ImageSchema.optional().nullable(),
   socials: SocialLinksSchema.default({}),
@@ -29,5 +41,6 @@ export const ProfileInputSchema = z.object({
 export const ProfileUpdateSchema = ProfileInputSchema.partial();
 
 export type SocialLinks = z.infer<typeof SocialLinksSchema>;
+export type CvReference = z.infer<typeof CvReferenceSchema>;
 export type ProfileInput = z.infer<typeof ProfileInputSchema>;
 export type ProfileUpdate = z.infer<typeof ProfileUpdateSchema>;

@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ProfileInputSchema, type ProfileInput } from '@portfolio/shared';
 import { useEffect } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { Skeleton } from '../components/ui/Skeleton';
@@ -33,10 +33,14 @@ export function ProfilePage() {
       about: '',
       email: '',
       phone: '',
+      cvPhone: '',
+      currentAddress: '',
+      permanentAddress: '',
       officeAddress: '',
       location: '',
       resumeUrl: '',
       avatar: null,
+      references: [],
       socials: {
         github: '',
         linkedin: '',
@@ -49,14 +53,27 @@ export function ProfilePage() {
     },
   });
 
+  const {
+    fields: referenceFields,
+    append: appendReference,
+    remove: removeReference,
+  } = useFieldArray({
+    control,
+    name: 'references',
+  });
+
   useEffect(() => {
     if (profile) {
       reset({
         ...profile,
         phone: profile.phone ?? '',
+        cvPhone: profile.cvPhone ?? '',
+        currentAddress: profile.currentAddress ?? '',
+        permanentAddress: profile.permanentAddress ?? '',
         officeAddress: profile.officeAddress ?? '',
         location: profile.location ?? '',
         resumeUrl: profile.resumeUrl ?? '',
+        references: profile.references ?? [],
         socials: {
           github: profile.socials?.github ?? '',
           linkedin: profile.socials?.linkedin ?? '',
@@ -193,6 +210,133 @@ export function ProfilePage() {
               >
                 <Input id="social-behance" type="url" {...register('socials.behance')} />
               </FormField>
+            </div>
+          </div>
+
+          <div className="space-y-4 rounded-card border border-border/70 bg-surface/75 p-5 backdrop-blur-md">
+            <div>
+              <h2 className="text-base font-semibold text-textPrimary">
+                CV-Only Contact, Addresses &amp; References
+              </h2>
+              <p className="mt-1 text-xs text-textMuted">
+                Included only inside the generated ATS CV PDF. Never shown on the public portfolio.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-3">
+              <FormField id="cvPhone" label="CV Phone Number" error={errors.cvPhone?.message}>
+                <Input id="cvPhone" {...register('cvPhone')} error={errors.cvPhone?.message} />
+              </FormField>
+              <FormField
+                id="currentAddress"
+                label="Current Address"
+                error={errors.currentAddress?.message}
+              >
+                <Input
+                  id="currentAddress"
+                  {...register('currentAddress')}
+                  error={errors.currentAddress?.message}
+                />
+              </FormField>
+              <FormField
+                id="permanentAddress"
+                label="Permanent Address"
+                error={errors.permanentAddress?.message}
+              >
+                <Input
+                  id="permanentAddress"
+                  {...register('permanentAddress')}
+                  error={errors.permanentAddress?.message}
+                />
+              </FormField>
+            </div>
+
+            <div className="space-y-3 border-t border-border/70 pt-4">
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="text-sm font-semibold text-textPrimary">CV References</h3>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={() =>
+                    appendReference({
+                      name: '',
+                      title: '',
+                      organization: '',
+                      phone: '',
+                      email: '',
+                    })
+                  }
+                >
+                  + Add reference
+                </Button>
+              </div>
+
+              {referenceFields.map((field, index) => (
+                <div
+                  key={field.id}
+                  className="space-y-3 rounded-input border border-border/70 bg-background/60 p-4"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold uppercase tracking-[0.12em] text-textMuted">
+                      Reference #{index + 1}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => removeReference(index)}
+                      className="text-xs font-medium text-highlight hover:underline"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <FormField
+                      id={`ref-name-${index}`}
+                      label="Name"
+                      required
+                      error={errors.references?.[index]?.name?.message}
+                    >
+                      <Input id={`ref-name-${index}`} {...register(`references.${index}.name`)} />
+                    </FormField>
+                    <FormField
+                      id={`ref-title-${index}`}
+                      label="Designation / Title"
+                      required
+                      error={errors.references?.[index]?.title?.message}
+                    >
+                      <Input id={`ref-title-${index}`} {...register(`references.${index}.title`)} />
+                    </FormField>
+                    <FormField
+                      id={`ref-org-${index}`}
+                      label="Organization"
+                      required
+                      error={errors.references?.[index]?.organization?.message}
+                    >
+                      <Input
+                        id={`ref-org-${index}`}
+                        {...register(`references.${index}.organization`)}
+                      />
+                    </FormField>
+                    <FormField
+                      id={`ref-phone-${index}`}
+                      label="Phone"
+                      error={errors.references?.[index]?.phone?.message}
+                    >
+                      <Input id={`ref-phone-${index}`} {...register(`references.${index}.phone`)} />
+                    </FormField>
+                    <FormField
+                      id={`ref-email-${index}`}
+                      label="Email"
+                      error={errors.references?.[index]?.email?.message}
+                    >
+                      <Input
+                        id={`ref-email-${index}`}
+                        type="email"
+                        {...register(`references.${index}.email`)}
+                      />
+                    </FormField>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
