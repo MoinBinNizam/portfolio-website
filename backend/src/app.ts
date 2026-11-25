@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import { errorHandler } from './middleware/errorHandler.js';
 import { notFoundHandler } from './middleware/notFound.js';
 import { applySecurityMiddleware } from './middleware/security.js';
+import { educationAdminRouter, educationPublicRouter } from './modules/education/routes.js';
+import { experienceAdminRouter, experiencePublicRouter } from './modules/experience/routes.js';
 import { publicRouter } from './modules/public/routes.js';
 
 export function createApp(): Express {
@@ -21,6 +23,10 @@ export function createApp(): Express {
     });
   });
 
+  app.use('/api/experience', experiencePublicRouter);
+  app.use('/api/education', educationPublicRouter);
+  app.use('/api/admin/experience', experienceAdminRouter);
+  app.use('/api/admin/education', educationAdminRouter);
   app.use('/api', publicRouter);
 
   app.use(notFoundHandler);

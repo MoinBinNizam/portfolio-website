@@ -1,5 +1,11 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { EducationEditorPage } from '../admin/collections/education/EducationEditorPage';
+import { EducationListPage } from '../admin/collections/education/EducationListPage';
+import { ExperienceEditorPage } from '../admin/collections/experience/ExperienceEditorPage';
+import { ExperienceListPage } from '../admin/collections/experience/ExperienceListPage';
 import { CollectionStubPage } from '../pages/CollectionStubPage';
+import { EducationPage } from '../pages/EducationPage';
+import { ExperiencePage } from '../pages/ExperiencePage';
 import { HomePage } from '../pages/HomePage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 
@@ -18,26 +24,16 @@ export const router = createBrowserRouter([
   },
   {
     path: '/experience',
-    element: (
-      <CollectionStubPage
-        eyebrow="Experience"
-        title="Work history"
-        description="Full timeline of engineering roles, achievements, and tech stack."
-        path="/experience"
-      />
-    ),
+    element: <ExperiencePage />,
   },
   {
     path: '/education',
-    element: (
-      <CollectionStubPage
-        eyebrow="Education"
-        title="Academic background"
-        description="Degrees, coursework, and academic activities."
-        path="/education"
-      />
-    ),
+    element: <EducationPage />,
   },
+  { path: '/admin/experience', element: <ExperienceListPage /> },
+  { path: '/admin/experience/:id', element: <ExperienceEditorPage /> },
+  { path: '/admin/education', element: <EducationListPage /> },
+  { path: '/admin/education/:id', element: <EducationEditorPage /> },
   {
     path: '/certifications',
     element: (
