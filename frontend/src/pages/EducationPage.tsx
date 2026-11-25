@@ -13,11 +13,8 @@ export function EducationPage() {
 
   const entries: TimelineEntry[] = list.map((item) => ({
     id: item._id,
-    title:
-      item.field && !item.degree.toLowerCase().includes(item.field.toLowerCase())
-        ? `${item.degree} in ${item.field}`
-        : item.degree,
-    subtitle: item.institution,
+    title: item.degree,
+    subtitle: `${item.institution}${item.field ? ` · Subject: ${item.field}` : ''}`,
     dateLabel: `${item.startYear ? `${item.startYear} – ` : ''}${item.endYear ?? 'Present'}`,
     meta: item.grade || undefined,
     body: item.activities ? (

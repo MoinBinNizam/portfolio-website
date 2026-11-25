@@ -16,6 +16,7 @@ export function ContactSection() {
             <div className="lg:col-span-5">
               <SectionHeading
                 eyebrow="Hire &amp; Contact"
+                icon="mail"
                 title="Start a Web Development or Consulting Project"
                 description="Send a message with your project scope, timeline, or remote role details."
               />

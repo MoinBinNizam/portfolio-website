@@ -1,12 +1,69 @@
 import { Link } from 'react-router-dom';
-import { usePublicProfile } from '../../features/public/queries';
+import {
+  usePublicEducation,
+  usePublicExperience,
+  usePublicProfile,
+  usePublicProjects,
+  usePublicSkills,
+} from '../../features/public/queries';
 import { SocialLinksBar } from '../layout/SocialLinksBar';
 import { Container } from '../ui/Container';
 import { Reveal } from '../ui/Reveal';
+import { SectionIcon } from '../ui/SectionIcon';
 import { Skeleton } from '../ui/Skeleton';
 
 export function Hero() {
   const { data: profile, isLoading } = usePublicProfile();
+  const { data: experience } = usePublicExperience();
+  const { data: education } = usePublicEducation();
+  const { data: projects } = usePublicProjects();
+  const { data: skills } = usePublicSkills();
+
+  const handleDownloadCv = () => {
+    if (profile?.resumeUrl) {
+      window.open(profile.resumeUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    const lines = [
+      `${profile?.name ?? 'Moin Uddin'}`,
+      `${profile?.headline ?? 'Full-Stack Web Developer'}`,
+      `${profile?.email ?? 'moinuddinpkt@gmail.com'} | ${profile?.location ?? 'Dhaka, Bangladesh'}`,
+      '',
+      'SUMMARY',
+      profile?.intro ?? '',
+      '',
+      'EXPERIENCE',
+      ...(experience ?? []).map(
+        (e) =>
+          `- ${e.role} | ${e.company} (${e.startDate.slice(0, 7)} to ${
+            e.isCurrent ? 'Present' : (e.endDate ?? '').slice(0, 7)
+          })\n  ${e.description}`,
+      ),
+      '',
+      'PROJECTS',
+      ...(projects ?? []).map((p) => `- ${p.title}: ${p.summary}`),
+      '',
+      'EDUCATION',
+      ...(education ?? []).map(
+        (ed) =>
+          `- ${ed.degree}${ed.field ? ` (${ed.field})` : ''} — ${ed.institution}${
+            ed.grade ? ` [${ed.grade}]` : ''
+          } (${ed.endYear ?? 'Present'})`,
+      ),
+      '',
+      'SKILLS',
+      (skills ?? []).map((s) => s.name).join(', '),
+    ];
+
+    const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Moin_Uddin_CV.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <section className="pt-0 pb-14 lg:pt-0 lg:pb-20">
@@ -52,6 +109,14 @@ export function Hero() {
                 >
                   View projects
                 </Link>
+                <button
+                  type="button"
+                  onClick={handleDownloadCv}
+                  className="inline-flex items-center justify-center gap-2 rounded-button border border-border bg-surface px-5 py-3 text-sm font-semibold text-textPrimary transition-colors duration-fast hover:border-accent hover:text-accent"
+                >
+                  <SectionIcon name="download" className="h-4 w-4" />
+                  <span>Download CV</span>
+                </button>
               </div>
 
               <div className="mt-6">

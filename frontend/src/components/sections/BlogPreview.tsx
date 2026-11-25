@@ -19,6 +19,7 @@ export function BlogPreview() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading
               eyebrow="Engineering Blog"
+              icon="book"
               title="Technical Articles on MERN, TypeScript &amp; System Architecture"
               description="Practical notes on full-stack architecture, validation, and web performance."
             />

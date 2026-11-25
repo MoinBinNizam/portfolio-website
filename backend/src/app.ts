@@ -23,6 +23,10 @@ import { publicRouter } from './modules/public/routes.js';
 import { seoRouter } from './modules/seo/routes.js';
 import { servicesAdminRouter, servicesPublicRouter } from './modules/services/routes.js';
 import { skillsAdminRouter, skillsPublicRouter } from './modules/skills/routes.js';
+import {
+  testimonialsAdminRouter,
+  testimonialsPublicRouter,
+} from './modules/testimonials/routes.js';
 import { uploadsAdminRouter } from './modules/uploads/routes.js';
 
 export function createApp(): Express {
@@ -50,6 +54,7 @@ export function createApp(): Express {
   app.use('/api/projects', projectsPublicRouter);
   app.use('/api/skills', skillsPublicRouter);
   app.use('/api/services', servicesPublicRouter);
+  app.use('/api/testimonials', testimonialsPublicRouter);
   app.use('/api/blog', blogPublicRouter);
   app.use('/api/contact', contactPublicRouter);
   app.use('/api/admin', adminCoreRouter);
@@ -60,6 +65,7 @@ export function createApp(): Express {
   app.use('/api/admin/projects', projectsAdminRouter);
   app.use('/api/admin/skills', skillsAdminRouter);
   app.use('/api/admin/services', servicesAdminRouter);
+  app.use('/api/admin/testimonials', testimonialsAdminRouter);
   app.use('/api/admin/blog', blogAdminRouter);
   app.use('/api/admin/uploads', uploadsAdminRouter);
   app.use('/api/admin/messages', messagesAdminRouter);

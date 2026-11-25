@@ -60,6 +60,7 @@ export function ExperienceSection() {
             <div>
               <SectionHeading
                 eyebrow="Work Experience"
+                icon="briefcase"
                 title="Full-Stack MERN &amp; Web Engineering Experience"
                 description="Production software delivery across enterprise systems, e-commerce, and client platforms."
               />

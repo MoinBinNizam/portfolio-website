@@ -29,6 +29,7 @@ export function CredentialsSection() {
             <div className="flex flex-wrap items-end justify-between gap-4">
               <SectionHeading
                 eyebrow="Education"
+                icon="graduation"
                 title="BSc (Hons) in Computing &amp; Academic Qualifications"
               />
               <Link
@@ -46,19 +47,20 @@ export function CredentialsSection() {
                 description="Published education records will appear here."
               />
             ) : (
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-4 md:grid-cols-3">
                 {eduList.map((item) => (
                   <div key={item._id} className="rounded-card border border-border bg-surface p-5">
-                    <p className="text-xs font-medium text-textMuted">
-                      {item.startYear ? `${item.startYear} – ` : ''}
-                      {item.endYear ?? 'Present'}
-                    </p>
-                    <h3 className="mt-1 text-base font-semibold text-textPrimary">
-                      {item.degree}
-                      {item.field && !item.degree.toLowerCase().includes(item.field.toLowerCase())
-                        ? ` in ${item.field}`
-                        : ''}
-                    </h3>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-xs font-medium text-textMuted">
+                        {item.startYear ? `${item.startYear} – ` : ''}
+                        {item.endYear ?? 'Present'}
+                      </span>
+                      {item.grade ? <Badge variant="accent">{item.grade}</Badge> : null}
+                    </div>
+                    <h3 className="mt-2 text-base font-semibold text-textPrimary">{item.degree}</h3>
+                    {item.field ? (
+                      <p className="mt-1 text-xs font-medium text-accent">Subject: {item.field}</p>
+                    ) : null}
                     <p className="mt-1 text-sm text-textMuted">{item.institution}</p>
                   </div>
                 ))}
@@ -67,25 +69,23 @@ export function CredentialsSection() {
           </div>
         </Reveal>
 
-        <Reveal>
-          <div>
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <SectionHeading eyebrow="Certifications" title="Verified Technical Credentials" />
-              <Link
-                to="/certifications"
-                className="mb-8 text-sm font-semibold text-accent underline-offset-4 hover:underline"
-              >
-                All certifications &rarr;
-              </Link>
-            </div>
-            {certLoading ? (
-              <Skeleton className="h-28 w-full" />
-            ) : certList.length === 0 ? (
-              <EmptyState
-                title="No certifications published yet"
-                description="Published certifications will appear here."
-              />
-            ) : (
+        {/* Certifications: hidden automatically when no published certificates exist */}
+        {!certLoading && certList.length > 0 ? (
+          <Reveal>
+            <div>
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <SectionHeading
+                  eyebrow="Certifications"
+                  icon="award"
+                  title="Verified Technical Credentials"
+                />
+                <Link
+                  to="/certifications"
+                  className="mb-8 text-sm font-semibold text-accent underline-offset-4 hover:underline"
+                >
+                  All certifications &rarr;
+                </Link>
+              </div>
               <div className="grid gap-4 md:grid-cols-3">
                 {certList.map((item) => (
                   <div key={item._id} className="rounded-card border border-border bg-surface p-5">
@@ -106,15 +106,16 @@ export function CredentialsSection() {
                   </div>
                 ))}
               </div>
-            )}
-          </div>
-        </Reveal>
+            </div>
+          </Reveal>
+        ) : null}
 
         <Reveal>
           <div>
             <div className="flex flex-wrap items-end justify-between gap-4">
               <SectionHeading
                 eyebrow="Achievements &amp; Training"
+                icon="award"
                 title="Specialized Trainings, Mentoring &amp; Recognition"
               />
               <Link

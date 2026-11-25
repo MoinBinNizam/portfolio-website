@@ -4,6 +4,7 @@ import { Container } from '../ui/Container';
 import { EmptyState } from '../ui/EmptyState';
 import { Reveal } from '../ui/Reveal';
 import { SectionHeading } from '../ui/SectionHeading';
+import { SectionIcon } from '../ui/SectionIcon';
 import { Skeleton } from '../ui/Skeleton';
 
 export function ServicesSection() {
@@ -17,6 +18,7 @@ export function ServicesSection() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading
               eyebrow="Services"
+              icon="zap"
               title="Custom Software, E-Commerce, Inventory &amp; POS Development"
               description="Focused full-stack engineering engagements from architecture to deployment."
             />
@@ -45,8 +47,13 @@ export function ServicesSection() {
                   key={service._id}
                   className="rounded-card border border-border bg-surface p-6 transition-colors duration-fast hover:border-accent"
                 >
-                  <h3 className="text-lg font-semibold text-textPrimary">{service.title}</h3>
-                  <p className="mt-2 text-sm text-textMuted">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-input border border-border bg-surfaceAlt text-accent">
+                      <SectionIcon name={service.icon || 'code'} className="h-4 w-4" />
+                    </span>
+                    <h3 className="text-lg font-semibold text-textPrimary">{service.title}</h3>
+                  </div>
+                  <p className="mt-3 text-sm text-textMuted">
                     {service.summary || service.description}
                   </p>
                 </div>

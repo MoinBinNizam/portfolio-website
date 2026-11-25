@@ -98,6 +98,16 @@ const ServiceEditorPage = lazy(() =>
     default: m.ServiceEditorPage,
   })),
 );
+const TestimonialsListPage = lazy(() =>
+  import('../admin/collections/testimonials/TestimonialsListPage').then((m) => ({
+    default: m.TestimonialsListPage,
+  })),
+);
+const TestimonialEditorPage = lazy(() =>
+  import('../admin/collections/testimonials/TestimonialEditorPage').then((m) => ({
+    default: m.TestimonialEditorPage,
+  })),
+);
 const PostsListPage = lazy(() =>
   import('../admin/collections/blog/PostsListPage').then((m) => ({
     default: m.PostsListPage,
@@ -173,6 +183,8 @@ export const router = createBrowserRouter([
   { path: '/admin/skills/:id', element: protect(<SkillEditorPage />) },
   { path: '/admin/services', element: protect(<ServicesListPage />) },
   { path: '/admin/services/:id', element: protect(<ServiceEditorPage />) },
+  { path: '/admin/testimonials', element: protect(<TestimonialsListPage />) },
+  { path: '/admin/testimonials/:id', element: protect(<TestimonialEditorPage />) },
   { path: '/admin/blog', element: protect(<PostsListPage />) },
   { path: '/admin/blog/:id', element: protect(<PostEditorPage />) },
   { path: '*', element: <NotFoundPage /> },

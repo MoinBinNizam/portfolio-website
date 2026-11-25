@@ -32,6 +32,7 @@ export function SkillsSection() {
         <Reveal>
           <SectionHeading
             eyebrow="Technical Skills"
+            icon="code"
             title="React, TypeScript, Node.js, MongoDB &amp; AI Workflow Stack"
             description="Production technologies grouped by domain with a 5-step proficiency scale."
           />

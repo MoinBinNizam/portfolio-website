@@ -18,6 +18,7 @@ export function ProjectsSection() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading
               eyebrow="Portfolio &amp; Case Studies"
+              icon="layers"
               title="Featured Full-Stack Web Applications &amp; Client Builds"
               description="Production MERN, React, TypeScript, inventory, POS, and compliance platforms."
             />
