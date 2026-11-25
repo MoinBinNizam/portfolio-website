@@ -35,9 +35,11 @@ export function calculateTotalExperienceDuration(items: ExperienceItem[]): strin
 
   const years = Math.floor(totalMonths / 12);
   const remMonths = totalMonths % 12;
-  if (years > 0 && remMonths > 0) return `${years} yrs ${remMonths} mos`;
-  if (years > 0) return `${years}+ yrs`;
-  return `${remMonths} mos`;
+  const yearLabel = years === 1 ? 'year' : 'years';
+  const monthLabel = remMonths === 1 ? 'month' : 'months';
+  if (years > 0 && remMonths > 0) return `${years} ${yearLabel} ${remMonths} ${monthLabel}`;
+  if (years > 0) return `${years}+ ${yearLabel}`;
+  return `${remMonths} ${monthLabel}`;
 }
 
 /**
