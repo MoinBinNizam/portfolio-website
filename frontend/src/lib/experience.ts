@@ -45,13 +45,13 @@ export function calculateTotalExperienceDuration(items: ExperienceItem[]): strin
  */
 export function formatAboutWithExperience(about: string, duration: string): string {
   if (!duration) return about;
-  const roleMatch = /Full-Stack Web Developer/i.exec(about);
+  const roleMatch = /\*\*Full-Stack Web Developer\*\*|Full-Stack Web Developer/i.exec(about);
   if (roleMatch) {
     return (
       about.slice(0, roleMatch.index + roleMatch[0].length) +
-      ` with ${duration} of experience` +
+      ` **with ${duration} of experience**` +
       about.slice(roleMatch.index + roleMatch[0].length)
     );
   }
-  return `With ${duration} of hands-on experience, ${about.charAt(0).toLowerCase()}${about.slice(1)}`;
+  return `**With ${duration} of hands-on experience,** ${about.charAt(0).toLowerCase()}${about.slice(1)}`;
 }
