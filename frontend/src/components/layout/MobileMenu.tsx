@@ -1,4 +1,4 @@
-import { useEffect, type MouseEvent } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ThemeToggle } from '../../theme/ThemeToggle';
 
@@ -11,10 +11,9 @@ interface MobileMenuProps {
   open: boolean;
   onClose: () => void;
   items: NavItem[];
-  onItemClick?: (event: MouseEvent<HTMLAnchorElement>, href: string) => void;
 }
 
-export function MobileMenu({ open, onClose, items, onItemClick }: MobileMenuProps) {
+export function MobileMenu({ open, onClose, items }: MobileMenuProps) {
   useEffect(() => {
     if (!open) return;
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -78,13 +77,7 @@ export function MobileMenu({ open, onClose, items, onItemClick }: MobileMenuProp
             <a
               key={item.href}
               href={item.href}
-              onClick={(e) => {
-                if (onItemClick) {
-                  onItemClick(e, item.href);
-                } else {
-                  onClose();
-                }
-              }}
+              onClick={onClose}
               className="block rounded-card border border-border bg-surface px-4 py-3 text-base font-medium text-textPrimary transition-colors duration-fast hover:border-accent hover:bg-surfaceAlt hover:text-accent"
             >
               {item.label}
