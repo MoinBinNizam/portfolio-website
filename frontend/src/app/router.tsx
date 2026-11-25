@@ -1,4 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { DashboardPage } from '../admin/DashboardPage';
+import { LoginPage } from '../admin/LoginPage';
+import { MessagesPage } from '../admin/MessagesPage';
+import { ProfilePage } from '../admin/ProfilePage';
 import { AchievementEditorPage } from '../admin/collections/achievements/AchievementEditorPage';
 import { AchievementsListPage } from '../admin/collections/achievements/AchievementsListPage';
 import { CertificationEditorPage } from '../admin/collections/certifications/CertificationEditorPage';
@@ -15,6 +19,7 @@ import { EducationPage } from '../pages/EducationPage';
 import { ExperiencePage } from '../pages/ExperiencePage';
 import { HomePage } from '../pages/HomePage';
 import { NotFoundPage } from '../pages/NotFoundPage';
+import { RequireOwner } from './RequireOwner';
 
 export const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
@@ -45,14 +50,95 @@ export const router = createBrowserRouter([
     path: '/achievements',
     element: <AchievementsPage />,
   },
-  { path: '/admin/experience', element: <ExperienceListPage /> },
-  { path: '/admin/experience/:id', element: <ExperienceEditorPage /> },
-  { path: '/admin/education', element: <EducationListPage /> },
-  { path: '/admin/education/:id', element: <EducationEditorPage /> },
-  { path: '/admin/certifications', element: <CertificationsListPage /> },
-  { path: '/admin/certifications/:id', element: <CertificationEditorPage /> },
-  { path: '/admin/achievements', element: <AchievementsListPage /> },
-  { path: '/admin/achievements/:id', element: <AchievementEditorPage /> },
+  { path: '/admin/login', element: <LoginPage /> },
+  {
+    path: '/admin',
+    element: (
+      <RequireOwner>
+        <DashboardPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/profile',
+    element: (
+      <RequireOwner>
+        <ProfilePage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/messages',
+    element: (
+      <RequireOwner>
+        <MessagesPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/experience',
+    element: (
+      <RequireOwner>
+        <ExperienceListPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/experience/:id',
+    element: (
+      <RequireOwner>
+        <ExperienceEditorPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/education',
+    element: (
+      <RequireOwner>
+        <EducationListPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/education/:id',
+    element: (
+      <RequireOwner>
+        <EducationEditorPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/certifications',
+    element: (
+      <RequireOwner>
+        <CertificationsListPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/certifications/:id',
+    element: (
+      <RequireOwner>
+        <CertificationEditorPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/achievements',
+    element: (
+      <RequireOwner>
+        <AchievementsListPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/achievements/:id',
+    element: (
+      <RequireOwner>
+        <AchievementEditorPage />
+      </RequireOwner>
+    ),
+  },
   {
     path: '/projects',
     element: (

@@ -7,6 +7,8 @@ import {
   achievementsAdminRouter,
   achievementsPublicRouter,
 } from './modules/achievements/routes.js';
+import { adminCoreRouter } from './modules/admin/routes.js';
+import { authRouter } from './modules/auth/routes.js';
 import {
   certificationsAdminRouter,
   certificationsPublicRouter,
@@ -33,11 +35,13 @@ export function createApp(): Express {
     });
   });
 
+  app.use('/api/auth', authRouter);
   app.use('/api/experience', experiencePublicRouter);
   app.use('/api/education', educationPublicRouter);
   app.use('/api/certifications', certificationsPublicRouter);
   app.use('/api/achievements', achievementsPublicRouter);
   app.use('/api/contact', contactPublicRouter);
+  app.use('/api/admin', adminCoreRouter);
   app.use('/api/admin/experience', experienceAdminRouter);
   app.use('/api/admin/education', educationAdminRouter);
   app.use('/api/admin/certifications', certificationsAdminRouter);
