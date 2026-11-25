@@ -48,7 +48,7 @@ export function AboutPage() {
                   <MarkdownBody
                     content={
                       profile?.about ??
-                      'Full-stack developer building scalable web applications with MongoDB, Express, React, Node.js, and TypeScript.'
+                      "I'm Moin Uddin, a Full-Stack Web Developer with over 3.5 years of hands-on experience building scalable MERN, TypeScript, and WordPress applications. I genuinely enjoy turning complex business ideas into clean, fast, and reliable software.\n\nOver the years I've worked on everything from custom business websites and WooCommerce stores to full-scale inventory, POS, and compliance platforms. Alongside shipping products, I've mentored learners in Python, Django, web design, and freelancing, helping students build real-world technical confidence.\n\nFrom leading full-stack delivery at TechVelly and collaborating with engineering teams in Dhaka to supporting international clients, every project has taught me to value readable architecture and thoughtful user experience.\n\nGreat software feels effortless to use and easy to maintain. That's what drives me every day."
                     }
                   />
                 </div>
