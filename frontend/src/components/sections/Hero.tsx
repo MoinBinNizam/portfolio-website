@@ -115,10 +115,10 @@ export function Hero() {
                     alt={profile.avatar.alt || `${profile.name} portrait`}
                     width={profile.avatar.width ?? 600}
                     height={profile.avatar.height ?? 700}
-                    className="h-auto w-full rounded-tl-[40px] rounded-br-[40px] object-contain"
+                    className="h-auto w-full rounded-tr-[50px] rounded-bl-[50px] object-contain"
                   />
                 ) : (
-                  <div className="flex aspect-[4/5] w-full items-end rounded-tl-[40px] rounded-br-[40px] bg-surfaceAlt p-6">
+                  <div className="flex aspect-[4/5] w-full items-end rounded-tr-[50px] rounded-bl-[50px] bg-surfaceAlt p-6">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                         Portrait
