@@ -4,31 +4,7 @@ import { MarkdownBody } from '../../lib/markdown';
 import { Container } from '../ui/Container';
 import { Reveal } from '../ui/Reveal';
 import { SectionHeading } from '../ui/SectionHeading';
-import { SectionIcon, type IconName } from '../ui/SectionIcon';
 import { Skeleton } from '../ui/Skeleton';
-
-const ENGINEERING_PILLARS: Array<{ title: string; detail: string; icon: IconName }> = [
-  {
-    title: 'Full-Stack MERN & TypeScript',
-    detail: 'React 18, Node.js, Express, MongoDB, and strict Zod validation.',
-    icon: 'layers',
-  },
-  {
-    title: 'RAG, Claude & Agentic AI',
-    detail: 'AI automation, LLM workflows, and safer, faster development.',
-    icon: 'cpu',
-  },
-  {
-    title: 'Security & Access Control',
-    detail: 'JWT session revocation, RBAC permissions, and API hardening.',
-    icon: 'shield',
-  },
-  {
-    title: 'Production Performance',
-    detail: 'Sub-2s page loads, React Query caching, and Core Web Vitals.',
-    icon: 'zap',
-  },
-];
 
 export function About() {
   const { data: profile, isLoading } = usePublicProfile();
@@ -64,20 +40,12 @@ export function About() {
               )}
             </div>
 
-            <div className="lg:col-span-6">
-              <div className="divide-y divide-border rounded-card border border-border bg-surface">
-                {ENGINEERING_PILLARS.map((item) => (
-                  <div key={item.title} className="flex items-center gap-3.5 p-4">
-                    <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-input border border-border bg-surfaceAlt text-accent">
-                      <SectionIcon name={item.icon} className="h-4 w-4" />
-                    </span>
-                    <div>
-                      <h3 className="text-sm font-semibold text-textPrimary">{item.title}</h3>
-                      <p className="text-xs text-textMuted">{item.detail}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            <div className="flex justify-center lg:col-span-6">
+              <img
+                src="/images/about-me-visual.svg"
+                alt="Full-stack engineering workflow and architecture visual"
+                className="h-auto w-full max-w-lg object-contain"
+              />
             </div>
           </div>
         </Reveal>
