@@ -37,7 +37,7 @@ export function Footer() {
               <Link
                 key={link.to}
                 to={link.to}
-                className="text-sm text-textMuted transition-colors duration-fast hover:text-textPrimary"
+                className="text-sm text-textMuted transition-colors duration-fast hover:text-accent"
               >
                 {link.label}
               </Link>
