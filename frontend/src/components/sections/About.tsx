@@ -36,7 +36,7 @@ export function About() {
     <section id="about" className="border-t border-border py-12 lg:py-14">
       <Container>
         <Reveal>
-          <div className="grid items-start gap-8 lg:grid-cols-12">
+          <div className="grid items-center gap-8 lg:grid-cols-12">
             <div className="lg:col-span-6">
               <SectionHeading
                 eyebrow="About Me"
