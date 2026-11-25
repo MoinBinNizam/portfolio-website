@@ -100,17 +100,17 @@ export function Hero() {
             </div>
 
             <div className="order-1 lg:order-2 lg:col-span-5">
-              <div className="mx-auto w-full max-w-[230px] sm:max-w-[270px] lg:max-w-[340px]">
+              <div className="mx-auto w-full max-w-[260px] sm:max-w-[310px] lg:max-w-[380px]">
                 {profile?.avatar?.url ? (
                   <img
                     src={profile.avatar.url}
                     alt={profile.avatar.alt || `${profile.name} portrait`}
                     width={profile.avatar.width ?? 600}
                     height={profile.avatar.height ?? 700}
-                    className="h-auto w-full object-contain"
+                    className="h-auto w-full rounded-tl-[40px] rounded-br-[40px] object-contain"
                   />
                 ) : (
-                  <div className="flex aspect-[4/5] w-full items-end rounded-card bg-surfaceAlt p-6">
+                  <div className="flex aspect-[4/5] w-full items-end rounded-tl-[40px] rounded-br-[40px] bg-surfaceAlt p-6">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                         Portrait
