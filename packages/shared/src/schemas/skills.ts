@@ -5,6 +5,7 @@ export const SkillCategorySchema = z.enum([
   'frontend',
   'backend',
   'database',
+  'ai',
   'tools',
   'design',
   'cms',

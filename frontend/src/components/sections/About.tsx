@@ -13,8 +13,8 @@ const ENGINEERING_PILLARS: Array<{ title: string; detail: string; icon: IconName
     icon: 'layers',
   },
   {
-    title: 'AI-Assisted Engineering',
-    detail: 'Integrating Claude AI, Gemini CLI, and LLM APIs for faster delivery.',
+    title: 'RAG, Claude & Agentic AI',
+    detail: 'AI automation, LLM workflows, and safer, faster development.',
     icon: 'cpu',
   },
   {
@@ -51,14 +51,10 @@ export function About() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <p className="max-w-[65ch] text-base font-medium leading-relaxed text-textPrimary">
-                    {profile?.intro ??
-                      'Seeking a Full-Stack Software Engineer role where I can apply my experience in MERN, React 18, Node.js, TypeScript, and AI-assisted workflows to build scalable, secure, and user-focused web applications for global teams.'}
-                  </p>
                   <MarkdownBody
                     content={
                       profile?.about ??
-                      "I'm Moin Uddin, and I genuinely enjoy turning complex business ideas into clean, fast, and reliable software. My journey started with WordPress, PHP, and MySQL business platforms, grew through conversion-focused web engineering, and expanded into full-stack React 18, Node.js, Express, and MongoDB systems including enterprise inventory, POS, and cooperative finance platforms.\n\nAlongside shipping products, I've mentored learners in Python, Django, web design, and freelancing, helping students build real-world technical confidence. From leading full-stack delivery at TechVelly and collaborating with engineering teams in Dhaka to supporting remote clients, every project has taught me to value readable architecture and thoughtful user experience.\n\nGreat software feels effortless to use and easy to maintain. That's what drives me every day."
+                      "I'm Moin Uddin, a Full-Stack Web Developer building scalable MERN, TypeScript, and WordPress applications. I genuinely enjoy turning complex business ideas into clean, fast, and reliable software.\n\nMy journey started with WordPress, PHP, and MySQL business platforms, grew through conversion-focused web engineering, and expanded into full-stack React 18, Node.js, Express, and MongoDB systems including enterprise inventory, POS, and cooperative finance platforms. I am also skilled in RAG, AI Automation, Claude, and Agentic AI development for safer, faster software delivery.\n\nAlongside shipping products, I've mentored learners in programming, school ICT, and web development, helping students build real-world technical confidence. From leading full-stack delivery at TechVelly and collaborating with engineering teams in Dhaka to supporting remote clients, every project has taught me to value readable architecture and thoughtful user experience.\n\nGreat software feels effortless to use and easy to maintain. That's what drives me every day."
                     }
                   />
                 </div>

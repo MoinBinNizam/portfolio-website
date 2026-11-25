@@ -5,7 +5,7 @@ const SkillSchema = new Schema(
     name: { type: String, required: true, maxlength: 80 },
     category: {
       type: String,
-      enum: ['frontend', 'backend', 'database', 'tools', 'design', 'cms'],
+      enum: ['frontend', 'backend', 'database', 'ai', 'tools', 'design', 'cms'],
       default: 'frontend',
     },
     level: { type: Number, min: 1, max: 5, default: 3 },

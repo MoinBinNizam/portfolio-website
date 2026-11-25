@@ -10,6 +10,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   frontend: 'Frontend',
   backend: 'Backend',
   database: 'Database',
+  ai: 'AI, RAG & Automation',
   tools: 'Tools & DevOps',
   design: 'Design',
   cms: 'CMS',
