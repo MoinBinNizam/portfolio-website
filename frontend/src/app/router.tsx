@@ -4,6 +4,7 @@ import { EducationListPage } from '../admin/collections/education/EducationListP
 import { ExperienceEditorPage } from '../admin/collections/experience/ExperienceEditorPage';
 import { ExperienceListPage } from '../admin/collections/experience/ExperienceListPage';
 import { CollectionStubPage } from '../pages/CollectionStubPage';
+import { ContactPage } from '../pages/ContactPage';
 import { EducationPage } from '../pages/EducationPage';
 import { ExperiencePage } from '../pages/ExperiencePage';
 import { HomePage } from '../pages/HomePage';
@@ -124,14 +125,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/contact',
-    element: (
-      <CollectionStubPage
-        eyebrow="Contact"
-        title="Get in touch"
-        description="Send a message with your project details and timeline."
-        path="/contact"
-      />
-    ),
+    element: <ContactPage />,
   },
   { path: '*', element: <NotFoundPage /> },
 ]);
