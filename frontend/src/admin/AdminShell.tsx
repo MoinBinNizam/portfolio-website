@@ -7,6 +7,8 @@ import { ThemeToggle } from '../theme/ThemeToggle';
 const ADMIN_LINKS = [
   { label: 'Experience', to: '/admin/experience' },
   { label: 'Education', to: '/admin/education' },
+  { label: 'Certifications', to: '/admin/certifications' },
+  { label: 'Achievements', to: '/admin/achievements' },
 ];
 
 export function AdminShell({ title, children }: { title: string; children: ReactNode }) {

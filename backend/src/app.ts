@@ -3,10 +3,19 @@ import mongoose from 'mongoose';
 import { errorHandler } from './middleware/errorHandler.js';
 import { notFoundHandler } from './middleware/notFound.js';
 import { applySecurityMiddleware } from './middleware/security.js';
+import {
+  achievementsAdminRouter,
+  achievementsPublicRouter,
+} from './modules/achievements/routes.js';
+import {
+  certificationsAdminRouter,
+  certificationsPublicRouter,
+} from './modules/certifications/routes.js';
 import { contactPublicRouter, messagesAdminRouter } from './modules/contact/routes.js';
 import { educationAdminRouter, educationPublicRouter } from './modules/education/routes.js';
 import { experienceAdminRouter, experiencePublicRouter } from './modules/experience/routes.js';
 import { publicRouter } from './modules/public/routes.js';
+import { uploadsAdminRouter } from './modules/uploads/routes.js';
 
 export function createApp(): Express {
   const app = express();
@@ -26,9 +35,14 @@ export function createApp(): Express {
 
   app.use('/api/experience', experiencePublicRouter);
   app.use('/api/education', educationPublicRouter);
+  app.use('/api/certifications', certificationsPublicRouter);
+  app.use('/api/achievements', achievementsPublicRouter);
   app.use('/api/contact', contactPublicRouter);
   app.use('/api/admin/experience', experienceAdminRouter);
   app.use('/api/admin/education', educationAdminRouter);
+  app.use('/api/admin/certifications', certificationsAdminRouter);
+  app.use('/api/admin/achievements', achievementsAdminRouter);
+  app.use('/api/admin/uploads', uploadsAdminRouter);
   app.use('/api/admin/messages', messagesAdminRouter);
   app.use('/api', publicRouter);
 

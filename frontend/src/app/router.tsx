@@ -1,8 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { AchievementEditorPage } from '../admin/collections/achievements/AchievementEditorPage';
+import { AchievementsListPage } from '../admin/collections/achievements/AchievementsListPage';
+import { CertificationEditorPage } from '../admin/collections/certifications/CertificationEditorPage';
+import { CertificationsListPage } from '../admin/collections/certifications/CertificationsListPage';
 import { EducationEditorPage } from '../admin/collections/education/EducationEditorPage';
 import { EducationListPage } from '../admin/collections/education/EducationListPage';
 import { ExperienceEditorPage } from '../admin/collections/experience/ExperienceEditorPage';
 import { ExperienceListPage } from '../admin/collections/experience/ExperienceListPage';
+import { AchievementsPage } from '../pages/AchievementsPage';
+import { CertificationsPage } from '../pages/CertificationsPage';
 import { CollectionStubPage } from '../pages/CollectionStubPage';
 import { ContactPage } from '../pages/ContactPage';
 import { EducationPage } from '../pages/EducationPage';
@@ -31,32 +37,22 @@ export const router = createBrowserRouter([
     path: '/education',
     element: <EducationPage />,
   },
+  {
+    path: '/certifications',
+    element: <CertificationsPage />,
+  },
+  {
+    path: '/achievements',
+    element: <AchievementsPage />,
+  },
   { path: '/admin/experience', element: <ExperienceListPage /> },
   { path: '/admin/experience/:id', element: <ExperienceEditorPage /> },
   { path: '/admin/education', element: <EducationListPage /> },
   { path: '/admin/education/:id', element: <EducationEditorPage /> },
-  {
-    path: '/certifications',
-    element: (
-      <CollectionStubPage
-        eyebrow="Certifications"
-        title="Verified credentials"
-        description="Professional certifications with verification links and certificate viewer."
-        path="/certifications"
-      />
-    ),
-  },
-  {
-    path: '/achievements',
-    element: (
-      <CollectionStubPage
-        eyebrow="Achievements"
-        title="Awards & recognition"
-        description="Competitions, publications, speaking engagements, and awards."
-        path="/achievements"
-      />
-    ),
-  },
+  { path: '/admin/certifications', element: <CertificationsListPage /> },
+  { path: '/admin/certifications/:id', element: <CertificationEditorPage /> },
+  { path: '/admin/achievements', element: <AchievementsListPage /> },
+  { path: '/admin/achievements/:id', element: <AchievementEditorPage /> },
   {
     path: '/projects',
     element: (
