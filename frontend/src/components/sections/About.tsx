@@ -8,23 +8,23 @@ import { Skeleton } from '../ui/Skeleton';
 
 const ENGINEERING_PILLARS: Array<{ title: string; detail: string; icon: IconName }> = [
   {
-    title: 'Clean MERN & TypeScript',
-    detail: 'Strict types, Zod validation, modular React 18.',
+    title: 'Full-Stack MERN & TypeScript',
+    detail: 'React 18, Node.js, Express, MongoDB, and strict Zod validation.',
     icon: 'layers',
   },
   {
-    title: 'AI-Ready Workflows',
-    detail: 'LLM APIs, Claude & Gemini automation.',
+    title: 'AI-Assisted Engineering',
+    detail: 'Integrating Claude AI, Gemini CLI, and LLM APIs for faster delivery.',
     icon: 'cpu',
   },
   {
-    title: 'Security-First APIs',
-    detail: 'JWT auth, RBAC, auditable data flows.',
+    title: 'Security & Access Control',
+    detail: 'JWT session revocation, RBAC permissions, and API hardening.',
     icon: 'shield',
   },
   {
-    title: 'Fast Web Performance',
-    detail: 'Sub-2s loads, Core Web Vitals, SEO.',
+    title: 'Production Performance',
+    detail: 'Sub-2s page loads, React Query caching, and Core Web Vitals.',
     icon: 'zap',
   },
 ];
@@ -51,19 +51,14 @@ export function About() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <div className="rounded-input border-l-2 border-accent bg-surfaceAlt/50 px-4 py-3">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-accent">
-                      Career Objective
-                    </p>
-                    <p className="mt-1 text-sm leading-relaxed text-textPrimary">
-                      {profile?.intro ??
-                        'Seeking a Full-Stack Software Engineer role where I can apply my experience in MERN, React 18, Node.js, TypeScript, and AI-assisted workflows to build scalable, secure, and user-focused web applications for global teams.'}
-                    </p>
-                  </div>
+                  <p className="max-w-[65ch] text-base font-medium leading-relaxed text-textPrimary">
+                    {profile?.intro ??
+                      'Seeking a Full-Stack Software Engineer role where I can apply my experience in MERN, React 18, Node.js, TypeScript, and AI-assisted workflows to build scalable, secure, and user-focused web applications for global teams.'}
+                  </p>
                   <MarkdownBody
                     content={
                       profile?.about ??
-                      "I'm Moin Uddin, a Full-Stack Web Developer building scalable MERN, TypeScript, and WordPress applications. I genuinely enjoy turning complex business ideas into clean, fast, and reliable software.\n\nMy journey started with WordPress, PHP, and MySQL business platforms, grew through conversion-focused web engineering, and expanded into full-stack React 18, Node.js, Express, and MongoDB systems including enterprise inventory, POS, and cooperative finance platforms. Alongside shipping products, I've mentored learners in Python, Django, web design, and freelancing.\n\nFrom leading full-stack delivery at TechVelly and collaborating with engineering teams in Dhaka to supporting remote clients, every project has taught me to value readable architecture and thoughtful user experience.\n\nGreat software feels effortless to use and easy to maintain. That's what drives me every day."
+                      "I'm Moin Uddin, and I genuinely enjoy turning complex business ideas into clean, fast, and reliable software. My journey started with WordPress, PHP, and MySQL business platforms, grew through conversion-focused web engineering, and expanded into full-stack React 18, Node.js, Express, and MongoDB systems including enterprise inventory, POS, and cooperative finance platforms.\n\nAlongside shipping products, I've mentored learners in Python, Django, web design, and freelancing, helping students build real-world technical confidence. From leading full-stack delivery at TechVelly and collaborating with engineering teams in Dhaka to supporting remote clients, every project has taught me to value readable architecture and thoughtful user experience.\n\nGreat software feels effortless to use and easy to maintain. That's what drives me every day."
                     }
                   />
                 </div>
