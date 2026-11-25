@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
 import {
+  usePublicAchievements,
+  usePublicCertifications,
   usePublicEducation,
   usePublicExperience,
   usePublicProfile,
   usePublicProjects,
   usePublicSkills,
 } from '../../features/public/queries';
+import { downloadStructuredCv } from '../../lib/cvGenerator';
 import { SocialLinksBar } from '../layout/SocialLinksBar';
 import { Container } from '../ui/Container';
 import { Reveal } from '../ui/Reveal';
@@ -18,6 +21,8 @@ export function Hero() {
   const { data: education } = usePublicEducation();
   const { data: projects } = usePublicProjects();
   const { data: skills } = usePublicSkills();
+  const { data: achievements } = usePublicAchievements();
+  const { data: certifications } = usePublicCertifications();
 
   const handleDownloadCv = () => {
     if (profile?.resumeUrl) {
@@ -25,44 +30,15 @@ export function Hero() {
       return;
     }
 
-    const lines = [
-      `${profile?.name ?? 'Moin Uddin'}`,
-      `${profile?.headline ?? 'Full-Stack Web Developer'}`,
-      `${profile?.email ?? 'moinuddinpkt@gmail.com'} | ${profile?.location ?? 'Dhaka, Bangladesh'}`,
-      '',
-      'SUMMARY',
-      profile?.intro ?? '',
-      '',
-      'EXPERIENCE',
-      ...(experience ?? []).map(
-        (e) =>
-          `- ${e.role} | ${e.company} (${e.startDate.slice(0, 7)} to ${
-            e.isCurrent ? 'Present' : (e.endDate ?? '').slice(0, 7)
-          })\n  ${e.description}`,
-      ),
-      '',
-      'PROJECTS',
-      ...(projects ?? []).map((p) => `- ${p.title}: ${p.summary}`),
-      '',
-      'EDUCATION',
-      ...(education ?? []).map(
-        (ed) =>
-          `- ${ed.degree}${ed.field ? ` (${ed.field})` : ''} — ${ed.institution}${
-            ed.grade ? ` [${ed.grade}]` : ''
-          } (${ed.endYear ?? 'Present'})`,
-      ),
-      '',
-      'SKILLS',
-      (skills ?? []).map((s) => s.name).join(', '),
-    ];
-
-    const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Moin_Uddin_CV.txt';
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadStructuredCv({
+      profile,
+      experience: experience ?? [],
+      projects: projects ?? [],
+      skills: skills ?? [],
+      education: education ?? [],
+      achievements: achievements ?? [],
+      certifications: certifications ?? [],
+    });
   };
 
   return (
