@@ -9,6 +9,7 @@ import {
   usePublicSkills,
 } from '../../features/public/queries';
 import { downloadStructuredCv } from '../../lib/cvGenerator';
+import { calculateTotalExperienceDuration } from '../../lib/experience';
 import { SocialLinksBar } from '../layout/SocialLinksBar';
 import { Container } from '../ui/Container';
 import { Reveal } from '../ui/Reveal';
@@ -24,6 +25,7 @@ export function Hero() {
   const { data: skills } = usePublicSkills();
   const { data: achievements } = usePublicAchievements();
   const { data: certifications } = usePublicCertifications();
+  const totalDuration = calculateTotalExperienceDuration(experience ?? []);
 
   const handleDownloadCv = () => {
     if (profile?.resumeUrl) {
@@ -67,6 +69,12 @@ export function Hero() {
                     <TypewriterText
                       text={profile?.headline ?? 'Full-Stack MERN & TypeScript Developer'}
                     />
+                  </p>
+                  <p className="mx-auto mt-4 line-clamp-3 max-w-[60ch] text-sm leading-relaxed text-textMuted sm:text-base lg:mx-0">
+                    Full-Stack Web Developer
+                    {totalDuration ? ` with ${totalDuration} of experience` : ''} delivering
+                    scalable MERN, TypeScript, and WordPress platforms. Shipped enterprise
+                    inventory, POS, and finance systems with AI-assisted workflows.
                   </p>
                 </>
               )}
