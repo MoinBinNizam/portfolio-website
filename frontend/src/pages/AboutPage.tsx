@@ -73,7 +73,7 @@ export function AboutPage() {
                     alt={profile.avatar.alt || `${profile.name} portrait`}
                     width={profile.avatar.width ?? 600}
                     height={profile.avatar.height ?? 700}
-                    className="aspect-[4/5] w-full rounded-card object-cover"
+                    className="h-auto w-full object-contain"
                   />
                 ) : (
                   <div className="flex aspect-[4/5] w-full items-end rounded-card bg-surfaceAlt p-6">

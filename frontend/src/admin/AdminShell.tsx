@@ -175,8 +175,8 @@ export function AdminShell({ title, children }: { title: string; children: React
         <main className="mx-auto w-full max-w-5xl flex-1 p-5 sm:p-8 lg:p-10">{children}</main>
 
         <footer className="border-t border-border bg-surface px-4 py-3 text-center text-xs text-textMuted sm:px-6 lg:px-8">
-          &copy; {new Date().getFullYear()} Moin Uddin. All rights reserved. Designed &amp;
-          Developed by Moin Uddin.
+          &copy; {new Date().getFullYear()} Moin Uddin. Designed, developed &amp; maintained with
+          care. All rights reserved.
         </footer>
       </div>
     </div>

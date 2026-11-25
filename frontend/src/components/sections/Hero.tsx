@@ -14,6 +14,7 @@ import { Container } from '../ui/Container';
 import { Reveal } from '../ui/Reveal';
 import { SectionIcon } from '../ui/SectionIcon';
 import { Skeleton } from '../ui/Skeleton';
+import { TypewriterText } from '../ui/TypewriterText';
 
 export function Hero() {
   const { data: profile, isLoading } = usePublicProfile();
@@ -62,8 +63,10 @@ export function Hero() {
                   <h1 className="text-4xl font-bold tracking-tight text-textPrimary sm:text-5xl">
                     {profile?.name ?? 'Moin Uddin'}
                   </h1>
-                  <p className="mt-3 text-xl font-medium text-textMuted sm:text-2xl">
-                    {profile?.headline ?? 'Full-Stack MERN & TypeScript Developer'}
+                  <p className="mt-3 min-h-[2.75rem] text-sm font-medium text-textMuted sm:min-h-[2rem] sm:text-lg lg:text-xl">
+                    <TypewriterText
+                      text={profile?.headline ?? 'Full-Stack MERN & TypeScript Developer'}
+                    />
                   </p>
                   <p className="mx-auto mt-5 max-w-[65ch] text-base text-textMuted lg:mx-0">
                     {profile?.intro ??
@@ -101,14 +104,14 @@ export function Hero() {
             </div>
 
             <div className="order-1 lg:order-2 lg:col-span-5">
-              <div className="mx-auto w-full max-w-[230px] sm:max-w-[270px] lg:max-w-[320px]">
+              <div className="mx-auto w-full max-w-[230px] sm:max-w-[270px] lg:max-w-[340px]">
                 {profile?.avatar?.url ? (
                   <img
                     src={profile.avatar.url}
                     alt={profile.avatar.alt || `${profile.name} portrait`}
                     width={profile.avatar.width ?? 600}
                     height={profile.avatar.height ?? 700}
-                    className="aspect-[4/5] w-full rounded-card object-cover"
+                    className="h-auto w-full object-contain"
                   />
                 ) : (
                   <div className="flex aspect-[4/5] w-full items-end rounded-card bg-surfaceAlt p-6">
