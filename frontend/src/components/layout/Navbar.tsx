@@ -21,7 +21,7 @@ export function Navbar() {
     <>
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm">
         <Container className="flex items-center justify-between gap-4 py-3">
-          <BrandLogo className="h-8 w-auto shrink-0 sm:h-9" />
+          <BrandLogo className="h-9 w-auto shrink-0 sm:h-11" />
 
           <div className="ml-auto flex items-center gap-6">
             <nav aria-label="Primary navigation" className="hidden items-center gap-6 lg:flex">

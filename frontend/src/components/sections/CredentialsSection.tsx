@@ -30,7 +30,7 @@ export function CredentialsSection() {
               <SectionHeading
                 eyebrow="Education"
                 icon="graduation"
-                title="BSc (Hons) in Computing &amp; Academic Qualifications"
+                title="Academic Qualifications"
               />
               <Link
                 to="/education"
