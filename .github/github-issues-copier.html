@@ -1,0 +1,255 @@
+Portfolio MVP — GitHub Issues (#1–#85)
+#1: Scaffold pnpm monorepo and tooling (Day 1) [type:chore,area:shared]
+pnpm dev runs both apps; lint, typecheck, build pass (Day 1)
+
+#2: Define dark and light design tokens and Tailwind mapping (Day 1) [area:theme]
+Both themes defined from design-tokens.json, no hex in components
+
+#3: ThemeProvider, ThemeToggle and pre-paint theme script (Day 1) [area:theme]
+Toggle persists after reload with no flash
+
+#4: Base UI primitives (Day 1) [area:frontend]
+Button, Card, Badge, Input, Textarea, Select, Modal, Toast, Skeleton, Tabs, Pagination, EmptyState, Container, SectionHeading render in both themes
+
+#5: Express skeleton with security middleware, env validation, DB connection and health route (Day 1) [area:backend]
+GET /api/health returns 200
+
+#6: Zod schemas for every collection (Day 1) [area:shared]
+Schemas exported from packages/shared
+
+#7: Mongoose models for every collection (Day 1) [area:backend]
+Models validate and save test records
+
+#8: create-owner script and seed skeleton (Day 1) [area:backend]
+Owner account created by script
+
+#9: Day 1 exit check (Day 1) [owner-check]
+Owner compares colours, fonts and buttons in both themes with live site
+
+#10: Router, PageShell, Navbar with anchor links (Day 2) [area:frontend]
+Navigation works at 360px and 1440px
+
+#11: MobileMenu, Footer and BackToTop (Day 2) [area:frontend]
+Menu includes theme toggle; footer links work
+
+#12: Hero section (Day 2) [area:public]
+Asymmetric layout with portrait and caption, per design-system skill
+
+#13: About section (Day 2) [area:public]
+Intro, how-I-work points and link to /about
+
+#14: Public read endpoints for all collections (Day 2) [area:backend]
+Public endpoints return published items only
+
+#15: Home section scaffolds with skeleton and empty states (Day 2) [area:public]
+All home sections render with seed data
+
+#16: SEO helper: title, description, Open Graph, Person JSON-LD (Day 2) [area:frontend]
+Metadata present on home
+
+#17: Day 2 exit check (Day 2) [owner-check]
+Owner reviews home in both themes on phone and desktop
+
+#18: Experience module (API, reorder, tests) (Day 3) [type:feature,area:backend,area:admin]
+Follows portfolio-crud-module; API tests pass
+
+#19: Education module (API, reorder, tests) (Day 3) [type:feature,area:backend,area:admin]
+Follows portfolio-crud-module; API tests pass
+
+#20: Experience admin list and editor (Day 3) [area:admin]
+Create, edit, reorder, hide, delete
+
+#21: Education admin list and editor (Day 3) [area:admin]
+Create, edit, reorder, hide, delete
+
+#22: /experience page and home section (Day 3) [area:public]
+Published items in order
+
+#23: /education page and home section (Day 3) [area:public]
+Published items in order
+
+#24: Timeline component (Day 3) [area:frontend]
+Single vertical line, date labels, responsive, both themes
+
+#25: Day 3 exit check (Day 3) [owner-check]
+Owner adds one experience and one education entry and sees them publicly
+
+#26: Upload service (Day 4) [area:backend]
+MIME and magic-byte checks, 10 MB limit, Cloudinary upload, delete on record removal
+
+#27: Certifications module (Day 4) [type:feature,area:backend]
+API tests pass including file handling
+
+#28: Achievements module (Day 4) [type:feature,area:backend]
+API tests pass
+
+#29: Certifications admin list and editor with file field (Day 4) [area:admin]
+Owner uploads a PDF and an image
+
+#30: Achievements admin list and editor (Day 4) [area:admin]
+Category field, image optional
+
+#31: /certifications page with viewer (Day 4) [area:public]
+Images and PDFs open in viewer; verify link works
+
+#32: /achievements page with category filter and home sections (Day 4) [area:public]
+Filter chips work; latest three on home
+
+#33: Day 4 exit check (Day 4) [owner-check]
+Owner uploads a certificate, sees it publicly, then deletes it
+
+#34: Auth module: login, bcrypt, JWT cookie, lockout, logout, me (Day 5) [type:feature,area:backend]
+Lockout after 5 failures for 15 minutes; auth tests pass
+
+#35: Admin layout, RequireOwner guard and login page (Day 5) [area:admin]
+Logged-out visits redirect to login
+
+#36: Dashboard with counts and unread messages (Day 5) [area:admin]
+Counts match database
+
+#37: Profile editor (Day 5) [area:admin]
+Changes appear on home after reload
+
+#38: Shared form fields: ImageField, FileField, MarkdownField, TagsField (Day 5) [area:admin]
+Image resized to 2000px and converted to WebP; Markdown preview works
+
+#39: Rate limits and security headers (Day 5) [area:backend]
+Login, contact and upload limits enforced; Helmet configured
+
+#40: Day 5 exit check (Day 5) [owner-check]
+Owner logs in, edits profile, sees change; lockout confirmed
+
+#41: Projects module with gallery and reorder (Day 6) [type:feature,area:backend]
+Drafts hidden publicly; tests pass
+
+#42: Projects admin list and editor (Day 6) [area:admin]
+Gallery uploads, case study Markdown, featured flag
+
+#43: /projects page with category filter and search (Day 6) [area:public]
+Filter and search work in both themes
+
+#44: /projects/:slug detail page (Day 6) [area:public]
+Gallery, stack, links, related projects, browser frame for screenshots
+
+#45: Skills module with level and reorder (Day 6) [type:feature,area:backend]
+Levels 1 to 5 validated
+
+#46: Skills admin list and editor (Day 6) [area:admin]
+Owner edits skills grouped by category
+
+#47: Skills and Projects home sections (Day 6) [area:public]
+Level indicators, not percentages
+
+#48: Day 6 exit check (Day 6) [owner-check]
+Owner publishes a project with three screenshots; checks detail page on phone
+
+#49: Services module and admin (Day 7) [type:feature,area:backend,area:admin]
+Owner edits services; services section on home
+
+#50: Testimonials module and admin (Day 7) [type:feature,area:backend,area:admin]
+Rating, avatar, verified flag
+
+#51: Testimonial carousel (Day 7) [area:public]
+Keyboard arrows; pause on hover and focus; reduced-motion respected
+
+#52: Contact endpoint (Day 7) [type:feature,area:backend]
+Validation, honeypot, 5 per hour per IP, email notification
+
+#53: Contact page and home section (Day 7) [area:public]
+Form shows field errors and success state
+
+#54: Messages inbox (Day 7) [area:admin]
+List, read, mark read; unread count on dashboard
+
+#55: Day 7 exit check (Day 7) [owner-check]
+Owner submits form from second device, receives email, marks read
+
+#56: Blog module (Day 8) [type:feature,area:backend,area:blog]
+Slug, excerpt, reading time, tags, publish, unpublish, search, pagination; drafts hidden
+
+#57: Blog admin editor with Markdown preview and image upload (Day 8) [area:admin,area:blog]
+Required alt text; cover image; SEO panel
+
+#58: /blog listing with tag filter, search and pagination (Day 8) [area:blog,area:public]
+9 posts per page
+
+#59: /blog/:slug post page (Day 8) [area:blog,area:public]
+Sanitized body, code highlighting, previous and next
+
+#60: /blog/tag/:tag page (Day 8) [area:blog,area:public]
+Posts with one tag
+
+#61: Blog preview on home (Day 8) [area:public]
+Latest three published posts
+
+#62: BlogPosting JSON-LD, sitemap entries and RSS feed (Day 8) [area:blog]
+Feed validates
+
+#63: Markdown script tag does not execute (Day 8) [type:test,area:blog]
+Test passes
+
+#64: Day 8 exit check (Day 8) [owner-check]
+Owner writes post with image, previews, publishes, sees it on /blog
+
+#65: Responsive pass at 360px, 768px and 1440px in both themes (Day 9) [type:chore,area:frontend]
+No layout breaks
+
+#66: Accessibility pass: axe, keyboard, focus, contrast (Day 9) [type:chore,area:frontend]
+No critical or serious violations on public pages
+
+#67: SEO: per-page metadata, sitemap, robots.txt, 404 page (Day 9) [area:frontend]
+Metadata on every public page
+
+#68: Complete API test suite (Day 9) [type:test,area:backend]
+All collections, auth, uploads, contact, blog covered
+
+#69: Playwright smoke suite in both themes (Day 9) [type:test,area:frontend]
+e2e/public.spec.ts and e2e/admin.spec.ts pass; screenshots saved
+
+#70: Performance pass (Day 9) [type:perf]
+Code splitting for admin, image sizes, font preload; Lighthouse performance 85+ locally
+
+#71: Day 9 exit check (Day 9) [owner-check]
+Owner reviews test screenshots in both themes
+
+#72: Load real content through admin (Day 10) [type:chore,area:admin]
+No placeholder text anywhere
+
+#73: Production owner account, password change, Atlas backups (Day 10) [type:chore]
+Login works on production
+
+#74: Deploy API and frontend, DNS and HTTPS (Day 10) [type:chore]
+Both domains load over HTTPS
+
+#75: 301 redirects for WordPress project URLs (Day 10) [type:chore]
+curl shows 301 to new URLs
+
+#76: Production smoke test (Day 10) [type:test]
+Home, sections, project, post, contact, admin login all pass
+
+#77: Admin guide and handover (Day 10) [type:docs]
+One-page guide; credentials in password manager
+
+#78: Submit sitemap to Search Console (Day 10) [type:chore,area:frontend]
+Accepted; WordPress kept 30 days
+
+#79: Owner acceptance sign-off (Day 10) [owner-check]
+Checklist in DEVELOPMENT_PLAN.md section 8 signed
+
+#80: Scheduled blog publishing (Phase 2) [phase-2,type:feature,area:blog]
+Server job publishes at scheduledAt
+
+#81: Blog autosave, table of contents, related posts, share buttons (Phase 2) [phase-2,type:feature,area:blog]
+Each works in editor and post page
+
+#82: Full Playwright suite for every admin flow (Phase 2) [phase-2,type:test]
+All admin flows covered
+
+#83: Lighthouse 90+ and full screen reader pass (Phase 2) [phase-2,type:perf]
+Targets met
+
+#84: WordPress blog URL redirects (Phase 2) [phase-2,type:feature]
+Only if old blog posts exist
+
+#85: Optional analytics, newsletter, comments (Phase 2) [phase-2,type:feature]
+Scoped separately

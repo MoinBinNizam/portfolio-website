@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import { errorHandler } from './middleware/errorHandler.js';
 import { notFoundHandler } from './middleware/notFound.js';
 import { applySecurityMiddleware } from './middleware/security.js';
+import { publicRouter } from './modules/public/routes.js';
 
 export function createApp(): Express {
   const app = express();
@@ -19,6 +20,8 @@ export function createApp(): Express {
       },
     });
   });
+
+  app.use('/api', publicRouter);
 
   app.use(notFoundHandler);
   app.use(errorHandler);
