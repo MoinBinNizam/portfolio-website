@@ -15,7 +15,7 @@ export function DashboardPage() {
     { label: 'Achievements', count: counts?.achievements ?? 0, to: '/admin/achievements' },
     { label: 'Projects', count: counts?.projects ?? 0, to: '/admin/projects' },
     { label: 'Skills', count: counts?.skills ?? 0, to: '/admin/skills' },
-    { label: 'Services', count: counts?.services ?? 0, to: '/#services' },
+    { label: 'Services', count: counts?.services ?? 0, to: '/admin/services' },
     { label: 'Blog Posts', count: counts?.posts ?? 0, to: '/blog' },
     {
       label: 'Unread Messages',

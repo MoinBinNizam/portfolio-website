@@ -13,6 +13,8 @@ import { ExperienceEditorPage } from '../admin/collections/experience/Experience
 import { ExperienceListPage } from '../admin/collections/experience/ExperienceListPage';
 import { ProjectEditorPage } from '../admin/collections/projects/ProjectEditorPage';
 import { ProjectsListPage } from '../admin/collections/projects/ProjectsListPage';
+import { ServiceEditorPage } from '../admin/collections/services/ServiceEditorPage';
+import { ServicesListPage } from '../admin/collections/services/ServicesListPage';
 import { SkillEditorPage } from '../admin/collections/skills/SkillEditorPage';
 import { SkillsListPage } from '../admin/collections/skills/SkillsListPage';
 import { AchievementsPage } from '../pages/AchievementsPage';
@@ -25,6 +27,7 @@ import { HomePage } from '../pages/HomePage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 import { ProjectDetailPage } from '../pages/ProjectDetailPage';
 import { ProjectsPage } from '../pages/ProjectsPage';
+import { ServicesPage } from '../pages/ServicesPage';
 import { RequireOwner } from './RequireOwner';
 
 export const router = createBrowserRouter([
@@ -178,6 +181,22 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    path: '/admin/services',
+    element: (
+      <RequireOwner>
+        <ServicesListPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/services/:id',
+    element: (
+      <RequireOwner>
+        <ServiceEditorPage />
+      </RequireOwner>
+    ),
+  },
+  {
     path: '/projects',
     element: <ProjectsPage />,
   },
@@ -187,14 +206,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/services',
-    element: (
-      <CollectionStubPage
-        eyebrow="Services"
-        title="Engineering services"
-        description="Consulting and full-stack product delivery offerings."
-        path="/services"
-      />
-    ),
+    element: <ServicesPage />,
   },
   {
     path: '/blog',

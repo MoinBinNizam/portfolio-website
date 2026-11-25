@@ -10,6 +10,7 @@ const ADMIN_LINKS = [
   { label: 'Profile & Socials', to: '/admin/profile' },
   { label: 'Projects', to: '/admin/projects' },
   { label: 'Skills', to: '/admin/skills' },
+  { label: 'Services', to: '/admin/services' },
   { label: 'Experience', to: '/admin/experience' },
   { label: 'Education', to: '/admin/education' },
   { label: 'Certifications', to: '/admin/certifications' },
