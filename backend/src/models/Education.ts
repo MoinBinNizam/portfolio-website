@@ -20,4 +20,5 @@ const EducationSchema = new Schema(
 EducationSchema.index({ status: 1, order: 1 });
 
 export type EducationDoc = InferSchemaType<typeof EducationSchema>;
-export const Education = mongoose.model('Education', EducationSchema);
+export const Education = (mongoose.models.Education ||
+  mongoose.model('Education', EducationSchema)) as mongoose.Model<EducationDoc>;

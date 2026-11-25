@@ -8,3 +8,4 @@ e2e/screenshots/
 *.log
 .DS_Store
 coverage/
+backend/uploads/

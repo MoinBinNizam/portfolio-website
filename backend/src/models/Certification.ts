@@ -20,4 +20,5 @@ const CertificationSchema = new Schema(
 CertificationSchema.index({ status: 1, order: 1 });
 
 export type CertificationDoc = InferSchemaType<typeof CertificationSchema>;
-export const Certification = mongoose.model('Certification', CertificationSchema);
+export const Certification = (mongoose.models.Certification ||
+  mongoose.model('Certification', CertificationSchema)) as mongoose.Model<CertificationDoc>;

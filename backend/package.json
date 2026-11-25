@@ -9,7 +9,7 @@
     "start": "node dist/server.js",
     "lint": "eslint src scripts tests",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
+    "test": "vitest run --poolOptions.forks.singleFork",
     "create-owner": "tsx scripts/create-owner.ts",
     "seed": "tsx scripts/seed.ts"
   },

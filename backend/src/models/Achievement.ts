@@ -23,4 +23,5 @@ const AchievementSchema = new Schema(
 AchievementSchema.index({ status: 1, order: 1 });
 
 export type AchievementDoc = InferSchemaType<typeof AchievementSchema>;
-export const Achievement = mongoose.model('Achievement', AchievementSchema);
+export const Achievement = (mongoose.models.Achievement ||
+  mongoose.model('Achievement', AchievementSchema)) as mongoose.Model<AchievementDoc>;

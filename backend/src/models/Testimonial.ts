@@ -19,4 +19,5 @@ const TestimonialSchema = new Schema(
 TestimonialSchema.index({ status: 1, order: 1 });
 
 export type TestimonialDoc = InferSchemaType<typeof TestimonialSchema>;
-export const Testimonial = mongoose.model('Testimonial', TestimonialSchema);
+export const Testimonial = (mongoose.models.Testimonial ||
+  mongoose.model('Testimonial', TestimonialSchema)) as mongoose.Model<TestimonialDoc>;

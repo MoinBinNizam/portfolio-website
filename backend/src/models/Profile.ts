@@ -33,4 +33,5 @@ const ProfileSchema = new Schema(
 );
 
 export type ProfileDoc = InferSchemaType<typeof ProfileSchema>;
-export const Profile = mongoose.model('Profile', ProfileSchema);
+export const Profile = (mongoose.models.Profile ||
+  mongoose.model('Profile', ProfileSchema)) as mongoose.Model<ProfileDoc>;

@@ -16,8 +16,8 @@ export function ImageField({ id, label, value, onChange, error }: ImageFieldProp
       label={label}
       value={value}
       onChange={(next) => onChange(next)}
-      accept="image/png,image/jpeg,image/webp"
-      hint="PNG, JPG, or WebP up to 10 MB (resized to 2000px max width)."
+      accept="image/*"
+      hint="Any image format; automatically resized to 2000px max width and compressed to WebP."
       error={error}
     />
   );

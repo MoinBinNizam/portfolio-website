@@ -18,4 +18,5 @@ const SkillSchema = new Schema(
 SkillSchema.index({ status: 1, order: 1 });
 
 export type SkillDoc = InferSchemaType<typeof SkillSchema>;
-export const Skill = mongoose.model('Skill', SkillSchema);
+export const Skill = (mongoose.models.Skill ||
+  mongoose.model('Skill', SkillSchema)) as mongoose.Model<SkillDoc>;

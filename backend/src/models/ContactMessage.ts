@@ -14,4 +14,5 @@ const ContactMessageSchema = new Schema(
 ContactMessageSchema.index({ createdAt: -1 });
 
 export type ContactMessageDoc = InferSchemaType<typeof ContactMessageSchema>;
-export const ContactMessage = mongoose.model('ContactMessage', ContactMessageSchema);
+export const ContactMessage = (mongoose.models.ContactMessage ||
+  mongoose.model('ContactMessage', ContactMessageSchema)) as mongoose.Model<ContactMessageDoc>;

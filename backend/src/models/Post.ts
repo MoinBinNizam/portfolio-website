@@ -33,4 +33,5 @@ PostSchema.index({ status: 1, publishedAt: -1 });
 PostSchema.index({ tags: 1 });
 
 export type PostDoc = InferSchemaType<typeof PostSchema>;
-export const Post = mongoose.model('Post', PostSchema);
+export const Post = (mongoose.models.Post ||
+  mongoose.model('Post', PostSchema)) as mongoose.Model<PostDoc>;

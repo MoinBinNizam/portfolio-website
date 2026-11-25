@@ -26,4 +26,5 @@ const ExperienceSchema = new Schema(
 ExperienceSchema.index({ status: 1, order: 1 });
 
 export type ExperienceDoc = InferSchemaType<typeof ExperienceSchema>;
-export const Experience = mongoose.model('Experience', ExperienceSchema);
+export const Experience = (mongoose.models.Experience ||
+  mongoose.model('Experience', ExperienceSchema)) as mongoose.Model<ExperienceDoc>;

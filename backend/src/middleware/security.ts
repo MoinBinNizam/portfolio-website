@@ -8,6 +8,7 @@ import { env } from '../config/env.js';
 export function applySecurityMiddleware(app: Express): void {
   app.use(
     helmet({
+      crossOriginResourcePolicy: { policy: 'cross-origin' },
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'"],

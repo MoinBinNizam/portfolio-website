@@ -28,4 +28,5 @@ const ProjectSchema = new Schema(
 ProjectSchema.index({ status: 1, order: 1 });
 
 export type ProjectDoc = InferSchemaType<typeof ProjectSchema>;
-export const Project = mongoose.model('Project', ProjectSchema);
+export const Project = (mongoose.models.Project ||
+  mongoose.model('Project', ProjectSchema)) as mongoose.Model<ProjectDoc>;

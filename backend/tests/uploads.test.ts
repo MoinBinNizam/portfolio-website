@@ -58,4 +58,19 @@ describe('Uploads Module', () => {
     expect(res.body.data.publicId).toBe('portfolio/cert');
     expect(res.body.data.alt).toBe('Certificate scan');
   });
+
+  it('falls back to local storage and cleans up when Cloudinary is not configured', async () => {
+    const validWebp = Buffer.from('RIFF\x00\x00\x00\x00WEBP', 'binary');
+    const res = await request(app)
+      .post('/api/admin/uploads')
+      .set('Cookie', makeAuthCookie())
+      .field('alt', 'Portrait')
+      .attach('file', validWebp, { filename: 'portrait.webp', contentType: 'image/webp' });
+
+    expect(res.status).toBe(201);
+    expect(res.body.data.publicId).toMatch(/^local:/);
+    expect(res.body.data.url).toContain('/uploads/');
+
+    await cloudinaryConfig.deleteFromCloudinary(res.body.data.publicId);
+  });
 });

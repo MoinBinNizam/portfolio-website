@@ -16,4 +16,5 @@ const ServiceSchema = new Schema(
 ServiceSchema.index({ status: 1, order: 1 });
 
 export type ServiceDoc = InferSchemaType<typeof ServiceSchema>;
-export const Service = mongoose.model('Service', ServiceSchema);
+export const Service = (mongoose.models.Service ||
+  mongoose.model('Service', ServiceSchema)) as mongoose.Model<ServiceDoc>;

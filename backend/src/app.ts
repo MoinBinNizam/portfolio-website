@@ -1,5 +1,6 @@
 import express, { type Express } from 'express';
 import mongoose from 'mongoose';
+import { LOCAL_UPLOADS_DIR } from './config/cloudinary.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { notFoundHandler } from './middleware/notFound.js';
 import { applySecurityMiddleware } from './middleware/security.js';
@@ -23,6 +24,7 @@ export function createApp(): Express {
   const app = express();
 
   applySecurityMiddleware(app);
+  app.use('/uploads', express.static(LOCAL_UPLOADS_DIR));
 
   app.get('/api/health', (_req, res) => {
     const dbState = mongoose.connection.readyState === 1 ? 'connected' : 'disconnected';
