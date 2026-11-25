@@ -11,6 +11,10 @@ import { EducationEditorPage } from '../admin/collections/education/EducationEdi
 import { EducationListPage } from '../admin/collections/education/EducationListPage';
 import { ExperienceEditorPage } from '../admin/collections/experience/ExperienceEditorPage';
 import { ExperienceListPage } from '../admin/collections/experience/ExperienceListPage';
+import { ProjectEditorPage } from '../admin/collections/projects/ProjectEditorPage';
+import { ProjectsListPage } from '../admin/collections/projects/ProjectsListPage';
+import { SkillEditorPage } from '../admin/collections/skills/SkillEditorPage';
+import { SkillsListPage } from '../admin/collections/skills/SkillsListPage';
 import { AchievementsPage } from '../pages/AchievementsPage';
 import { CertificationsPage } from '../pages/CertificationsPage';
 import { CollectionStubPage } from '../pages/CollectionStubPage';
@@ -19,6 +23,8 @@ import { EducationPage } from '../pages/EducationPage';
 import { ExperiencePage } from '../pages/ExperiencePage';
 import { HomePage } from '../pages/HomePage';
 import { NotFoundPage } from '../pages/NotFoundPage';
+import { ProjectDetailPage } from '../pages/ProjectDetailPage';
+import { ProjectsPage } from '../pages/ProjectsPage';
 import { RequireOwner } from './RequireOwner';
 
 export const router = createBrowserRouter([
@@ -140,26 +146,44 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: '/projects',
+    path: '/admin/projects',
     element: (
-      <CollectionStubPage
-        eyebrow="Projects"
-        title="All projects"
-        description="Filterable archive of full-stack, frontend, backend, and WordPress projects."
-        path="/projects"
-      />
+      <RequireOwner>
+        <ProjectsListPage />
+      </RequireOwner>
     ),
   },
   {
-    path: '/projects/:slug',
+    path: '/admin/projects/:id',
     element: (
-      <CollectionStubPage
-        eyebrow="Project"
-        title="Project case study"
-        description="Architecture, gallery, stack, and live links."
-        path="/projects"
-      />
+      <RequireOwner>
+        <ProjectEditorPage />
+      </RequireOwner>
     ),
+  },
+  {
+    path: '/admin/skills',
+    element: (
+      <RequireOwner>
+        <SkillsListPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/admin/skills/:id',
+    element: (
+      <RequireOwner>
+        <SkillEditorPage />
+      </RequireOwner>
+    ),
+  },
+  {
+    path: '/projects',
+    element: <ProjectsPage />,
+  },
+  {
+    path: '/projects/:slug',
+    element: <ProjectDetailPage />,
   },
   {
     path: '/services',

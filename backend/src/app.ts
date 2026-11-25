@@ -17,7 +17,9 @@ import {
 import { contactPublicRouter, messagesAdminRouter } from './modules/contact/routes.js';
 import { educationAdminRouter, educationPublicRouter } from './modules/education/routes.js';
 import { experienceAdminRouter, experiencePublicRouter } from './modules/experience/routes.js';
+import { projectsAdminRouter, projectsPublicRouter } from './modules/projects/routes.js';
 import { publicRouter } from './modules/public/routes.js';
+import { skillsAdminRouter, skillsPublicRouter } from './modules/skills/routes.js';
 import { uploadsAdminRouter } from './modules/uploads/routes.js';
 
 export function createApp(): Express {
@@ -42,12 +44,16 @@ export function createApp(): Express {
   app.use('/api/education', educationPublicRouter);
   app.use('/api/certifications', certificationsPublicRouter);
   app.use('/api/achievements', achievementsPublicRouter);
+  app.use('/api/projects', projectsPublicRouter);
+  app.use('/api/skills', skillsPublicRouter);
   app.use('/api/contact', contactPublicRouter);
   app.use('/api/admin', adminCoreRouter);
   app.use('/api/admin/experience', experienceAdminRouter);
   app.use('/api/admin/education', educationAdminRouter);
   app.use('/api/admin/certifications', certificationsAdminRouter);
   app.use('/api/admin/achievements', achievementsAdminRouter);
+  app.use('/api/admin/projects', projectsAdminRouter);
+  app.use('/api/admin/skills', skillsAdminRouter);
   app.use('/api/admin/uploads', uploadsAdminRouter);
   app.use('/api/admin/messages', messagesAdminRouter);
   app.use('/api', publicRouter);

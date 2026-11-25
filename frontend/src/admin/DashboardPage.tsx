@@ -13,8 +13,8 @@ export function DashboardPage() {
     { label: 'Education', count: counts?.education ?? 0, to: '/admin/education' },
     { label: 'Certifications', count: counts?.certifications ?? 0, to: '/admin/certifications' },
     { label: 'Achievements', count: counts?.achievements ?? 0, to: '/admin/achievements' },
-    { label: 'Projects', count: counts?.projects ?? 0, to: '/projects' },
-    { label: 'Skills', count: counts?.skills ?? 0, to: '/#skills' },
+    { label: 'Projects', count: counts?.projects ?? 0, to: '/admin/projects' },
+    { label: 'Skills', count: counts?.skills ?? 0, to: '/admin/skills' },
     { label: 'Services', count: counts?.services ?? 0, to: '/#services' },
     { label: 'Blog Posts', count: counts?.posts ?? 0, to: '/blog' },
     {
