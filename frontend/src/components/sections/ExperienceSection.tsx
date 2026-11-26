@@ -52,7 +52,7 @@ export function ExperienceSection() {
               description="Published experience entries will appear here once added from the admin panel."
             />
           ) : (
-            <ol className="relative space-y-8 border-l border-border pl-6">
+            <ol className="relative ml-2 space-y-8 border-l border-border pl-6 sm:ml-6 lg:ml-10">
               {visible.map((item) => (
                 <li key={item._id} className="relative">
                   <span
