@@ -23,6 +23,7 @@ const DEFAULT_FONTS: FontSettings = {
   customFontUrl: '',
   customFontName: '',
   sectionFonts: {},
+  sectionTitleFonts: {},
 };
 
 export function FontsPage() {
@@ -37,6 +38,7 @@ export function FontsPage() {
         ...DEFAULT_FONTS,
         ...profile.fonts,
         sectionFonts: profile.fonts.sectionFonts ?? {},
+        sectionTitleFonts: profile.fonts.sectionTitleFonts ?? {},
       });
     }
   }, [profile]);
@@ -141,6 +143,42 @@ export function FontsPage() {
                     id={key}
                     value={fonts[key] ?? ''}
                     onChange={(e) => setFonts({ ...fonts, [key]: e.target.value })}
+                  >
+                    <option value="">Inherit global</option>
+                    {fontChoices.map((f) => (
+                      <option key={f.name} value={f.name}>
+                        {f.label}
+                      </option>
+                    ))}
+                  </Select>
+                </FormField>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-card border border-border bg-surface p-5">
+            <h2 className="text-base font-semibold text-textPrimary">
+              Section-Specific Title Fonts
+            </h2>
+            <p className="mt-1 text-xs text-textMuted">
+              Override heading/title fonts for any individual section, or leave as &ldquo;Inherit
+              global&rdquo;.
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {PORTFOLIO_SECTIONS.map((sec) => (
+                <FormField key={`title-${sec.id}`} id={`sec-title-${sec.id}`} label={sec.label}>
+                  <Select
+                    id={`sec-title-${sec.id}`}
+                    value={fonts.sectionTitleFonts?.[sec.id] ?? ''}
+                    onChange={(e) =>
+                      setFonts({
+                        ...fonts,
+                        sectionTitleFonts: {
+                          ...fonts.sectionTitleFonts,
+                          [sec.id]: e.target.value,
+                        },
+                      })
+                    }
                   >
                     <option value="">Inherit global</option>
                     {fontChoices.map((f) => (

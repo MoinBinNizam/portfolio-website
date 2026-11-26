@@ -39,6 +39,7 @@ const FontSettingsSubSchema = new Schema(
     customFontUrl: { type: String, default: '', maxlength: 500 },
     customFontName: { type: String, default: '', maxlength: 80 },
     sectionFonts: { type: Map, of: String, default: () => ({}) },
+    sectionTitleFonts: { type: Map, of: String, default: () => ({}) },
   },
   { _id: false },
 );

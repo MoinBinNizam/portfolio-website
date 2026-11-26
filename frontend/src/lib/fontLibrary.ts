@@ -69,6 +69,7 @@ export function applyFontSettings(fonts?: Partial<FontSettings> | null): void {
   const h6Font = fonts?.h6Font?.trim() || headingFont;
   const paragraphFont = fonts?.paragraphFont?.trim() || bodyFont;
   const sectionFonts = fonts?.sectionFonts ?? {};
+  const sectionTitleFonts = fonts?.sectionTitleFonts ?? {};
 
   const root = document.documentElement;
   root.style.setProperty('--font-heading', toCssFontStack(headingFont));
@@ -92,6 +93,7 @@ export function applyFontSettings(fonts?: Partial<FontSettings> | null): void {
     h6Font,
     paragraphFont,
     ...Object.values(sectionFonts).filter(Boolean),
+    ...Object.values(sectionTitleFonts).filter(Boolean),
   ]);
 
   const googleSpecs = FONT_LIBRARY.filter((f) => usedNames.has(f.name)).map((f) => f.googleSpec);
@@ -125,13 +127,21 @@ export function applyFontSettings(fonts?: Partial<FontSettings> | null): void {
     customLink.remove();
   }
 
-  const sectionRules = Object.entries(sectionFonts)
+  const sectionBodyRules = Object.entries(sectionFonts)
     .filter(([id, font]) => /^[a-z0-9-]+$/i.test(id) && Boolean(font?.trim()))
     .map(([id, font]) => {
       const stack = toCssFontStack(font);
       return `#${id}, #${id} p, #${id} li, #${id} span, #${id} a { font-family: ${stack}; }`;
-    })
-    .join('\n');
+    });
+
+  const sectionTitleRules = Object.entries(sectionTitleFonts)
+    .filter(([id, font]) => /^[a-z0-9-]+$/i.test(id) && Boolean(font?.trim()))
+    .map(([id, font]) => {
+      const stack = toCssFontStack(font);
+      return `#${id} h1, #${id} h2, #${id} h3, #${id} h4, #${id} h5, #${id} h6 { font-family: ${stack}; }`;
+    });
+
+  const sectionRules = [...sectionBodyRules, ...sectionTitleRules].join('\n');
 
   let styleEl = document.getElementById('portfolio-section-fonts') as HTMLStyleElement | null;
   if (sectionRules) {

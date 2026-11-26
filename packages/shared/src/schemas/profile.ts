@@ -32,6 +32,7 @@ export const FontSettingsSchema = z.object({
   customFontUrl: z.string().trim().max(500).optional().default(''),
   customFontName: z.string().trim().max(80).optional().default(''),
   sectionFonts: z.record(z.string().max(40), z.string().max(80)).optional().default({}),
+  sectionTitleFonts: z.record(z.string().max(40), z.string().max(80)).optional().default({}),
 });
 
 export const ProfileInputSchema = z.object({
