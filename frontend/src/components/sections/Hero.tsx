@@ -47,7 +47,7 @@ export function Hero() {
   return (
     <section id="hero" className="pt-0 pb-14 lg:pt-0 lg:pb-20">
       <Container>
-        <Reveal>
+        <Reveal immediate>
           <div className="grid items-center gap-8 pt-6 lg:grid-cols-12 lg:gap-10">
             <div className="order-2 text-center lg:order-1 lg:col-span-7 lg:text-left">
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
