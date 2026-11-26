@@ -29,6 +29,7 @@ export const FONT_LIBRARY: FontOption[] = [
 ];
 
 export const PORTFOLIO_SECTIONS = [
+  { id: 'hero', label: 'Hero Section' },
   { id: 'about', label: 'About Me' },
   { id: 'experience', label: 'Work Experience' },
   { id: 'projects', label: 'Portfolio & Case Studies' },

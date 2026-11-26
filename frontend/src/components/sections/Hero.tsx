@@ -45,7 +45,7 @@ export function Hero() {
   };
 
   return (
-    <section className="pt-0 pb-14 lg:pt-0 lg:pb-20">
+    <section id="hero" className="pt-0 pb-14 lg:pt-0 lg:pb-20">
       <Container>
         <Reveal>
           <div className="grid items-center gap-8 pt-6 lg:grid-cols-12 lg:gap-10">
@@ -65,7 +65,10 @@ export function Hero() {
                   <h1 className="text-4xl font-bold tracking-tight text-textPrimary sm:text-5xl">
                     {profile?.name ?? 'Moin Uddin'}
                   </h1>
-                  <p className="mt-3 min-h-[2.75rem] text-sm font-medium text-textMuted sm:min-h-[2rem] sm:text-lg lg:text-xl">
+                  <p
+                    className="mt-3 min-h-[2.75rem] text-sm font-medium text-textMuted sm:min-h-[2rem] sm:text-lg lg:text-xl"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
                     <TypewriterText
                       text={profile?.headline ?? 'Full-Stack MERN & TypeScript Developer'}
                     />
