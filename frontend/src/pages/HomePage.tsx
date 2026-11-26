@@ -9,10 +9,10 @@ import { ProjectsSection } from '../components/sections/ProjectsSection';
 import { ServicesSection } from '../components/sections/ServicesSection';
 import { SkillsSection } from '../components/sections/SkillsSection';
 import { TestimonialsSection } from '../components/sections/TestimonialsSection';
-import { usePublicProfile } from '../features/public/queries';
+import { HomeBootstrapProvider, usePublicProfile } from '../features/public/queries';
 import { Seo } from '../lib/seo';
 
-export function HomePage() {
+function HomePageContent() {
   const { data: profile } = usePublicProfile();
 
   const name = profile?.name ?? 'Moin Uddin';
@@ -52,5 +52,13 @@ export function HomePage() {
       <BlogPreview />
       <ContactSection />
     </PageShell>
+  );
+}
+
+export function HomePage() {
+  return (
+    <HomeBootstrapProvider>
+      <HomePageContent />
+    </HomeBootstrapProvider>
   );
 }

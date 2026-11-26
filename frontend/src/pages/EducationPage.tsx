@@ -14,7 +14,7 @@ export function EducationPage() {
   const entries: TimelineEntry[] = list.map((item) => ({
     id: item._id,
     title: item.degree,
-    subtitle: `${item.institution}${item.field ? ` · Subject: ${item.field}` : ''}`,
+    subtitle: `${item.institution}${item.field ? ` · Field: ${item.field}` : ''}`,
     dateLabel: `${item.startYear ? `${item.startYear} – ` : ''}${item.endYear ?? 'Present'}`,
     meta: item.grade || undefined,
     body: item.activities ? (
@@ -34,7 +34,7 @@ export function EducationPage() {
           <SectionHeading
             eyebrow="Education"
             icon="graduation"
-            title="Academic background"
+            title="Academic Background"
             description="Degrees, grades, and academic activities."
           />
 

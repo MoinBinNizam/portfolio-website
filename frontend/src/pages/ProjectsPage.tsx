@@ -9,11 +9,12 @@ import { SectionHeading } from '../components/ui/SectionHeading';
 import { Skeleton } from '../components/ui/Skeleton';
 import { Tabs } from '../components/ui/Tabs';
 import { useProjectsPublicList } from '../features/projects/queries';
+import { formatProjectCategory } from '../lib/labels';
 import { Seo } from '../lib/seo';
 
 const CATEGORY_TABS = [
   { id: 'all', label: 'All' },
-  { id: 'fullstack', label: 'Fullstack' },
+  { id: 'fullstack', label: 'Full-Stack' },
   { id: 'frontend', label: 'Frontend' },
   { id: 'backend', label: 'Backend' },
   { id: 'wordpress', label: 'WordPress' },
@@ -92,7 +93,7 @@ export function ProjectsPage() {
                   ) : null}
 
                   <div className="flex items-center gap-2">
-                    <Badge variant="accent">{project.category}</Badge>
+                    <Badge variant="accent">{formatProjectCategory(project.category)}</Badge>
                     {project.featured ? <Badge variant="highlight">Featured</Badge> : null}
                   </div>
                   <h2 className="mt-3 text-xl font-semibold text-textPrimary">

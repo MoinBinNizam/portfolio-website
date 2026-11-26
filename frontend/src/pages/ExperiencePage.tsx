@@ -7,6 +7,7 @@ import { Skeleton } from '../components/ui/Skeleton';
 import { Timeline, type TimelineEntry } from '../components/ui/Timeline';
 import { useExperiencePublicList } from '../features/experience/queries';
 import { formatMonthYear } from '../lib/dates';
+import { formatEmploymentType } from '../lib/labels';
 import { Seo } from '../lib/seo';
 
 export function ExperiencePage() {
@@ -20,7 +21,7 @@ export function ExperiencePage() {
     dateLabel: `${formatMonthYear(item.startDate)} – ${
       item.isCurrent ? 'Present' : formatMonthYear(item.endDate)
     }`,
-    meta: item.employmentType,
+    meta: formatEmploymentType(item.employmentType),
     body: (
       <div className="space-y-3">
         {item.description ? (
@@ -57,7 +58,7 @@ export function ExperiencePage() {
           <SectionHeading
             eyebrow="Experience"
             icon="briefcase"
-            title="Work history"
+            title="Work History"
             description="Roles, measurable outcomes, and production technologies."
           />
 

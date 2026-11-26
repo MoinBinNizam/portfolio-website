@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { usePublicProjects } from '../../features/public/queries';
+import { formatProjectCategory } from '../../lib/labels';
 import { Badge } from '../ui/Badge';
 import { Container } from '../ui/Container';
 import { EmptyState } from '../ui/EmptyState';
@@ -66,14 +67,14 @@ export function ProjectsSection() {
                     ) : (
                       <div className="mb-4 flex aspect-video w-full items-end rounded-media border border-border bg-surfaceAlt p-4">
                         <span className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-                          {project.category} Case Study
+                          {formatProjectCategory(project.category)} Case Study
                         </span>
                       </div>
                     )}
                   </Link>
 
                   <div className="flex items-center justify-between gap-2">
-                    <Badge variant="accent">{project.category}</Badge>
+                    <Badge variant="accent">{formatProjectCategory(project.category)}</Badge>
                   </div>
                   <h3 className="mt-3 text-lg font-semibold text-textPrimary">
                     <Link to={`/projects/${project.slug}`} className="hover:underline">

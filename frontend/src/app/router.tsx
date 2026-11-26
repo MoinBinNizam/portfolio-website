@@ -2,22 +2,45 @@ import { lazy, Suspense, type ReactNode } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { Container } from '../components/ui/Container';
 import { Skeleton } from '../components/ui/Skeleton';
-import { AboutPage } from '../pages/AboutPage';
-import { AchievementsPage } from '../pages/AchievementsPage';
-import { BlogPage } from '../pages/BlogPage';
-import { BlogPostPage } from '../pages/BlogPostPage';
-import { BlogTagPage } from '../pages/BlogTagPage';
-import { CertificationsPage } from '../pages/CertificationsPage';
-import { ContactPage } from '../pages/ContactPage';
-import { CvPage } from '../pages/CvPage';
-import { EducationPage } from '../pages/EducationPage';
-import { ExperiencePage } from '../pages/ExperiencePage';
 import { HomePage } from '../pages/HomePage';
-import { NotFoundPage } from '../pages/NotFoundPage';
-import { ProjectDetailPage } from '../pages/ProjectDetailPage';
-import { ProjectsPage } from '../pages/ProjectsPage';
-import { ServicesPage } from '../pages/ServicesPage';
 import { RequireOwner } from './RequireOwner';
+
+const AboutPage = lazy(() => import('../pages/AboutPage').then((m) => ({ default: m.AboutPage })));
+const AchievementsPage = lazy(() =>
+  import('../pages/AchievementsPage').then((m) => ({ default: m.AchievementsPage })),
+);
+const BlogPage = lazy(() => import('../pages/BlogPage').then((m) => ({ default: m.BlogPage })));
+const BlogPostPage = lazy(() =>
+  import('../pages/BlogPostPage').then((m) => ({ default: m.BlogPostPage })),
+);
+const BlogTagPage = lazy(() =>
+  import('../pages/BlogTagPage').then((m) => ({ default: m.BlogTagPage })),
+);
+const CertificationsPage = lazy(() =>
+  import('../pages/CertificationsPage').then((m) => ({ default: m.CertificationsPage })),
+);
+const ContactPage = lazy(() =>
+  import('../pages/ContactPage').then((m) => ({ default: m.ContactPage })),
+);
+const CvPage = lazy(() => import('../pages/CvPage').then((m) => ({ default: m.CvPage })));
+const EducationPage = lazy(() =>
+  import('../pages/EducationPage').then((m) => ({ default: m.EducationPage })),
+);
+const ExperiencePage = lazy(() =>
+  import('../pages/ExperiencePage').then((m) => ({ default: m.ExperiencePage })),
+);
+const NotFoundPage = lazy(() =>
+  import('../pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
+);
+const ProjectDetailPage = lazy(() =>
+  import('../pages/ProjectDetailPage').then((m) => ({ default: m.ProjectDetailPage })),
+);
+const ProjectsPage = lazy(() =>
+  import('../pages/ProjectsPage').then((m) => ({ default: m.ProjectsPage })),
+);
+const ServicesPage = lazy(() =>
+  import('../pages/ServicesPage').then((m) => ({ default: m.ServicesPage })),
+);
 
 const LoginPage = lazy(() => import('../admin/LoginPage').then((m) => ({ default: m.LoginPage })));
 const DashboardPage = lazy(() =>
@@ -146,28 +169,28 @@ function protect(element: ReactNode): ReactNode {
   );
 }
 
+function withSuspense(element: ReactNode): ReactNode {
+  return <AdminSuspense>{element}</AdminSuspense>;
+}
+
 export const router = createBrowserRouter([
   { path: '/', element: <HomePage /> },
-  { path: '/about', element: <AboutPage /> },
-  { path: '/experience', element: <ExperiencePage /> },
-  { path: '/education', element: <EducationPage /> },
-  { path: '/certifications', element: <CertificationsPage /> },
-  { path: '/achievements', element: <AchievementsPage /> },
-  { path: '/projects', element: <ProjectsPage /> },
-  { path: '/projects/:slug', element: <ProjectDetailPage /> },
-  { path: '/services', element: <ServicesPage /> },
-  { path: '/blog', element: <BlogPage /> },
-  { path: '/blog/:slug', element: <BlogPostPage /> },
-  { path: '/blog/tag/:tag', element: <BlogTagPage /> },
-  { path: '/contact', element: <ContactPage /> },
-  { path: '/cv', element: <CvPage /> },
+  { path: '/about', element: withSuspense(<AboutPage />) },
+  { path: '/experience', element: withSuspense(<ExperiencePage />) },
+  { path: '/education', element: withSuspense(<EducationPage />) },
+  { path: '/certifications', element: withSuspense(<CertificationsPage />) },
+  { path: '/achievements', element: withSuspense(<AchievementsPage />) },
+  { path: '/projects', element: withSuspense(<ProjectsPage />) },
+  { path: '/projects/:slug', element: withSuspense(<ProjectDetailPage />) },
+  { path: '/services', element: withSuspense(<ServicesPage />) },
+  { path: '/blog', element: withSuspense(<BlogPage />) },
+  { path: '/blog/:slug', element: withSuspense(<BlogPostPage />) },
+  { path: '/blog/tag/:tag', element: withSuspense(<BlogTagPage />) },
+  { path: '/contact', element: withSuspense(<ContactPage />) },
+  { path: '/cv', element: withSuspense(<CvPage />) },
   {
     path: '/admin/login',
-    element: (
-      <AdminSuspense>
-        <LoginPage />
-      </AdminSuspense>
-    ),
+    element: withSuspense(<LoginPage />),
   },
   { path: '/admin', element: protect(<DashboardPage />) },
   { path: '/admin/profile', element: protect(<ProfilePage />) },
@@ -191,5 +214,5 @@ export const router = createBrowserRouter([
   { path: '/admin/testimonials/:id', element: protect(<TestimonialEditorPage />) },
   { path: '/admin/blog', element: protect(<PostsListPage />) },
   { path: '/admin/blog/:id', element: protect(<PostEditorPage />) },
-  { path: '*', element: <NotFoundPage /> },
+  { path: '*', element: withSuspense(<NotFoundPage />) },
 ]);

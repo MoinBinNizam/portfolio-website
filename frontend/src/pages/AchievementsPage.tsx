@@ -8,6 +8,7 @@ import { Skeleton } from '../components/ui/Skeleton';
 import { Tabs } from '../components/ui/Tabs';
 import { useAchievementsPublicList } from '../features/achievements/queries';
 import { formatMonthYear } from '../lib/dates';
+import { formatAchievementCategory } from '../lib/labels';
 import { Seo } from '../lib/seo';
 
 const CATEGORY_TABS = [
@@ -38,7 +39,7 @@ export function AchievementsPage() {
           <SectionHeading
             eyebrow="Achievements"
             icon="award"
-            title="Awards &amp; recognition"
+            title="Awards &amp; Recognition"
             description="Trainings, mentoring, competitions, and recognition."
           />
 
@@ -64,7 +65,7 @@ export function AchievementsPage() {
                   className="rounded-card border border-border bg-surface p-6"
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <Badge variant="accent">{item.category}</Badge>
+                    <Badge variant="accent">{formatAchievementCategory(item.category)}</Badge>
                     <span className="text-xs text-textMuted">{formatMonthYear(item.date)}</span>
                   </div>
                   <h2 className="mt-3 text-lg font-semibold text-textPrimary">{item.title}</h2>

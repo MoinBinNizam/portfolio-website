@@ -5,6 +5,7 @@ import {
   usePublicEducation,
 } from '../../features/public/queries';
 import { formatMonthYear } from '../../lib/dates';
+import { formatAchievementCategory } from '../../lib/labels';
 import { Badge } from '../ui/Badge';
 import { Container } from '../ui/Container';
 import { EmptyState } from '../ui/EmptyState';
@@ -59,7 +60,7 @@ export function CredentialsSection() {
                     </div>
                     <h3 className="mt-2 text-base font-semibold text-textPrimary">{item.degree}</h3>
                     {item.field ? (
-                      <p className="mt-1 text-xs font-medium text-accent">Subject: {item.field}</p>
+                      <p className="mt-1 text-xs font-medium text-accent">Field: {item.field}</p>
                     ) : null}
                     <p className="mt-1 text-sm text-textMuted">{item.institution}</p>
                   </div>
@@ -137,7 +138,7 @@ export function CredentialsSection() {
                 {achList.map((item) => (
                   <div key={item._id} className="rounded-card border border-border bg-surface p-5">
                     <div className="flex items-center justify-between gap-2">
-                      <Badge>{item.category}</Badge>
+                      <Badge>{formatAchievementCategory(item.category)}</Badge>
                       <span className="text-xs text-textMuted">{formatMonthYear(item.date)}</span>
                     </div>
                     <h3 className="mt-3 text-base font-semibold text-textPrimary">{item.title}</h3>

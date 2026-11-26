@@ -48,7 +48,7 @@ export function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
             <p className="text-center text-xs text-textMuted sm:text-left">
-              Copyright {new Date().getFullYear()} {profile?.name ?? 'Moin Uddin'}. All rights
+              &copy; {new Date().getFullYear()} {profile?.name ?? 'Moin Uddin'}. All rights
               reserved.
             </p>
             <SocialLinksBar socials={profile?.socials} />

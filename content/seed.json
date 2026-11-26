@@ -12,10 +12,10 @@
     "name": "Moin Uddin",
     "headline": "Full-Stack Web Developer | MERN, React 18, Node.js, TypeScript | AI/LLM Integration",
     "tagline": "Scalable REST APIs, enterprise-grade applications, and AI-integrated development workflows.",
-    "intro": "Seeking a Full-Stack Software Engineer role where I can apply my experience in MERN, React 18, Node.js, TypeScript, and AI-assisted workflows to build scalable, secure, and user-focused web applications for global teams.",
+    "intro": "Full-Stack Web Developer specializing in MERN, React 18, Node.js, TypeScript, and AI-assisted workflows—delivering scalable, secure, and high-performance web applications.",
     "about": "I'm **Moin Uddin**, a **Full-Stack Web Developer** building scalable **MERN, TypeScript, and WordPress** applications. My journey started with WordPress, PHP, and MySQL business platforms, grew through conversion-focused web engineering, and expanded into **React 18, Node.js, Express, and MongoDB** systems including **enterprise inventory, POS, and cooperative finance platforms**.\n\nI am also skilled in **RAG, AI Automation, Claude, and Agentic AI development**, cutting delivery cycles by up to **40%** while maintaining **sub-2-second load times** and strict security. Alongside shipping products at **TechVelly** and for remote clients, I've mentored learners in **programming, school ICT, and web development**.\n\n**Great software feels effortless to use and easy to maintain.** That's what drives me every day.",
     "email": "moinuddinpkt@gmail.com",
-    "phone": "TODO: owner to decide whether to publish",
+    "phone": "",
     "location": "Dhaka, Bangladesh",
     "cvPhone": "+8801747-969042",
     "currentAddress": "Mohammadpur, Dhaka, Bangladesh",
@@ -37,7 +37,7 @@
       }
     ],
     "website": "https://moinuddinbd.com",
-    "resumeUrl": "TODO: upload the CV PDF through the admin",
+    "resumeUrl": "",
     "avatar": null,
     "socials": {
       "linkedin": "https://www.linkedin.com/in/m-moinuddin",
@@ -74,12 +74,12 @@
       "startDate": "2025-07-01",
       "endDate": null,
       "isCurrent": true,
-      "description": "Build enterprise MERN applications using React.js, Node.js, Express.js, TypeScript, and MongoDB. Solo-engineered a Jewellery Inventory and POS system with mortgage and production modules, full OpenAPI/Swagger documentation, and Docker containerisation. Led React.js frontend architecture for an LPG distribution web app. Participate in Agile/Scrum: daily stand-ups, sprint planning, and code reviews.",
+      "description": "Build enterprise MERN applications using React.js, Node.js, Express.js, TypeScript, and MongoDB. Solo-engineered a Jewellery Inventory and POS system with mortgage and production modules, full OpenAPI/Swagger documentation, and Docker containerization. Led React.js frontend architecture for an LPG distribution web app while collaborating in Agile/Scrum daily stand-ups, sprint planning, and code reviews.",
       "achievements": [
-        "Solo-engineered a Jewellery Inventory and POS system with mortgage and production modules, OpenAPI/Swagger documentation, and Docker containerisation",
-        "Led React.js frontend architecture for an LPG distribution app, with React Query and optimised data fetching: 20% query performance improvement",
-        "Integrated Claude AI and Gemini CLI into development workflows: 40% reduction in delivery cycles",
-        "Implemented JWT authentication, RBAC middleware, XSS/CSRF protection, and input sanitisation in production"
+        "Solo-engineered a Jewellery Inventory and POS system with mortgage and production modules, OpenAPI/Swagger documentation, and Docker containerization",
+        "Led React.js frontend architecture for an LPG distribution app with React Query and optimized data fetching, improving query performance by 20%",
+        "Integrated Claude AI and Gemini CLI into development workflows, cutting delivery cycles by 40%",
+        "Implemented JWT authentication, RBAC middleware, XSS/CSRF protection, and input sanitization in production"
       ],
       "techStack": [
         "React.js",
@@ -103,11 +103,11 @@
       "startDate": "2025-01-01",
       "endDate": "2025-07-01",
       "isCurrent": false,
-      "description": "Architected and delivered enterprise applications, NGO platforms, and work for international clients. Lead project: NS Foundation, a cooperative finance management system (see Projects).",
+      "description": "Architected and delivered enterprise web applications, NGO platforms, and custom storefronts for international clients, including NS Foundation—a cooperative finance management system.",
       "achievements": [
-        "Delivered NS Foundation: 9 operational modules, RBAC across four roles, and an audit and security workspace",
-        "Integrated Stripe API and automated donation webhooks for an international NGO: 60% reduction in manual processing",
-        "Optimised Easyfishing USA platform: sub-2-second load times and 20% organic traffic increase",
+        "Delivered NS Foundation with 9 operational modules, role-based access control across four roles, and an audit and security workspace",
+        "Integrated Stripe API and automated donation webhooks for an international NGO, reducing manual processing by 60%",
+        "Optimized the Easyfishing USA platform to achieve sub-2-second load times and a 20% increase in organic traffic",
         "Delivered responsive full-stack solutions across Shopify, Webflow, and Wix"
       ],
       "techStack": [
@@ -138,12 +138,12 @@
       "startDate": "2024-07-01",
       "endDate": "2024-12-01",
       "isCurrent": false,
-      "description": "Built performance-optimised web platforms and landing pages. Implemented JavaScript-based conversion tracking and funnel analytics. Coordinated with stakeholders to turn business requirements into technical solutions for digital campaigns.",
+      "description": "Built performance-optimized web platforms and landing pages, implemented JavaScript-based conversion tracking and funnel analytics, and partnered with stakeholders to translate business goals into technical campaign solutions.",
       "achievements": [
-        "Built web platforms and landing pages: 40% traffic growth",
-        "Implemented conversion tracking and funnel analytics: 35% increase in qualified leads"
+        "Built conversion-focused web platforms and landing pages, driving 40% traffic growth",
+        "Implemented conversion tracking and funnel analytics, increasing qualified leads by 35%"
       ],
-      "techStack": ["JavaScript", "Landing pages", "Conversion tracking"],
+      "techStack": ["JavaScript", "Landing Pages", "Conversion Tracking"],
       "order": 3,
       "status": "published"
     },
@@ -156,10 +156,10 @@
       "startDate": "2023-03-01",
       "endDate": "2024-06-01",
       "isCurrent": false,
-      "description": "Developed an end-to-end Travel and Hajj service platform on WordPress, PHP, and MySQL. Managed cPanel hosting, domain DNS, the MySQL schema, and automated backups. Optimised UI, UX, and landing page structure.",
+      "description": "Developed an end-to-end travel and Hajj service platform on WordPress, PHP, and MySQL. Managed cPanel hosting, domain DNS, database schema design, and automated backups while optimizing UI/UX and landing page structure.",
       "achievements": [
-        "Generated 4.5 lakh BDT in initial revenue from launch",
-        "Optimised UI/UX and landing pages: 20% increase in lead acquisition"
+        "Generated BDT 450,000 (4.5 lakh) in initial revenue from launch",
+        "Optimized UI/UX and landing pages, increasing lead acquisition by 20%"
       ],
       "techStack": ["WordPress", "PHP", "MySQL", "cPanel"],
       "order": 4,
@@ -211,7 +211,7 @@
       "category": "other",
       "issuer": "TechVelly",
       "date": "2025-01-01",
-      "description": "Node.js, TypeScript, high-performance system design, database optimisation, and enterprise-level full-stack architecture for production-scale traffic. Duration: 2 months.",
+      "description": "Completed a 2-month intensive program covering Node.js, TypeScript, high-performance system design, database optimization, and enterprise-level full-stack architecture for production-scale traffic.",
       "link": "",
       "image": null,
       "order": 1,
@@ -222,18 +222,18 @@
       "category": "other",
       "issuer": "TechVelly",
       "date": "2025-01-01",
-      "description": "LLM API integration, AI-assisted development workflows, advanced Git and CI/CD pipelines, and OpenAPI/Swagger documentation. Duration: 1 week.",
+      "description": "Completed specialized training on LLM API integration, AI-assisted development workflows, advanced Git and CI/CD pipelines, and OpenAPI/Swagger documentation.",
       "link": "",
       "image": null,
       "order": 2,
       "status": "published"
     },
     {
-      "title": "Mentor and Coordinator, Hackathon and ICT Fest events",
+      "title": "Mentor & Coordinator — Hackathon and ICT Fest",
       "category": "other",
       "issuer": "Daffodil International Academy, Dhaka",
       "date": "2018-01-01",
-      "description": "Provided technical mentoring, prototype guidance, and full-stack development support to student teams at two events (2018 to 2020).",
+      "description": "Provided technical mentoring, prototype guidance, and full-stack development support to student teams across two annual events (2018–2020).",
       "link": "",
       "image": null,
       "order": 3,
@@ -246,7 +246,7 @@
       "title": "NS Foundation: Cooperative Finance Management System",
       "summary": "Full-stack cooperative finance platform for members, shares, contributions, custody accounts, investments, reporting, and controlled document exports.",
       "category": "fullstack",
-      "description": "Architecture keeps auditable financial source records (payments, allocations, custody movements, audit events) separate from rebuildable reporting projections. Frontend: React 18, TypeScript, Vite, Tailwind CSS. Backend: Node.js, Express, TypeScript. Database: MongoDB with Mongoose. Authentication: JWT with server-side role checks and session version revocation. Testing: Vitest.",
+      "description": "Architected to keep auditable financial source records—payments, allocations, custody movements, and audit events—strictly separate from rebuildable reporting projections. Built with React 18, TypeScript, Vite, and Tailwind CSS on the frontend, backed by Node.js, Express, MongoDB, Mongoose, JWT role checks with session-version revocation, and Vitest.",
       "caseStudy": "",
       "cover": null,
       "gallery": [],
@@ -274,7 +274,7 @@
       "title": "Jewellery Inventory & POS System",
       "summary": "Enterprise inventory and point-of-sale system with mortgage and production modules.",
       "category": "fullstack",
-      "description": "Full REST API with OpenAPI/Swagger documentation, containerised with Docker for consistent deployment environments. Stack: MERN, SQLite, OpenAPI, Docker.",
+      "description": "Built an enterprise inventory and point-of-sale system featuring mortgage and production modules, a full REST API documented with OpenAPI/Swagger, and Docker containerization for consistent deployments.",
       "caseStudy": "",
       "cover": null,
       "gallery": [],
@@ -290,7 +290,7 @@
       "title": "Sentinel: Cybersecurity Compliance Portal",
       "summary": "Internal enterprise compliance portal with AI-assisted audit logs, custom RBAC, and incident tracking.",
       "category": "fullstack",
-      "description": "Custom RBAC middleware, XSS and CSRF protection, and incident tracking. AI-automated audit logs. 40% faster compliance reporting.",
+      "description": "Engineered an internal enterprise compliance portal featuring custom RBAC middleware, XSS and CSRF protection, incident tracking, and AI-automated audit logs—accelerating compliance reporting by 40%.",
       "caseStudy": "",
       "cover": null,
       "gallery": [],
@@ -306,7 +306,7 @@
       "title": "KrishokLagbe: Agricultural Service Marketplace",
       "summary": "Real-time agricultural service marketplace with live data sync.",
       "category": "fullstack",
-      "description": "Team project. WebSocket-powered live data sync. Resolved UI flickering with optimised React Hooks and memoization, for smooth real-time performance.",
+      "description": "Collaborated on a real-time agricultural service marketplace powered by WebSocket live data sync, eliminating UI flickering through optimized React Hooks and memoization for smooth real-time performance.",
       "caseStudy": "",
       "cover": null,
       "gallery": [],
@@ -360,7 +360,7 @@
     { "name": "Express.js", "category": "backend", "level": 5, "order": 2, "status": "published" },
     { "name": "PHP", "category": "backend", "level": 4, "order": 3, "status": "published" },
     {
-      "name": "RESTful API design",
+      "name": "RESTful API Design",
       "category": "backend",
       "level": 5,
       "order": 4,
@@ -374,7 +374,7 @@
       "status": "published"
     },
     {
-      "name": "JWT authentication",
+      "name": "JWT Authentication",
       "category": "backend",
       "level": 5,
       "order": 6,
@@ -403,14 +403,14 @@
     },
     { "name": "Docker", "category": "tools", "level": 4, "order": 4, "status": "published" },
     {
-      "name": "Git and GitHub",
+      "name": "Git & GitHub",
       "category": "tools",
       "level": 5,
       "order": 5,
       "status": "published"
     },
     {
-      "name": "CI/CD pipelines",
+      "name": "CI/CD Pipelines",
       "category": "tools",
       "level": 3,
       "order": 6,
@@ -438,7 +438,7 @@
     { "name": "n8n", "category": "ai", "level": 3, "order": 6, "status": "published" },
     { "name": "GitHub Copilot", "category": "ai", "level": 3, "order": 7, "status": "published" },
     {
-      "name": "Jira and Trello",
+      "name": "Jira & Trello",
       "category": "tools",
       "level": 3,
       "order": 9,
@@ -460,7 +460,7 @@
       "status": "published"
     },
     {
-      "title": "E-commerce Development",
+      "title": "E-Commerce Development",
       "description": "Online stores and storefronts with responsive design, secure payments, and clear product management.",
       "icon": "shopping-cart",
       "order": 2,
@@ -566,11 +566,10 @@
   ],
   "posts": [
     {
-      "_dummy": true,
       "title": "Designing Audit-Friendly Financial Data",
       "slug": "designing-audit-friendly-financial-data",
-      "excerpt": "Why separating source records from reporting projections makes financial software easier to trust.",
-      "body": "Sample post for layout testing. Replace or delete before launch.\n\n## Source records and projections\n\nKeep payments and audit events as immutable source records. Build reports from them as rebuildable projections.",
+      "excerpt": "Why separating immutable source records from rebuildable reporting projections makes financial software easier to trust.",
+      "body": "## Immutable Source Records vs. Reporting Projections\n\nWhen building cooperative finance or POS systems, the most common source of accounting drift is mutating balance fields directly on every transaction. A single failed retry or partial update can silently leave totals out of sync.\n\nInstead, treat every payment, allocation, custody movement, and adjustment as an **append-only source record**. Each event carries a timestamp, actor ID, and reference so every balance change can be traced.\n\n## Rebuildable Projections\n\nSummary tables—member balances, monthly contribution totals, and dashboard KPIs—become **derived projections** calculated from the source ledger. If a reporting bug is ever discovered, you fix the projection logic and rebuild the view without risking historical accuracy.\n\n## Practical Benefits in Production\n\n- **Clean audits:** Reviewers can trace every summary figure back to individual source events.\n- **Safe exports:** Controlled PDF and CSV exports always reflect verified ledger state.\n- **Simpler testing:** Pure aggregation functions can be unit-tested in isolation with Vitest.",
       "coverImage": null,
       "tags": ["architecture", "fintech"],
       "category": "Engineering",
@@ -579,11 +578,10 @@
       "featured": true
     },
     {
-      "_dummy": true,
       "title": "Two Years of Shipping MERN Apps: Lessons Learned",
       "slug": "lessons-learned-shipping-mern-apps",
-      "excerpt": "Practical lessons on project structure, validation, and auth from building production MERN applications.",
-      "body": "Sample post for layout testing. Replace or delete before launch.\n\n## Share schemas between client and server\n\nA single Zod schema validates forms in the browser and requests on the server, so they never disagree.",
+      "excerpt": "Practical lessons on shared validation, server-side RBAC, and query optimization from building production MERN applications.",
+      "body": "## Share Schemas Between Client and Server\n\nIn a TypeScript monorepo, placing Zod validation schemas in a shared package ensures browser forms and Express API routes validate the exact same rules. You eliminate duplicated validation logic and catch payload mismatches at compile time.\n\n## Enforce Access Control on the Server\n\nHiding admin buttons in React is a UX convenience, not security. Every protected endpoint should verify the authenticated user, check their role server-side, and support session revocation so compromised tokens can be invalidated immediately.\n\n## Measure Performance Early\n\nUsing `.lean()` on read-only Mongoose queries, indexing frequently filtered fields, and pairing React Query caching with route code-splitting keeps production apps responsive under real-world traffic.",
       "coverImage": null,
       "tags": ["mern", "typescript"],
       "category": "Engineering",

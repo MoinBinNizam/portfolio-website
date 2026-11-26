@@ -14,6 +14,71 @@ import { httpError } from '../../utils/httpError.js';
 
 export const publicRouter = Router();
 
+publicRouter.use((req, res, next) => {
+  if (req.method === 'GET') {
+    res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
+  }
+  next();
+});
+
+publicRouter.get(
+  '/home',
+  asyncHandler(async (_req, res) => {
+    const [
+      profile,
+      experience,
+      education,
+      certifications,
+      achievements,
+      projects,
+      skills,
+      services,
+      testimonials,
+      posts,
+      postTotal,
+    ] = await Promise.all([
+      Profile.findOne().lean(),
+      Experience.find({ status: 'published' }).sort({ order: 1, startDate: -1 }).lean(),
+      Education.find({ status: 'published' }).sort({ order: 1, startYear: -1 }).lean(),
+      Certification.find({ status: 'published' }).sort({ order: 1, issueDate: -1 }).lean(),
+      Achievement.find({ status: 'published' }).sort({ order: 1, date: -1 }).lean(),
+      Project.find({ status: 'published' }).sort({ order: 1, createdAt: -1 }).lean(),
+      Skill.find({ status: 'published' }).sort({ order: 1, name: 1 }).lean(),
+      Service.find({ status: 'published' }).sort({ order: 1, createdAt: -1 }).lean(),
+      Testimonial.find({ status: 'published' }).sort({ order: 1, createdAt: -1 }).lean(),
+      Post.find({ status: 'published' })
+        .select('-body')
+        .sort({ publishedAt: -1, createdAt: -1 })
+        .limit(3)
+        .lean(),
+      Post.countDocuments({ status: 'published' }),
+    ]);
+
+    res.json({
+      data: {
+        profile: profile ?? null,
+        experience,
+        education,
+        certifications,
+        achievements,
+        projects,
+        skills,
+        services,
+        testimonials,
+        posts: {
+          data: posts,
+          meta: {
+            page: 1,
+            limit: 3,
+            total: postTotal,
+            totalPages: Math.max(1, Math.ceil(postTotal / 3)),
+          },
+        },
+      },
+    });
+  }),
+);
+
 publicRouter.get(
   '/profile',
   asyncHandler(async (_req, res) => {

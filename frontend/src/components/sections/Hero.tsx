@@ -8,7 +8,6 @@ import {
   usePublicProjects,
   usePublicSkills,
 } from '../../features/public/queries';
-import { downloadStructuredCv } from '../../lib/cvGenerator';
 import { calculateTotalExperienceDuration } from '../../lib/experience';
 import { SocialLinksBar } from '../layout/SocialLinksBar';
 import { Container } from '../ui/Container';
@@ -27,12 +26,14 @@ export function Hero() {
   const { data: certifications } = usePublicCertifications();
   const totalDuration = calculateTotalExperienceDuration(experience ?? []);
 
-  const handleDownloadCv = () => {
-    if (profile?.resumeUrl) {
-      window.open(profile.resumeUrl, '_blank', 'noopener,noreferrer');
+  const handleDownloadCv = async () => {
+    const resumeUrl = profile?.resumeUrl?.trim();
+    if (resumeUrl && /^(https?:\/\/|\/)/.test(resumeUrl)) {
+      window.open(resumeUrl, '_blank', 'noopener,noreferrer');
       return;
     }
 
+    const { downloadStructuredCv } = await import('../../lib/cvGenerator');
     downloadStructuredCv({
       profile,
       experience: experience ?? [],
@@ -130,7 +131,7 @@ export function Hero() {
                         {profile?.name ?? 'Moin Uddin'}
                       </p>
                       <p className="mt-1 text-xs text-textMuted">
-                        Set profile portrait in Admin &rarr; Profile.
+                        Full-Stack MERN &amp; TypeScript Developer
                       </p>
                     </div>
                   </div>

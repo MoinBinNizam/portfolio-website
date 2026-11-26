@@ -22,7 +22,7 @@ export function ContactPage() {
               <SectionHeading
                 eyebrow="Contact"
                 icon="mail"
-                title="Get in touch"
+                title="Get in Touch"
                 description="Use the form to send a message directly, or reach out by email."
               />
               <div className="space-y-4 rounded-card border border-border bg-surface p-5 text-sm">

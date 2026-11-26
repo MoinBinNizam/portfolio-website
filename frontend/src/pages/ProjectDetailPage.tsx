@@ -5,6 +5,7 @@ import { Container } from '../components/ui/Container';
 import { EmptyState } from '../components/ui/EmptyState';
 import { Skeleton } from '../components/ui/Skeleton';
 import { useProjectBySlug, useProjectsPublicList } from '../features/projects/queries';
+import { formatProjectCategory } from '../lib/labels';
 import { MarkdownBody } from '../lib/markdown';
 import { Seo } from '../lib/seo';
 
@@ -55,7 +56,7 @@ export function ProjectDetailPage() {
             <article className="space-y-8">
               <header className="space-y-4">
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="accent">{project.category}</Badge>
+                  <Badge variant="accent">{formatProjectCategory(project.category)}</Badge>
                   {project.featured ? <Badge variant="highlight">Featured</Badge> : null}
                 </div>
                 <h1 className="text-3xl font-bold tracking-tight text-textPrimary sm:text-4xl">
