@@ -60,7 +60,7 @@ export function applyFontSettings(fonts?: Partial<FontSettings> | null): void {
   if (typeof document === 'undefined') return;
 
   const headingFont = fonts?.headingFont?.trim() || 'Michroma';
-  const bodyFont = fonts?.bodyFont?.trim() || 'Michroma';
+  const bodyFont = fonts?.bodyFont?.trim() || 'Inter';
   const h1Font = fonts?.h1Font?.trim() || headingFont;
   const h2Font = fonts?.h2Font?.trim() || headingFont;
   const h3Font = fonts?.h3Font?.trim() || headingFont;
@@ -129,7 +129,7 @@ export function applyFontSettings(fonts?: Partial<FontSettings> | null): void {
     .filter(([id, font]) => /^[a-z0-9-]+$/i.test(id) && Boolean(font?.trim()))
     .map(([id, font]) => {
       const stack = toCssFontStack(font);
-      return `#${id}, #${id} h1, #${id} h2, #${id} h3, #${id} h4, #${id} h5, #${id} h6, #${id} p { font-family: ${stack}; }`;
+      return `#${id}, #${id} p, #${id} li, #${id} span, #${id} a { font-family: ${stack}; }`;
     })
     .join('\n');
 

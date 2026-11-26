@@ -12,14 +12,14 @@ import { AdminShell } from './AdminShell';
 
 const DEFAULT_FONTS: FontSettings = {
   headingFont: 'Michroma',
-  bodyFont: 'Michroma',
+  bodyFont: 'Inter',
   h1Font: 'Michroma',
   h2Font: 'Michroma',
   h3Font: 'Michroma',
   h4Font: 'Michroma',
   h5Font: 'Michroma',
   h6Font: 'Michroma',
-  paragraphFont: 'Michroma',
+  paragraphFont: 'Inter',
   customFontUrl: '',
   customFontName: '',
   sectionFonts: {},
@@ -75,7 +75,7 @@ export function FontsPage() {
           </p>
         </div>
         <Button type="button" variant="secondary" onClick={resetToMichroma}>
-          Reset all to Michroma
+          Reset to defaults (Michroma + Inter)
         </Button>
       </div>
 
@@ -109,7 +109,7 @@ export function FontsPage() {
                   value={fonts.bodyFont ?? ''}
                   onChange={(e) => setFonts({ ...fonts, bodyFont: e.target.value })}
                 >
-                  <option value="">Inherit global (Michroma)</option>
+                  <option value="">Inherit global (Inter)</option>
                   {fontChoices.map((f) => (
                     <option key={f.name} value={f.name}>
                       {f.label}
@@ -155,9 +155,12 @@ export function FontsPage() {
           </div>
 
           <div className="rounded-card border border-border bg-surface p-5">
-            <h2 className="text-base font-semibold text-textPrimary">Section-Specific Fonts</h2>
+            <h2 className="text-base font-semibold text-textPrimary">
+              Section-Specific Body Fonts
+            </h2>
             <p className="mt-1 text-xs text-textMuted">
-              Override fonts for any individual section, or leave as &ldquo;Inherit global&rdquo;.
+              Override body text font inside any individual section while keeping section titles on
+              your heading font (Michroma).
             </p>
             <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {PORTFOLIO_SECTIONS.map((sec) => (

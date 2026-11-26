@@ -28,14 +28,14 @@ const CvReferenceSubSchema = new Schema(
 const FontSettingsSubSchema = new Schema(
   {
     headingFont: { type: String, default: 'Michroma', maxlength: 80 },
-    bodyFont: { type: String, default: 'Michroma', maxlength: 80 },
+    bodyFont: { type: String, default: 'Inter', maxlength: 80 },
     h1Font: { type: String, default: 'Michroma', maxlength: 80 },
     h2Font: { type: String, default: 'Michroma', maxlength: 80 },
     h3Font: { type: String, default: 'Michroma', maxlength: 80 },
     h4Font: { type: String, default: 'Michroma', maxlength: 80 },
     h5Font: { type: String, default: 'Michroma', maxlength: 80 },
     h6Font: { type: String, default: 'Michroma', maxlength: 80 },
-    paragraphFont: { type: String, default: 'Michroma', maxlength: 80 },
+    paragraphFont: { type: String, default: 'Inter', maxlength: 80 },
     customFontUrl: { type: String, default: '', maxlength: 500 },
     customFontName: { type: String, default: '', maxlength: 80 },
     sectionFonts: { type: Map, of: String, default: () => ({}) },

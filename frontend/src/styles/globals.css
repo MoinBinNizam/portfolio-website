@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --font-body: 'Michroma', sans-serif;
+    --font-body: 'Inter', sans-serif;
     --font-heading: 'Michroma', sans-serif;
     --font-h1: 'Michroma', sans-serif;
     --font-h2: 'Michroma', sans-serif;
@@ -14,7 +14,7 @@
     --font-h4: 'Michroma', sans-serif;
     --font-h5: 'Michroma', sans-serif;
     --font-h6: 'Michroma', sans-serif;
-    --font-paragraph: 'Michroma', sans-serif;
+    --font-paragraph: 'Inter', sans-serif;
   }
 
   html {
