@@ -9,13 +9,15 @@ import { SectionIcon, type IconName } from '../ui/SectionIcon';
 import { Skeleton } from '../ui/Skeleton';
 import { SkillIcon } from '../ui/SkillIcon';
 
+const CATEGORY_ORDER = ['frontend', 'backend', 'database', 'ai', 'design', 'tools', 'cms'] as const;
+
 const CATEGORY_META: Record<string, { label: string; icon: IconName }> = {
   frontend: { label: 'Frontend', icon: 'layers' },
   backend: { label: 'Backend', icon: 'code' },
   database: { label: 'Database', icon: 'boxes' },
   ai: { label: 'AI, RAG & Automation', icon: 'cpu' },
-  tools: { label: 'Tools & DevOps', icon: 'zap' },
   design: { label: 'Design', icon: 'award' },
+  tools: { label: 'Tools & DevOps', icon: 'zap' },
   cms: { label: 'CMS', icon: 'book' },
 };
 
@@ -29,6 +31,13 @@ export function SkillsSection() {
     acc[skill.category] = list;
     return acc;
   }, {});
+
+  const orderedCategories = [
+    ...CATEGORY_ORDER.filter((cat) => (grouped[cat]?.length ?? 0) > 0),
+    ...Object.keys(grouped).filter(
+      (cat) => !CATEGORY_ORDER.includes(cat as (typeof CATEGORY_ORDER)[number]),
+    ),
+  ];
 
   return (
     <section id="skills" className="border-t border-border py-12 lg:py-14">
@@ -54,7 +63,8 @@ export function SkillsSection() {
             />
           ) : (
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {Object.entries(grouped).map(([category, list]) => {
+              {orderedCategories.map((category) => {
+                const list = grouped[category] ?? [];
                 const meta = CATEGORY_META[category] ?? {
                   label: category,
                   icon: 'code' as IconName,
