@@ -89,7 +89,7 @@ export function SkillEditorPage() {
                 <option value="frontend">Frontend</option>
                 <option value="backend">Backend</option>
                 <option value="database">Database</option>
-                <option value="ai">AI, RAG &amp; Automation</option>
+                <option value="ai">AI &amp; Automation</option>
                 <option value="tools">Tools</option>
                 <option value="design">Design</option>
                 <option value="cms">CMS</option>

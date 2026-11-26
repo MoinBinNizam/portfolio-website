@@ -19,6 +19,21 @@ export const CvReferenceSchema = z.object({
   phone: z.string().trim().max(40).optional().default(''),
 });
 
+export const FontSettingsSchema = z.object({
+  headingFont: z.string().trim().min(1).max(80).default('Michroma'),
+  bodyFont: z.string().trim().min(1).max(80).default('Michroma'),
+  h1Font: z.string().trim().max(80).optional().default('Michroma'),
+  h2Font: z.string().trim().max(80).optional().default('Michroma'),
+  h3Font: z.string().trim().max(80).optional().default('Michroma'),
+  h4Font: z.string().trim().max(80).optional().default('Michroma'),
+  h5Font: z.string().trim().max(80).optional().default('Michroma'),
+  h6Font: z.string().trim().max(80).optional().default('Michroma'),
+  paragraphFont: z.string().trim().max(80).optional().default('Michroma'),
+  customFontUrl: z.string().trim().max(500).optional().default(''),
+  customFontName: z.string().trim().max(80).optional().default(''),
+  sectionFonts: z.record(z.string().max(40), z.string().max(80)).optional().default({}),
+});
+
 export const ProfileInputSchema = z.object({
   name: z.string().trim().min(2).max(100),
   headline: z.string().trim().min(2).max(160),
@@ -36,11 +51,13 @@ export const ProfileInputSchema = z.object({
   resumeUrl: OptionalUrlSchema,
   avatar: ImageSchema.optional().nullable(),
   socials: SocialLinksSchema.default({}),
+  fonts: FontSettingsSchema.optional(),
 });
 
 export const ProfileUpdateSchema = ProfileInputSchema.partial();
 
 export type SocialLinks = z.infer<typeof SocialLinksSchema>;
 export type CvReference = z.infer<typeof CvReferenceSchema>;
+export type FontSettings = z.infer<typeof FontSettingsSchema>;
 export type ProfileInput = z.infer<typeof ProfileInputSchema>;
 export type ProfileUpdate = z.infer<typeof ProfileUpdateSchema>;

@@ -8,6 +8,7 @@ import { ThemeToggle } from '../theme/ThemeToggle';
 const ADMIN_LINKS = [
   { label: 'Dashboard', to: '/admin', exact: true },
   { label: 'Profile & Socials', to: '/admin/profile' },
+  { label: 'Fonts & Typography', to: '/admin/fonts' },
   { label: 'Projects', to: '/admin/projects' },
   { label: 'Skills', to: '/admin/skills' },
   { label: 'Services', to: '/admin/services' },

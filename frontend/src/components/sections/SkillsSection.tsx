@@ -15,7 +15,7 @@ const CATEGORY_META: Record<string, { label: string; icon: IconName }> = {
   frontend: { label: 'Frontend', icon: 'layers' },
   backend: { label: 'Backend', icon: 'code' },
   database: { label: 'Database', icon: 'boxes' },
-  ai: { label: 'AI, RAG & Automation', icon: 'cpu' },
+  ai: { label: 'AI & Automation', icon: 'cpu' },
   design: { label: 'Design', icon: 'award' },
   tools: { label: 'Tools & DevOps', icon: 'zap' },
   cms: { label: 'CMS', icon: 'book' },

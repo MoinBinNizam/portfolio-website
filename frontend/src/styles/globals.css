@@ -5,6 +5,18 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --font-body: 'Michroma', sans-serif;
+    --font-heading: 'Michroma', sans-serif;
+    --font-h1: 'Michroma', sans-serif;
+    --font-h2: 'Michroma', sans-serif;
+    --font-h3: 'Michroma', sans-serif;
+    --font-h4: 'Michroma', sans-serif;
+    --font-h5: 'Michroma', sans-serif;
+    --font-h6: 'Michroma', sans-serif;
+    --font-paragraph: 'Michroma', sans-serif;
+  }
+
   html {
     scroll-behavior: smooth;
     font-size: 16px;
@@ -13,7 +25,30 @@
   body {
     background-color: var(--color-background);
     color: var(--color-text);
+    font-family: var(--font-body);
     line-height: 1.6;
+  }
+
+  h1 {
+    font-family: var(--font-h1);
+  }
+  h2 {
+    font-family: var(--font-h2);
+  }
+  h3 {
+    font-family: var(--font-h3);
+  }
+  h4 {
+    font-family: var(--font-h4);
+  }
+  h5 {
+    font-family: var(--font-h5);
+  }
+  h6 {
+    font-family: var(--font-h6);
+  }
+  p {
+    font-family: var(--font-paragraph);
   }
 
   *:focus-visible {

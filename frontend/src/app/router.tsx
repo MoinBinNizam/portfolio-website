@@ -26,6 +26,7 @@ const DashboardPage = lazy(() =>
 const ProfilePage = lazy(() =>
   import('../admin/ProfilePage').then((m) => ({ default: m.ProfilePage })),
 );
+const FontsPage = lazy(() => import('../admin/FontsPage').then((m) => ({ default: m.FontsPage })));
 const MessagesPage = lazy(() =>
   import('../admin/MessagesPage').then((m) => ({ default: m.MessagesPage })),
 );
@@ -170,6 +171,7 @@ export const router = createBrowserRouter([
   },
   { path: '/admin', element: protect(<DashboardPage />) },
   { path: '/admin/profile', element: protect(<ProfilePage />) },
+  { path: '/admin/fonts', element: protect(<FontsPage />) },
   { path: '/admin/messages', element: protect(<MessagesPage />) },
   { path: '/admin/experience', element: protect(<ExperienceListPage />) },
   { path: '/admin/experience/:id', element: protect(<ExperienceEditorPage />) },

@@ -25,6 +25,24 @@ const CvReferenceSubSchema = new Schema(
   { _id: false },
 );
 
+const FontSettingsSubSchema = new Schema(
+  {
+    headingFont: { type: String, default: 'Michroma', maxlength: 80 },
+    bodyFont: { type: String, default: 'Michroma', maxlength: 80 },
+    h1Font: { type: String, default: 'Michroma', maxlength: 80 },
+    h2Font: { type: String, default: 'Michroma', maxlength: 80 },
+    h3Font: { type: String, default: 'Michroma', maxlength: 80 },
+    h4Font: { type: String, default: 'Michroma', maxlength: 80 },
+    h5Font: { type: String, default: 'Michroma', maxlength: 80 },
+    h6Font: { type: String, default: 'Michroma', maxlength: 80 },
+    paragraphFont: { type: String, default: 'Michroma', maxlength: 80 },
+    customFontUrl: { type: String, default: '', maxlength: 500 },
+    customFontName: { type: String, default: '', maxlength: 80 },
+    sectionFonts: { type: Map, of: String, default: () => ({}) },
+  },
+  { _id: false },
+);
+
 const ProfileSchema = new Schema(
   {
     name: { type: String, required: true, maxlength: 100 },
@@ -43,6 +61,7 @@ const ProfileSchema = new Schema(
     resumeUrl: { type: String, default: null },
     avatar: { type: ImageSubSchema, default: null },
     socials: { type: SocialsSchema, default: () => ({}) },
+    fonts: { type: FontSettingsSubSchema, default: () => ({}) },
   },
   { timestamps: true },
 );

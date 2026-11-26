@@ -47,6 +47,20 @@
       "instagram": "",
       "youtube": "",
       "behance": ""
+    },
+    "fonts": {
+      "headingFont": "Michroma",
+      "bodyFont": "Michroma",
+      "h1Font": "Michroma",
+      "h2Font": "Michroma",
+      "h3Font": "Michroma",
+      "h4Font": "Michroma",
+      "h5Font": "Michroma",
+      "h6Font": "Michroma",
+      "paragraphFont": "Michroma",
+      "customFontUrl": "",
+      "customFontName": "",
+      "sectionFonts": {}
     }
   },
   "experience": [
