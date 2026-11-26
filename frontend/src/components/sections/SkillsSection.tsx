@@ -51,7 +51,8 @@ export function SkillsSection() {
           />
 
           {isLoading ? (
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <Skeleton className="h-48 w-full" />
               <Skeleton className="h-48 w-full" />
               <Skeleton className="h-48 w-full" />
               <Skeleton className="h-48 w-full" />
@@ -62,7 +63,7 @@ export function SkillsSection() {
               description="Published skills will appear here once added from the admin panel."
             />
           ) : (
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               {orderedCategories.map((category) => {
                 const list = grouped[category] ?? [];
                 const meta = CATEGORY_META[category] ?? {
