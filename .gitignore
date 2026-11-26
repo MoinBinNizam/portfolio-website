@@ -9,3 +9,5 @@ e2e/screenshots/
 .DS_Store
 coverage/
 backend/uploads/
+~$*
+*.docx
