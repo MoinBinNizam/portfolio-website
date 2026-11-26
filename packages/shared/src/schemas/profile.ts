@@ -20,8 +20,8 @@ export const CvReferenceSchema = z.object({
 });
 
 export const FontSettingsSchema = z.object({
-  headingFont: z.string().trim().min(1).max(80).default('Michroma'),
-  bodyFont: z.string().trim().min(1).max(80).default('Michroma'),
+  headingFont: z.string().trim().max(80).optional().default('Michroma'),
+  bodyFont: z.string().trim().max(80).optional().default('Michroma'),
   h1Font: z.string().trim().max(80).optional().default('Michroma'),
   h2Font: z.string().trim().max(80).optional().default('Michroma'),
   h3Font: z.string().trim().max(80).optional().default('Michroma'),

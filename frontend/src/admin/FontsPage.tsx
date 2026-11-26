@@ -91,9 +91,10 @@ export function FontsPage() {
               <FormField id="headingFont" label="Default Title / Heading Font">
                 <Select
                   id="headingFont"
-                  value={fonts.headingFont}
+                  value={fonts.headingFont ?? ''}
                   onChange={(e) => setFonts({ ...fonts, headingFont: e.target.value })}
                 >
+                  <option value="">Inherit global (Michroma)</option>
                   {fontChoices.map((f) => (
                     <option key={f.name} value={f.name}>
                       {f.label}
@@ -105,9 +106,10 @@ export function FontsPage() {
               <FormField id="bodyFont" label="Default Body / Other Text Font">
                 <Select
                   id="bodyFont"
-                  value={fonts.bodyFont}
+                  value={fonts.bodyFont ?? ''}
                   onChange={(e) => setFonts({ ...fonts, bodyFont: e.target.value })}
                 >
+                  <option value="">Inherit global (Michroma)</option>
                   {fontChoices.map((f) => (
                     <option key={f.name} value={f.name}>
                       {f.label}
@@ -140,7 +142,7 @@ export function FontsPage() {
                     value={fonts[key] ?? ''}
                     onChange={(e) => setFonts({ ...fonts, [key]: e.target.value })}
                   >
-                    <option value="">Inherit default</option>
+                    <option value="">Inherit global</option>
                     {fontChoices.map((f) => (
                       <option key={f.name} value={f.name}>
                         {f.label}
